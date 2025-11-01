@@ -771,24 +771,95 @@
         }
 
         function generateTest(testId) {
-            const questions = [];
-            for (let i = 0; i < 120; i++) {
-                const passageNum = Math.floor(i / 5) + 1;
-                questions.push({
-                    id: i + 1,
-                    passage: `PASSAGE ${passageNum}\n\nIn the landmark judgment of State vs. Citizens Rights Forum (2024), the Supreme Court examined Article 19(1)(a) and 19(2) of the Constitution. The petitioners contended that Section 124A IPC (sedition) was being misused to suppress legitimate dissent and free speech. The Attorney General argued that national security concerns necessitated retention of the provision. In a 4:1 majority decision, the Court read down the provision while establishing strict guidelines for its invocation. The Court held that mere criticism of government policies cannot constitute sedition unless it incites violence or poses a clear and present danger to public order. This judgment has profound implications for interpretation of fundamental rights and balance between free speech and national security.`,
-                    question: `Question ${i + 1}: Based on the passage above, which statement most accurately reflects the Supreme Court's reasoning?`,
-                    options: [
-                        'The Supreme Court completely struck down Section 124A as unconstitutional without any conditions',
-                        'The Court upheld the sedition provision without any modifications or guidelines for its application',
-                        'The Court interpreted the provision narrowly while imposing strict conditions for its application',
-                        'The Court held that all forms of government criticism automatically constitute sedition under the law'
-                    ],
-                    correctAnswer: 2
-                });
-            }
-            return { testId, questions };
-        }
+    const questions = [];
+    const subjects = ['Constitutional Law', 'Criminal Law', 'Contract Law', 'Torts', 'International Law', 'Jurisprudence', 'Administrative Law', 'Family Law', 'Property Law', 'Company Law', 'Tax Law', 'Environmental Law', 'Labour Law'];
+    
+    const passages = [
+        `In Kesavananda Bharati v. State of Kerala (1973), the Supreme Court established the doctrine of basic structure, holding that Parliament cannot amend the Constitution in a manner that alters its basic features. The Court identified several elements including supremacy of the Constitution, republican and democratic form of government, secular character, separation of powers, and federal character as part of the basic structure. This landmark judgment has since been invoked in numerous cases to strike down constitutional amendments. The doctrine has evolved to include additional features such as judicial review, rule of law, and the principle of equality. This judgment fundamentally shaped Indian constitutional jurisprudence and limited the amending power of Parliament.`,
+        
+        `The Contract Act, 1872 defines a contract as an agreement enforceable by law. For a valid contract, there must be an offer, acceptance, consideration, capacity to contract, free consent, and lawful object. In Mohori Bibee v. Dharmodas Ghose (1903), the Privy Council held that a contract with a minor is void ab initio and not merely voidable. The court emphasized that a minor cannot be made liable for breach of contract. However, if a minor has received any benefit under the contract, they must restore it under the principle of restitution. Section 11 of the Contract Act explicitly states that every person is competent to contract who is of the age of majority, of sound mind, and not disqualified from contracting by any law.`,
+        
+        `In the case of M.C. Mehta v. Union of India (Oleum Gas Leak Case, 1987), the Supreme Court evolved the doctrine of absolute liability for enterprises engaged in hazardous or inherently dangerous activities. The Court held that such enterprises are absolutely liable to compensate all those affected by any accident, with no exceptions. This doctrine departed from the rule in Rylands v. Fletcher which allowed certain defenses. The Court emphasized that the measure of compensation must be correlated to the magnitude and capacity of the enterprise, ensuring that larger corporations cannot escape with nominal compensation. This judgment has had far-reaching implications for environmental law and industrial safety regulations in India.`,
+        
+        `Under the Indian Penal Code, mens rea (guilty mind) is generally an essential element of criminal liability. However, certain offenses are classified as strict liability offenses where mens rea is not required. The Supreme Court in State of Maharashtra v. Mayer Hans George held that strict liability applies to statutory offenses created to protect public health, safety, and morals. The distinction between mala in se (inherently wrong acts) and mala prohibita (acts wrong because prohibited) becomes relevant in determining whether mens rea is required. The introduction of Bharatiya Nyaya Sanhita, 2023 has retained many of these principles while reorganizing the criminal law framework with enhanced focus on victim rights and swift justice delivery.`,
+        
+        `Article 21 of the Constitution guarantees the right to life and personal liberty, which has been expansively interpreted by the Supreme Court. In Maneka Gandhi v. Union of India (1978), the Court held that the procedure established by law must be just, fair, and reasonable. This led to the reading of principles of natural justice into Article 21. Subsequently, the Court has recognized numerous rights under Article 21 including the right to privacy, right to education, right to livelihood, right to clean environment, right to shelter, right to health, and right to speedy trial. The K.S. Puttaswamy judgment (2017) declaring privacy as a fundamental right under Article 21 has had profound implications for data protection and digital rights in India.`,
+        
+        `The doctrine of promissory estoppel prevents a party from going back on a promise if the other party has acted upon it to their detriment. In Motilal Padampat Sugar Mills v. State of Uttar Pradesh (1979), the Supreme Court applied this doctrine to the government, holding that the government is bound by its promises and representations. However, the Court also recognized that the doctrine cannot be invoked to compel the government to carry out an ultra vires act or to prevent it from discharging its public duty. The doctrine has been further refined in subsequent judgments to balance the need for government accountability with the flexibility required for policy changes in public interest.`,
+        
+        `In tort law, the principle of vicarious liability makes an employer liable for torts committed by employees during the course of employment. The test for determining whether an act was done in the course of employment was established in Lister v. Hesley Hall Ltd. The Court held that close connection test should be applied - whether the tort was so closely connected with acts the employee was authorized to do that it may fairly and properly be regarded as done while acting in the ordinary course of employment. The principle balances the need to provide remedies to victims with fairness to employers. Indian courts have consistently applied this principle while also recognizing exceptions where the employee acts on a frolic of their own.`,
+        
+        `Public International Law recognizes that treaties are binding agreements between states governed by international law. The Vienna Convention on the Law of Treaties, 1969 codified customary international law regarding treaties. A fundamental principle is pacta sunt servanda - agreements must be kept. However, treaties may be terminated or suspended under certain circumstances including material breach, impossibility of performance, or fundamental change of circumstances (rebus sic stantibus). Recent developments in international law have seen increased emphasis on human rights treaties, environmental agreements like the Paris Agreement, and trade treaties. The interaction between international law and domestic law continues to evolve, with Indian courts increasingly referring to international law principles in constitutional interpretation.`,
+        
+        `Administrative law governs the exercise of power by administrative authorities. The principle of natural justice requires that no one should be condemned unheard (audi alteram partem) and no one should be a judge in their own cause (nemo judex in causa sua). In Maneka Gandhi v. Union of India, the Court held that these principles are implicit in Article 14 and 21. The doctrine of legitimate expectation, imported from English law, protects individuals who have a reasonable expectation based on past practice or promise. Courts have power of judicial review over administrative action on grounds of illegality, irrationality, and procedural impropriety. However, courts generally do not interfere with policy decisions and exercise restraint in matters requiring technical expertise.`,
+        
+        `The Hindu Marriage Act, 1955 governs marriages among Hindus, Buddhists, Jains, and Sikhs. Section 13 provides grounds for divorce including adultery, cruelty, desertion, conversion, mental disorder, leprosy, venereal disease, renunciation of world, and presumption of death. Cruelty has been expansively interpreted by courts to include both physical and mental cruelty. The concept of irretrievable breakdown of marriage, though not a statutory ground, has been applied by courts under Article 142 powers in several cases. Recent amendments have sought to make matrimonial laws more gender-neutral and provide for speedier resolution of disputes. The institution of family courts under the Family Courts Act, 1984 aims to provide a forum for conciliation and quick disposal of family disputes.`,
+        
+        `Property law in India is primarily governed by the Transfer of Property Act, 1882. A sale is a transfer of ownership in exchange for money. For a valid sale of immovable property, there must be an agreement, price paid or promised, and transfer of title through a registered deed as per Section 54. In Suraj Lamp & Industries v. State of Haryana, the Supreme Court distinguished between an agreement to sell and an actual sale, holding that an agreement to sell does not transfer title but creates contractual obligations. The doctrine of part performance under Section 53A protects a buyer who has taken possession and made part payment, preventing the seller from dispossessing them. The RERA Act, 2016 has introduced significant reforms in real estate transactions to protect homebuyers.`,
+        
+        `The Companies Act, 2013 regulates incorporation, management, and winding up of companies. A company is a separate legal entity distinct from its members (Salomon v. Salomon). However, courts may lift the corporate veil in cases of fraud, improper conduct, or where the company is used as a device to evade legal obligations. Directors owe fiduciary duties to the company and must act in good faith in the company's interest. The Act introduced concepts like class action suits, mandatory CSR spending for certain companies, independent directors, and enhanced disclosure requirements. Recent amendments have focused on ease of doing business while strengthening corporate governance norms. The Insolvency and Bankruptcy Code, 2016 provides a time-bound resolution mechanism for corporate insolvency.`,
+        
+        `Environmental law in India is founded on the principle of sustainable development and intergenerational equity. The Environment Protection Act, 1986 is umbrella legislation empowering the government to take measures for environmental protection. In M.C. Mehta cases, the Supreme Court developed principles like polluter pays, precautionary principle, and public trust doctrine. The doctrine of absolute liability was evolved for hazardous industries. Article 21 has been interpreted to include the right to a clean environment. The National Green Tribunal Act, 2010 established specialized environmental courts. Recent focus has been on climate change litigation, with courts taking suo motu cognizance of environmental issues. India's commitments under the Paris Agreement have influenced domestic environmental legislation and policy.`,
+        
+        `Labour law aims to regulate employer-employee relationships and protect workers' rights. The Industrial Disputes Act, 1947 provides mechanisms for settlement of disputes including conciliation, arbitration, and adjudication. The concept of unfair labour practices includes anti-union discrimination, interference in union activities, and victimization. Courts have held that the right to form associations under Article 19(1)(c) includes the right to collective bargaining. Recent labour codes have consolidated multiple labour laws into four codes covering wages, social security, industrial relations, and occupational safety. The gig economy has raised new questions about employment status and worker protections. The Code on Social Security, 2020 attempts to extend benefits to unorganized workers and platform workers.`,
+        
+        `Tax law in India operates through direct and indirect taxes. The Income Tax Act, 1961 governs direct taxation of income. The introduction of GST through the 101st Constitutional Amendment consolidated multiple indirect taxes into a unified system. Tax evasion (illegal) must be distinguished from tax avoidance (legal tax planning) and tax mitigation. In McDowell v. CTO, the Supreme Court held that colorable devices cannot be used to avoid tax. The doctrine of substance over form allows tax authorities to look at the real nature of transactions. Transfer pricing regulations ensure arms-length pricing in related party transactions. Recent focus has been on digitalization of tax administration, GAAR (General Anti-Avoidance Rules), and international cooperation through agreements like FATCA and CRS for exchange of tax information.`,
+        
+        `Jurisprudence studies the nature of law, legal systems, and legal reasoning. Natural law theory holds that law derives from moral principles and reason. Legal positivism, associated with Austin and Hart, separates law from morality and defines law as commands of the sovereign or rules recognized by officials. The sociological school views law as a social phenomenon shaped by society. Legal realism emphasizes the role of judges and actual practice over formal rules. In India, courts have drawn upon various schools - using natural law concepts for fundamental rights interpretation while acknowledging positive law's importance. The debate between textualism and purposive interpretation continues to influence judicial decision-making. Modern jurisprudence also grapples with issues like legal pluralism, law and economics, feminist legal theory, and critical legal studies.`
+    ];
+    
+    for (let i = 0; i < 120; i++) {
+        const passageNum = Math.floor(i / 5);
+        const subjectIdx = i % subjects.length;
+        const passageIdx = passageNum % passages.length;
+        const qInPassage = i % 5;
+        
+        const questionTemplates = [
+            `Question ${i + 1}: Based on the passage, which of the following statements is most accurate regarding ${subjects[subjectIdx]}?`,
+            `Question ${i + 1}: The primary legal principle discussed in the passage can be best described as:`,
+            `Question ${i + 1}: According to the passage, which statement correctly reflects the judicial interpretation?`,
+            `Question ${i + 1}: What is the most significant implication of the legal provision/judgment discussed?`,
+            `Question ${i + 1}: Which of the following is NOT supported by the information in the passage?`
+        ];
+        
+        const optionSets = [
+            [
+                'The provision/principle is absolute and admits no exceptions under any circumstances',
+                'The provision/principle applies only in specific limited scenarios as defined by the court',
+                'The provision/principle is subject to reasonable restrictions and judicial interpretation',
+                'The provision/principle has been completely abolished by subsequent amendments'
+            ],
+            [
+                'It establishes strict liability without any requirement of mens rea or intent',
+                'It requires explicit proof of intention and malicious purpose for applicability',
+                'It balances individual rights with public interest and social welfare considerations',
+                'It applies retrospectively to all cases decided before the judgment'
+            ],
+            [
+                'Courts have unlimited discretion to decide cases based on personal views',
+                'The statute must be interpreted literally without considering its purpose',
+                'Judicial interpretation must balance textual meaning with legislative intent and constitutional values',
+                'Only the executive branch has authority to interpret legislative provisions'
+            ],
+            [
+                'The law applies uniformly to all persons without any exceptions',
+                'Special provisions exist for certain categories based on reasonable classification',
+                'The law has been held completely arbitrary and violative of fundamental rights',
+                'International law principles override domestic legal provisions in all circumstances'
+            ]
+        ];
+        
+        questions.push({
+            id: i + 1,
+            passage: `PASSAGE ${passageNum + 1} - ${subjects[subjectIdx]}\n\n${passages[passageIdx]}`,
+            question: questionTemplates[qInPassage],
+            options: optionSets[qInPassage % optionSets.length],
+            correctAnswer: Math.floor(Math.random() * 4)
+        });
+    }
+    return { testId, questions };
+}
+
 
         function displayQuestion() {
             const q = currentTest.questions[currentQuestion];
