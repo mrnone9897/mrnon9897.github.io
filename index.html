@@ -3,2416 +3,1406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLAT PG Mock Test 2026</title>
+    <title>CLAT PG Mock Test 2026 - Complete Preparation Platform</title>
     <style>
         :root {
-            --color-background: #fcfcf9;
-            --color-surface: #fffffe;
-            --color-text: #13343b;
-            --color-text-secondary: #626c71;
-            --color-primary: #21808d;
-            --color-primary-hover: #1d7480;
-            --color-border: rgba(94, 82, 64, 0.2);
-            --color-success: #21808d;
-            --color-error: #c0152f;
-            --color-warning: #a84b2f;
-            --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --warning-color: #f59e0b;
+            --text-color: #1f2937;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
         }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --color-background: #1f2121;
-                --color-surface: #262828;
-                --color-text: #f5f5f5;
-                --color-text-secondary: rgba(167, 169, 169, 0.7);
-                --color-primary: #32b8c6;
-                --color-primary-hover: #2da6b2;
-                --color-border: rgba(119, 124, 124, 0.3);
-            }
-        }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: var(--font-family-base);
-            background-color: var(--color-background);
-            color: var(--color-text);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text-color);
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         .header {
-            background-color: var(--color-surface);
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
-
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 12px;
-            color: var(--color-text);
-        }
-
-        .exam-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .exam-info-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .exam-info-label {
-            font-size: 12px;
-            color: var(--color-text-secondary);
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .exam-info-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        .start-screen, .question-screen, .result-screen {
-            background-color: var(--color-surface);
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-        }
-
-        .instructions {
-            margin: 24px 0;
-        }
-
-        .instructions h2 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--color-text);
-        }
-
-        .instructions ul {
-            margin-left: 20px;
-            line-height: 1.8;
-        }
-
-        .instructions li {
-            margin-bottom: 8px;
-            color: var(--color-text-secondary);
-        }
-
-        .btn {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 14px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background-color: var(--color-primary-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .timer-bar {
-            background-color: var(--color-surface);
-            padding: 16px 24px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-        }
-
-        .timer {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        .timer.warning {
-            color: var(--color-warning);
-            animation: pulse 1s infinite;
-        }
-
-        .timer.critical {
-            color: var(--color-error);
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .progress-info {
-            display: flex;
-            gap: 24px;
-            font-size: 14px;
-            color: var(--color-text-secondary);
-        }
-
-        .question-container {
-            background-color: var(--color-surface);
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-        }
-
-        .passage {
-            background-color: var(--color-background);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-            border-left: 4px solid var(--color-primary);
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .passage-title {
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 12px;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .question-number {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 12px;
-        }
-
-        .question-text {
-            font-size: 16px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
             margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option {
-            padding: 16px;
-            border: 2px solid var(--color-border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background-color: var(--color-surface);
-        }
-
-        .option:hover {
-            border-color: var(--color-primary);
-            background-color: var(--color-background);
-        }
-
-        .option.selected {
-            border-color: var(--color-primary);
-            background-color: rgba(33, 128, 141, 0.1);
-        }
-
-        .option.correct {
-            border-color: var(--color-success);
-            background-color: rgba(33, 128, 141, 0.15);
-        }
-
-        .option.incorrect {
-            border-color: var(--color-error);
-            background-color: rgba(192, 21, 47, 0.1);
-        }
-
-        .option-label {
-            font-weight: 600;
-            margin-right: 8px;
-            color: var(--color-primary);
-        }
-
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 24px;
-            gap: 12px;
-        }
-
-        .btn-secondary {
-            background-color: rgba(94, 82, 64, 0.12);
-            color: var(--color-text);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(94, 82, 64, 0.2);
-        }
-
-        .question-palette {
-            background-color: var(--color-surface);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-        }
-
-        .palette-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .palette-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-            gap: 8px;
-        }
-
-        .palette-btn {
-            width: 45px;
-            height: 45px;
-            border: 2px solid var(--color-border);
-            border-radius: 6px;
-            background-color: var(--color-surface);
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .palette-btn:hover {
-            border-color: var(--color-primary);
-        }
-
-        .palette-btn.answered {
-            background-color: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
-
-        .palette-btn.current {
-            border-color: var(--color-primary);
-            border-width: 3px;
-        }
-
-        .palette-legend {
-            display: flex;
-            gap: 16px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--color-border);
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--color-text-secondary);
-        }
-
-        .legend-box {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            border: 2px solid var(--color-border);
-        }
-
-        .legend-box.answered {
-            background-color: var(--color-primary);
-            border-color: var(--color-primary);
-        }
-
-        .result-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .result-card {
-            background-color: var(--color-background);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-        }
-
-        .result-card-title {
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .result-card-value {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--color-primary);
-        }
-
-        .performance-chart {
-            margin: 24px 0;
-            padding: 20px;
-            background-color: var(--color-background);
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .plan-card {
-            background-color: var(--color-background);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid var(--color-border);
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .plan-card:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .plan-card.popular {
-            border-color: var(--color-primary);
-            box-shadow: var(--shadow-md);
-        }
-
-        .plan-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background-color: var(--color-primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .plan-header {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--color-border);
         }
-
-        .plan-header h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
+        
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
-
-        .plan-price {
-            font-size: 36px;
-            font-weight: 600;
-            color: var(--color-primary);
+        
+        .header .subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
         }
-
-        .plan-price span {
-            font-size: 16px;
-            color: var(--color-text-secondary);
+        
+        .exam-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
-
-        .plan-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 24px 0;
+        
+        .stat-card {
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
         }
-
-        .plan-features li {
-            padding: 10px 0;
-            color: var(--color-text);
-            font-size: 15px;
-        }
-
-        .form-control {
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
             display: block;
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--color-text);
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            transition: border-color 0.2s;
         }
-
-        .form-control:focus {
-            border-color: var(--color-primary);
-            outline: 2px solid var(--color-primary);
+        
+        .auth-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
         }
-
+        
+        .auth-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
-
+        
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: 500;
-            font-size: 14px;
+            color: var(--text-color);
         }
-
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            margin-top: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .btn-success {
+            background: var(--success-color);
+        }
+        
+        .btn-danger {
+            background: var(--error-color);
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            width: auto;
+        }
+        
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+        }
+        
+        .auth-switch a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+        
+        .payment-section {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .qr-code-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .qr-code {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .payment-instructions {
+            background: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .payment-instructions ol {
+            text-align: left;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .payment-instructions li {
+            margin: 5px 0;
+        }
+        
+        .dashboard {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .user-status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .status-paid {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-free {
+            background: #e0f2fe;
+            color: #0c4a6e;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .test-category {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .test-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .test-description {
+            color: #6b7280;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .admin-panel {
+            background: #fee2e2;
+            border: 2px solid var(--error-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .admin-title {
+            color: var(--error-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .user-table th,
+        .user-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .user-table th {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
         @media (max-width: 768px) {
             .container {
-                padding: 12px;
+                padding: 10px;
             }
-
-            .header {
-                padding: 16px;
+            
+            .header h1 {
+                font-size: 2rem;
             }
-
-            .exam-info {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .start-screen, .question-screen, .result-screen {
+            
+            .auth-container {
                 padding: 20px;
             }
-
-            .palette-grid {
-                grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-            }
-
-            .navigation {
-                flex-direction: column;
+            
+            .test-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header Section -->
         <div class="header">
             <h1>CLAT PG Mock Test 2026</h1>
-            <p style="color: var(--color-text-secondary);">Common Law Admission Test - Postgraduate</p>
-            <div class="exam-info">
-                <div class="exam-info-item">
-                    <span class="exam-info-label">Total Questions</span>
-                    <span class="exam-info-value">120</span>
+            <p class="subtitle">Complete Preparation Platform</p>
+            <div class="exam-stats">
+                <div class="stat-card">
+                    <span class="stat-number">120</span>
+                    Total Questions
                 </div>
-                <div class="exam-info-item">
-                    <span class="exam-info-label">Duration</span>
-                    <span class="exam-info-value">120 Minutes</span>
+                <div class="stat-card">
+                    <span class="stat-number">120</span>
+                    Duration (Minutes)
                 </div>
-                <div class="exam-info-item">
-                    <span class="exam-info-label">Total Marks</span>
-                    <span class="exam-info-value">120</span>
+                <div class="stat-card">
+                    <span class="stat-number">120</span>
+                    Total Marks
                 </div>
-                <div class="exam-info-item">
-                    <span class="exam-info-label">Negative Marking</span>
-                    <span class="exam-info-value">-0.25</span>
+                <div class="stat-card">
+                    <span class="stat-number">-0.25</span>
+                    Negative Marking
                 </div>
             </div>
         </div>
 
-        <div id="loginScreen" class="start-screen">
-            <div id="loginForm">
-                <h2 style="margin-bottom: 24px;">🔐 Login to CLAT PG Mock Test</h2>
+        <!-- Login Form -->
+        <div id="loginForm" class="auth-container">
+            <h2 class="auth-title">🔐 Login to CLAT PG Mock Test</h2>
+            <div id="loginError" class="alert alert-error hidden"></div>
+            <form id="loginFormElement">
                 <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required />
+                    <label class="form-label" for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required />
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
                 </div>
-                <div id="loginError" style="color: var(--color-error); margin-bottom: 12px; font-size: 14px; display: none;"></div>
-                <button class="btn" onclick="login()" style="width: 100%; margin-bottom: 16px;">Login</button>
-                <p style="text-align: center; color: var(--color-text-secondary);">
-                    Don't have an account? 
-                    <a href="javascript:void(0)" onclick="showRegisterForm()" style="color: var(--color-primary); font-weight: 600;">Register here</a>
-                </p>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <div class="auth-switch">
+                Don't have an account? <a href="#" onclick="showRegisterForm()">Register here</a>
             </div>
-
-            <div id="registerForm" class="hidden">
-                <h2 style="margin-bottom: 24px;">📝 Register & Get Access</h2>
-                
-                <div id="registrationStep1">
-                    <div class="form-group">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" id="registerName" class="form-control" placeholder="Enter your full name" required />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" id="registerEmail" class="form-control" placeholder="Enter your email" required />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Password (min 6 characters)</label>
-                        <input type="password" id="registerPassword" class="form-control" placeholder="Create a password" required />
-                    </div>
-                    
-                    <div style="background-color: rgba(33, 128, 141, 0.1); padding: 16px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--color-primary);">
-                        <h3 style="margin: 0 0 12px 0; font-size: 16px;">Choose Your Access Option:</h3>
-                        
-                        <label style="display: block; padding: 12px; background-color: var(--color-surface); border-radius: 8px; margin-bottom: 12px; cursor: pointer; border: 2px solid var(--color-border);">
-                            <input type="radio" name="accessType" value="free" checked onchange="updateAccessOption('free')" style="margin-right: 8px;" />
-                            <strong>3 Free Demo Tests</strong> - Try before you buy
-                        </label>
-                        
-                        <label style="display: block; padding: 12px; background-color: var(--color-surface); border-radius: 8px; margin-bottom: 12px; cursor: pointer; border: 2px solid var(--color-border);">
-                            <input type="radio" name="accessType" value="paid" onchange="updateAccessOption('paid')" style="margin-right: 8px;" />
-                            <strong>₹50 Full Bundle</strong> - All 50 tests unlimited access forever
-                        </label>
-                        
-                        <label style="display: block; padding: 12px; background-color: var(--color-surface); border-radius: 8px; cursor: pointer; border: 2px solid var(--color-border);">
-                            <input type="radio" name="accessType" value="coupon" onchange="updateAccessOption('coupon')" style="margin-right: 8px;" />
-                            <strong>Have a Coupon Code?</strong> - Get free access with valid coupon
-                        </label>
-                    </div>
-                    
-                    <div id="couponSection" class="hidden" style="margin-bottom: 16px;">
-                        <div class="form-group">
-                            <label class="form-label">Enter Coupon Code</label>
-                            <input type="text" id="couponCode" class="form-control" placeholder="Enter your coupon code" style="text-transform: uppercase;" />
-                        </div>
-                    </div>
-                    
-                    <div id="registerError" style="color: var(--color-error); margin-bottom: 12px; font-size: 14px; display: none;"></div>
-                    
-                    <button class="btn" onclick="proceedToPayment()" style="width: 100%; margin-bottom: 16px;" id="registerBtn">Continue</button>
-                    <p style="text-align: center; color: var(--color-text-secondary);">
-                        Already have an account? 
-                        <a href="javascript:void(0)" onclick="showLoginForm()" style="color: var(--color-primary); font-weight: 600;">Login here</a>
-                    </p>
-                </div>
-                
-                <div id="registrationStep2" class="hidden">
-                    <div style="background-color: var(--color-background); padding: 20px; border-radius: 8px; margin-bottom: 24px;">
-                        <h3 style="margin: 0 0 12px 0;">Complete Your Purchase</h3>
-                        <div style="font-size: 32px; font-weight: 600; color: var(--color-primary);">₹50</div>
-                        <p style="margin: 8px 0 0 0; color: var(--color-text-secondary);">Full Bundle - 50 Mock Tests • Lifetime Access</p>
-                    </div>
-                    
-                    <div style="background-color: rgba(33, 128, 141, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid var(--color-primary);">
-                        <p style="margin: 0; font-weight: 500;">📝 Demo Payment System</p>
-                        <p style="margin: 8px 0 0 0; font-size: 14px; color: var(--color-text-secondary);">For demonstration: Click "Complete Payment" to activate your account instantly.</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Payment Method</label>
-                        <select class="form-control" id="paymentMethod">
-                            <option>UPI (GPay, PhonePe, Paytm)</option>
-                            <option>Credit/Debit Card</option>
-                            <option>Net Banking</option>
-                            <option>Wallet</option>
-                        </select>
-                    </div>
-                    
-                    <div style="display: flex; gap: 12px;">
-                        <button class="btn" onclick="completeRegistrationPayment()" style="flex: 1;">Complete Payment</button>
-                        <button class="btn btn-secondary" onclick="backToRegistration()">Back</button>
-                    </div>
-                </div>
+            <div class="auth-switch mt-20">
+                <a href="#" onclick="showAdminLogin()">Admin Login</a>
             </div>
         </div>
 
-        <div id="startScreen" class="start-screen hidden">
-            <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-                <div>
-                    <h2 id="welcomeUser" style="margin: 0; color: var(--color-primary);"></h2>
-                    <div id="subscriptionStatus" style="margin-top: 8px; font-size: 14px;"></div>
+        <!-- Registration Form -->
+        <div id="registerForm" class="auth-container hidden">
+            <h2 class="auth-title">📝 Register New Account</h2>
+            <div id="registerError" class="alert alert-error hidden"></div>
+            <form id="registerFormElement">
+                <div class="form-group">
+                    <label class="form-label" for="registerName">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" required>
                 </div>
-                <div style="display: flex; gap: 12px;">
-                    <button class="btn btn-secondary" onclick="showLeaderboard()">🏆 Leaderboard</button>
-                    <button class="btn" onclick="showSubscriptionPage()" id="subscribeBtn" style="display: none;">💎 Upgrade</button>
-                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                <div class="form-group">
+                    <label class="form-label" for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-input" required>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerPhone">Phone Number</label>
+                    <input type="tel" id="registerPhone" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerPassword">Password (min 6 characters)</label>
+                    <input type="password" id="registerPassword" class="form-input" minlength="6" required>
+                </div>
+                <button type="submit" class="btn">Continue to Payment</button>
+            </form>
+            <div class="auth-switch">
+                Already have an account? <a href="#" onclick="showLoginForm()">Login here</a>
             </div>
-            <div style="margin-bottom: 32px;">
-                <h2 style="margin-bottom: 16px;">📝 Select Mock Test</h2>
-                <select id="testSelector" class="form-control" style="max-width: 600px; margin-bottom: 24px;">
-                    <optgroup label="📚 SUBJECT-WISE MOCK TESTS (Focused Practice)">
-                        <option value="0">Test 1 - Constitutional Law (Part I: Fundamental Rights & DPSP)</option>
-                        <option value="1">Test 2 - Constitutional Law (Part II: Union & State Relations)</option>
-                        <option value="2">Test 3 - Constitutional Law (Part III: Emergency & Amendment)</option>
-                        <option value="3">Test 4 - Criminal Law (Part I: IPC General Principles)</option>
-                        <option value="4">Test 5 - Criminal Law (Part II: Offences Against Person & Property)</option>
-                        <option value="5">Test 6 - Criminal Law (Part III: CrPC & Evidence Act)</option>
-                        <option value="6">Test 7 - Contract Law (Part I: Formation & Validity)</option>
-                        <option value="7">Test 8 - Contract Law (Part II: Performance & Discharge)</option>
-                        <option value="8">Test 9 - Contract Law (Part III: Breach & Remedies)</option>
-                        <option value="9">Test 10 - Tort Law (Part I: General Principles & Negligence)</option>
-                        <option value="10">Test 11 - Tort Law (Part II: Strict & Vicarious Liability)</option>
-                        <option value="11">Test 12 - Tort Law (Part III: Defamation & Special Torts)</option>
-                        <option value="12">Test 13 - International Law (Part I: Sources & State Recognition)</option>
-                        <option value="13">Test 14 - International Law (Part II: Treaties & Use of Force)</option>
-                        <option value="14">Test 15 - International Law (Part III: Human Rights & ICJ)</option>
-                        <option value="15">Test 16 - Intellectual Property Rights (Patents & Trademarks)</option>
-                        <option value="16">Test 17 - Intellectual Property Rights (Copyright & Designs)</option>
-                        <option value="17">Test 18 - Jurisprudence (Part I: Schools of Jurisprudence)</option>
-                        <option value="18">Test 19 - Jurisprudence (Part II: Legal Concepts & Rights)</option>
-                        <option value="19">Test 20 - Administrative Law (Principles & Judicial Review)</option>
-                        <option value="20">Test 21 - Family Law (Hindu & Muslim Personal Laws)</option>
-                        <option value="21">Test 22 - Property Law (Transfer & Registration)</option>
-                        <option value="22">Test 23 - Company Law (Formation & Corporate Governance)</option>
-                        <option value="23">Test 24 - Tax Law (Constitutional Validity & GST)</option>
-                        <option value="24">Test 25 - Environmental Law (Pollution & Wildlife Protection)</option>
-                        <option value="25">Test 26 - Labour Law (Industrial Disputes & Social Security)</option>
-                    </optgroup>
-                    <optgroup label="🎯 FULL SYLLABUS MOCK TESTS (Complete Practice)">
-                        <option value="26">Full Test 1 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="27">Full Test 2 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="28">Full Test 3 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="29">Full Test 4 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="30">Full Test 5 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="31">Full Test 6 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="32">Full Test 7 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="33">Full Test 8 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="34">Full Test 9 - All Subjects Mixed (Comprehensive)</option>
-                        <option value="35">Full Test 10 - All Subjects Mixed (Comprehensive)</option>
-                    </optgroup>
-                    <optgroup label="⚖️ LATEST JUDGMENTS 2024-2025 (Current Affairs)">
-                        <option value="36">Judgments Test 1 - Supreme Court 2025 (Jan-Mar)</option>
-                        <option value="37">Judgments Test 2 - Supreme Court 2025 (Apr-Jun)</option>
-                        <option value="38">Judgments Test 3 - Supreme Court 2025 (Jul-Sep)</option>
-                        <option value="39">Judgments Test 4 - Supreme Court 2024 (Constitutional Benches)</option>
-                        <option value="40">Judgments Test 5 - Supreme Court 2024 (Criminal Law)</option>
-                        <option value="41">Judgments Test 6 - High Courts 2024-2025 (Landmark Cases)</option>
-                        <option value="42">Judgments Test 7 - Latest Amendments & Reforms 2024-2025</option>
-                    </optgroup>
-                    <optgroup label="🔥 FINAL REVISION TESTS (Pre-Exam)">
-                        <option value="43">Revision Test 1 - High Weightage Topics</option>
-                        <option value="44">Revision Test 2 - Previous Year Pattern</option>
-                        <option value="45">Revision Test 3 - Difficulty Level: High</option>
-                        <option value="46">Grand Mock 1 - Final Exam Simulation</option>
-                        <option value="47">Grand Mock 2 - Final Exam Simulation</option>
-                        <option value="48">Grand Mock 3 - Final Exam Simulation</option>
-                        <option value="49">Grand Mock 4 - Final Exam Simulation</option>
-                    </optgroup>
-                </select>
-                <p style="color: var(--color-text-secondary); font-size: 14px; margin-top: 8px;">
-                    <strong>50 Unique Mock Tests</strong> - Each contains 24 unique passages (120 MCQs) with ZERO repetition. Subject-wise for focused practice → Full syllabus for comprehensive review → Latest judgments for current awareness → Grand mocks for final preparation.
-                </p>
-            </div>
-            <div class="instructions">
-                <h2>📋 Instructions</h2>
-                <ul>
-                    <li>The test contains <strong>120 multiple choice questions (MCQs)</strong> based on passages from various law subjects</li>
-                    <li>Each passage will be followed by <strong>5 questions</strong></li>
-                    <li>Each correct answer carries <strong>1 mark</strong></li>
-                    <li>Each incorrect answer has a negative marking of <strong>0.25 marks</strong></li>
-                    <li>Total duration: <strong>120 minutes (2 hours)</strong></li>
-                    <li>You can navigate between questions using the question palette</li>
-                    <li>The timer will show a warning when 30 minutes remain</li>
-                    <li>The test will automatically submit when time expires</li>
-                    <li>Click "Submit Test" when you finish to see your results</li>
-                </ul>
-
-                <h2 style="margin-top: 24px;">📚 Subjects Covered</h2>
-                <ul>
-                    <li>Constitutional Law</li>
-                    <li>Contract Law</li>
-                    <li>Tort Law</li>
-                    <li>Criminal Law</li>
-                    <li>International Law</li>
-                    <li>Intellectual Property Rights (IPR)</li>
-                    <li>Jurisprudence</li>
-                </ul>
-            </div>
-            <button class="btn" onclick="checkAccessAndStart()">Start Test</button>
         </div>
 
-        <div id="paywallScreen" class="start-screen hidden">
-            <div style="text-align: center; margin-bottom: 32px;">
-                <h2 style="font-size: 32px; margin-bottom: 16px;">🔒 Upgrade to Full Access</h2>
-                <p style="font-size: 18px; color: var(--color-text-secondary);">You've used all your free tests. Get lifetime access to all 50 mock tests!</p>
-            </div>
+        <!-- Payment Form -->
+        <div id="paymentForm" class="auth-container hidden">
+            <h2 class="auth-title">💳 Complete Your Payment</h2>
             
-            <div style="max-width: 500px; margin: 0 auto;">
-                <div class="plan-card popular" onclick="selectPlan('bundle')">
-                    <div class="plan-badge">BEST VALUE</div>
-                    <div class="plan-header">
-                        <h3>Full Bundle - Lifetime Access</h3>
-                        <div class="plan-price">₹50<span> one-time</span></div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>✓ All 50 mock test series</li>
-                        <li>✓ Unlimited test attempts</li>
-                        <li>✓ Lifetime access - No expiry</li>
-                        <li>✓ Latest 2024-2025 judgments</li>
-                        <li>✓ Subject-wise practice tests</li>
-                        <li>✓ Full syllabus tests</li>
-                        <li>✓ Performance analytics</li>
-                        <li>✓ Leaderboard access</li>
-                        <li>✓ Instant activation</li>
-                    </ul>
-                    <button class="btn" style="width: 100%; background-color: var(--color-success); font-size: 18px; padding: 16px;">Get Full Access - ₹50</button>
+            <div class="payment-section">
+                <h3 style="color: #f59e0b; margin-bottom: 15px;">📱 Pay ₹50 via PhonePe/UPI</h3>
+                
+                <div class="qr-code-container">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAzADMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAP/APb3p2/e9u/N5eMjY2dZx3DcJBEUZmOCWA44yAfriJrjbXY6QhwEZHBjVmGBgEjcTnPLa9t1s6vfEapCBfEpVcQvA5JAHr0zIQfwnJSaWLJ1DEohlcE5EKnG3oBk845OcivZ/2f/2f5vF/xD0rwd4h1D7FYJHLf6hfyW7ztBbqpOXEcbJv5QKCQJQNrFhitvjH8L7P4LeKLzwNcWjXcNp9n/tS2M8wjuBJ5iG4Vl5COAyxg8Ebd5ViABjfm4Nt8YfB3jjhyfWv7EuDeCMmOQoWfbGwyGE8dIVxkYHG6RQxZlB7EACxqWuQWkF0mhOkgNw8Mm6VBGFBA8wEZ8kYCnYQTnDEHB4BHPX/AMdL/lm1TePpXiFfVEtzjdxwAzYH6Vi67p914D16w8YaXa3d3o2pW4kbzrpUe5aJWKpANqlJYyy5KKxGwBi5UnBJI4ktPAvqz3MaT35bfNGVRjtZiEJhCnPHUqHbOQGJKnJj9vfDTxG/h/xBbabZadPNPc61q0j6Xw8QlF28TyNEqMCQ0JUFgxIYqxXnAFP4i6TqOveMNR8YeFG0i7ufD+iT3O/TLeeZUke6hkVbZo1y/l5VdwUPuRW3K2SB7b+0N4DufFngTRfGGg3q3KaLrVtE/mXJR5V2MkjQgbSFeP8AeRgOBIhVfuxsfU5pKKyoztKZu/NG1lHbUKmBNErnLk4Dj8Pf8/Slz/rTy7FhkRU3Z7/P1FABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q==" alt="PhonePe QR Code" class="qr-code">
                 </div>
                 
-                <div style="margin-top: 24px; padding: 16px; background-color: rgba(33, 128, 141, 0.1); border-radius: 8px; border-left: 4px solid var(--color-primary);">
-                    <p style="margin: 0 0 12px 0; font-weight: 600;">💡 Have a Coupon Code?</p>
-                    <div style="display: flex; gap: 8px;">
-                        <input type="text" id="upgradeCouponCode" class="form-control" placeholder="Enter coupon code" style="text-transform: uppercase;" />
-                        <button class="btn" onclick="applyCouponUpgrade()" style="white-space: nowrap;">Apply</button>
-                    </div>
-                    <div id="couponUpgradeError" style="color: var(--color-error); margin-top: 8px; font-size: 14px; display: none;"></div>
+                <div class="payment-instructions">
+                    <h4>Payment Instructions:</h4>
+                    <ol>
+                        <li>Scan the QR code above using your PhonePe, Google Pay, or any UPI app</li>
+                        <li>Pay exactly ₹50</li>
+                        <li>Note down your Transaction ID after successful payment</li>
+                        <li>Enter your transaction details below</li>
+                        <li>Get instant access to all 50 mock tests!</li>
+                    </ol>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 32px;">
-                <button class="btn btn-secondary" onclick="backToStart()">← Back to Tests</button>
+            <div id="paymentError" class="alert alert-error hidden"></div>
+            <form id="paymentFormElement">
+                <div class="form-group">
+                    <label class="form-label" for="transactionId">Transaction ID *</label>
+                    <input type="text" id="transactionId" class="form-input" required 
+                           placeholder="Enter UPI/PhonePe Transaction ID">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="paymentAmount">Amount Paid (₹) *</label>
+                    <input type="number" id="paymentAmount" class="form-input" value="50" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="paymentMethod">Payment Method *</label>
+                    <select id="paymentMethod" class="form-input" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="PhonePe">PhonePe</option>
+                        <option value="Google Pay">Google Pay</option>
+                        <option value="Paytm">Paytm</option>
+                        <option value="Other UPI">Other UPI App</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Submit Payment & Get Access</button>
+                <button type="button" class="btn btn-secondary" onclick="showRegisterForm()">Back to Registration</button>
+            </form>
+        </div>
+
+        <!-- Admin Login -->
+        <div id="adminLogin" class="auth-container hidden">
+            <h2 class="auth-title">🛡️ Admin Login</h2>
+            <div id="adminLoginError" class="alert alert-error hidden"></div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label class="form-label" for="adminEmail">Admin Email</label>
+                    <input type="email" id="adminEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="adminPassword">Admin Password</label>
+                    <input type="password" id="adminPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="btn">Admin Login</button>
+            </form>
+            <div class="auth-switch">
+                <a href="#" onclick="showLoginForm()">Back to User Login</a>
             </div>
         </div>
 
-        <div id="paymentScreen" class="start-screen hidden">
-            <h2 style="margin-bottom: 24px;">💳 Complete Your Purchase</h2>
-            
-            <div style="background-color: var(--color-background); padding: 20px; border-radius: 8px; margin-bottom: 24px;">
-                <h3 id="selectedPlanName" style="margin-bottom: 8px;"></h3>
-                <div id="selectedPlanPrice" style="font-size: 32px; font-weight: 600; color: var(--color-primary);"></div>
-                <p style="margin: 8px 0 0 0; color: var(--color-text-secondary);">One-time payment • Lifetime access • All 50 tests</p>
+        <!-- User Dashboard -->
+        <div id="dashboard" class="dashboard hidden">
+            <div class="welcome-message">
+                <h2>Welcome, <span id="userName"></span>! 🎯</h2>
+                <div id="userStatusDisplay" class="user-status"></div>
+                <button class="btn btn-small btn-secondary" onclick="logout()">Logout</button>
             </div>
-            
-            <div style="background-color: rgba(33, 128, 141, 0.1); padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid var(--color-primary);">
-                <p style="margin: 0; font-weight: 500;">📝 Demo Payment System</p>
-                <p style="margin: 8px 0 0 0; font-size: 14px; color: var(--color-text-secondary);">This is a demonstration. Click "Complete Payment" to activate your account instantly.</p>
-            </div>
-            
-            <div class="form-group" style="margin-bottom: 16px;">
-                <label class="form-label">Payment Method</label>
-                <select class="form-control" id="paymentMethod">
-                    <option>UPI (GPay, PhonePe, Paytm)</option>
-                    <option>Credit/Debit Card</option>
-                    <option>Net Banking</option>
-                    <option>Wallet</option>
+
+            <!-- Test Selection -->
+            <div class="form-group">
+                <label class="form-label" for="testSelect">Select Mock Test:</label>
+                <select id="testSelect" class="form-input">
+                    <option value="">Choose a test to begin...</option>
+                    <optgroup label="📚 Subject-Wise Tests (26 Tests)">
+                        <option value="constitutional-1">Constitutional Law - Part 1: Fundamental Rights</option>
+                        <option value="constitutional-2">Constitutional Law - Part 2: Directive Principles</option>
+                        <option value="constitutional-3">Constitutional Law - Part 3: Union & State Powers</option>
+                        <option value="constitutional-4">Constitutional Law - Part 4: Amendment Process</option>
+                        <option value="criminal-1">Criminal Law - Part 1: IPC Essentials</option>
+                        <option value="criminal-2">Criminal Law - Part 2: Criminal Procedure</option>
+                        <option value="criminal-3">Criminal Law - Part 3: Evidence Act</option>
+                        <option value="contract-1">Contract Law - Part 1: Formation & Validity</option>
+                        <option value="contract-2">Contract Law - Part 2: Performance & Breach</option>
+                        <option value="tort-1">Tort Law - Part 1: Negligence & Liability</option>
+                        <option value="tort-2">Tort Law - Part 2: Specific Torts</option>
+                        <option value="international-1">International Law - Part 1: Sources & Treaties</option>
+                        <option value="international-2">International Law - Part 2: State Responsibility</option>
+                        <option value="ipr-1">IPR - Part 1: Patents & Copyrights</option>
+                        <option value="ipr-2">IPR - Part 2: Trademarks & Designs</option>
+                        <option value="jurisprudence-1">Jurisprudence - Part 1: Legal Theory</option>
+                        <option value="jurisprudence-2">Jurisprudence - Part 2: Natural Law</option>
+                        <option value="admin-1">Administrative Law - Part 1: Principles</option>
+                        <option value="admin-2">Administrative Law - Part 2: Judicial Review</option>
+                        <option value="family-1">Family Law - Part 1: Hindu Law</option>
+                        <option value="family-2">Family Law - Part 2: Muslim Law</option>
+                        <option value="property-1">Property Law - Transfer of Property</option>
+                        <option value="company-1">Company Law - Corporate Governance</option>
+                        <option value="tax-1">Tax Law - Direct & Indirect Taxes</option>
+                        <option value="environmental-1">Environmental Law - Principles</option>
+                        <option value="labour-1">Labour Law - Industrial Relations</option>
+                    </optgroup>
+                    <optgroup label="🎯 Full Syllabus Tests (10 Tests)">
+                        <option value="full-1">Full Syllabus Test 1</option>
+                        <option value="full-2">Full Syllabus Test 2</option>
+                        <option value="full-3">Full Syllabus Test 3</option>
+                        <option value="full-4">Full Syllabus Test 4</option>
+                        <option value="full-5">Full Syllabus Test 5</option>
+                        <option value="full-6">Full Syllabus Test 6</option>
+                        <option value="full-7">Full Syllabus Test 7</option>
+                        <option value="full-8">Full Syllabus Test 8</option>
+                        <option value="full-9">Full Syllabus Test 9</option>
+                        <option value="full-10">Full Syllabus Test 10</option>
+                    </optgroup>
+                    <optgroup label="⚖️ Latest Judgments Tests (7 Tests)">
+                        <option value="judgment-1">2024-25 Supreme Court Judgments - Part 1</option>
+                        <option value="judgment-2">2024-25 Supreme Court Judgments - Part 2</option>
+                        <option value="judgment-3">Constitutional Bench Decisions 2024-25</option>
+                        <option value="judgment-4">Criminal Law Reforms & Judgments</option>
+                        <option value="judgment-5">Contract & Commercial Law Updates</option>
+                        <option value="judgment-6">Administrative Law Recent Cases</option>
+                        <option value="judgment-7">International Law & Treaties 2024-25</option>
+                    </optgroup>
+                    <optgroup label="🔥 Final Revision Tests (7 Tests)">
+                        <option value="revision-1">High Weightage Topics Test</option>
+                        <option value="revision-2">Previous Year Pattern Test</option>
+                        <option value="revision-3">High Difficulty Test</option>
+                        <option value="revision-4">Speed & Accuracy Test</option>
+                        <option value="revision-5">Grand Mock Test 1</option>
+                        <option value="revision-6">Grand Mock Test 2</option>
+                        <option value="revision-7">Final Simulation Test</option>
+                    </optgroup>
                 </select>
             </div>
             
-            <div style="display: flex; gap: 12px; margin-top: 24px;">
-                <button class="btn" onclick="processPayment()" style="flex: 1;">Complete Payment - ₹50</button>
-                <button class="btn btn-secondary" onclick="cancelPayment()">Cancel</button>
+            <button id="startTestBtn" class="btn" onclick="startTest()" disabled>Start Selected Test</button>
+            
+            <div class="mt-20 text-center">
+                <button class="btn btn-secondary btn-small" onclick="showLeaderboard()">View Leaderboard 🏆</button>
             </div>
         </div>
 
-        <div id="questionScreen" class="question-screen hidden">
-            <div class="timer-bar">
-                <div class="timer" id="timer">02:00:00</div>
-                <div class="progress-info">
-                    <span>Question: <strong id="currentQ">1</strong>/120</span>
-                    <span>Answered: <strong id="answeredCount">0</strong>/120</span>
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="admin-panel hidden">
+            <h2 class="admin-title">🛡️ Admin Panel - User Management</h2>
+            <div class="text-center mb-20">
+                <button class="btn btn-secondary btn-small" onclick="adminLogout()">Logout</button>
+            </div>
+            
+            <div id="adminAlert" class="alert alert-success hidden"></div>
+            
+            <h3>Registered Users & Payment Status</h3>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Transaction ID</th>
+                        <th>Payment Method</th>
+                        <th>Registration Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminUserTable">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Test Interface -->
+        <div id="testInterface" class="dashboard hidden">
+            <div id="testHeader" class="text-center mb-20">
+                <h2 id="testTitle">Mock Test</h2>
+                <div id="testTimer" style="font-size: 1.2rem; color: #ef4444; font-weight: bold;">
+                    Time Remaining: <span id="timeDisplay">02:00:00</span>
                 </div>
             </div>
-
-            <div class="question-palette">
-                <div class="palette-title">Question Palette</div>
-                <div class="palette-grid" id="palette"></div>
-                <div class="palette-legend">
-                    <div class="legend-item">
-                        <div class="legend-box"></div>
-                        <span>Not Answered</span>
+            
+            <div id="testContent">
+                <div id="passageContainer" class="mb-20">
+                    <h3>Passage:</h3>
+                    <div id="passageText" style="background: #f9fafb; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary-color); margin: 15px 0; line-height: 1.6;"></div>
+                </div>
+                
+                <div id="questionContainer">
+                    <h4 id="questionText">Question will appear here</h4>
+                    <div id="optionsContainer" class="mt-20">
+                        <!-- Options will be populated by JavaScript -->
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-box answered"></div>
-                        <span>Answered</span>
-                    </div>
                 </div>
-            </div>
-
-            <div class="question-container">
-                <div class="passage" id="passage"></div>
-                <div class="question-number" id="questionNumber"></div>
-                <div class="question-text" id="questionText"></div>
-                <div class="options" id="options"></div>
-            </div>
-
-            <div class="navigation">
-                <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn">← Previous</button>
-                <button class="btn btn-secondary" onclick="clearResponse()">Clear Response</button>
-                <button class="btn" onclick="nextQuestion()" id="nextBtn">Next →</button>
-                <button class="btn" onclick="submitTest()" style="background-color: var(--color-warning);">Submit Test</button>
+                
+                <div class="mt-20 text-center">
+                    <button id="prevBtn" class="btn btn-secondary btn-small" onclick="previousQuestion()">Previous</button>
+                    <span style="margin: 0 20px;">
+                        Question <span id="currentQuestionNumber">1</span> of <span id="totalQuestions">120</span>
+                    </span>
+                    <button id="nextBtn" class="btn btn-small" onclick="nextQuestion()">Next</button>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <button id="submitTestBtn" class="btn btn-danger" onclick="submitTest()">Submit Test</button>
+                </div>
             </div>
         </div>
 
-        <div id="resultScreen" class="result-screen hidden">
-            <h2 style="margin-bottom: 24px;">📊 Test Results</h2>
-            <div class="result-summary">
-                <div class="result-card">
-                    <div class="result-card-title">Total Score</div>
-                    <div class="result-card-value" id="totalScore">0</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card-title">Correct Answers</div>
-                    <div class="result-card-value" id="correctAnswers" style="color: var(--color-success);">0</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card-title">Incorrect Answers</div>
-                    <div class="result-card-value" id="incorrectAnswers" style="color: var(--color-error);">0</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card-title">Not Attempted</div>
-                    <div class="result-card-value" id="notAttempted">0</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card-title">Accuracy</div>
-                    <div class="result-card-value" id="accuracy">0%</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-card-title">Percentile (Est.)</div>
-                    <div class="result-card-value" id="percentile">0</div>
-                </div>
-            </div>
-
-            <div class="performance-chart">
-                <h3 style="margin-bottom: 16px;">Performance Analysis</h3>
-                <div id="performanceDetails"></div>
-            </div>
-
-            <div style="display: flex; gap: 12px; margin-top: 24px;">
-                <button class="btn" onclick="location.reload()">Retake Test</button>
-                <button class="btn btn-secondary" onclick="showLeaderboard()">View Leaderboard</button>
-            </div>
+        <!-- Leaderboard -->
+        <div id="leaderboard" class="dashboard hidden">
+            <h2 class="text-center mb-20">🏆 Leaderboard</h2>
+            <button class="btn btn-secondary btn-small mb-20" onclick="hideLearderboard()">Back to Dashboard</button>
+            
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Test</th>
+                        <th>Score</th>
+                        <th>Correct</th>
+                        <th>Accuracy</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardTable">
+                </tbody>
+            </table>
         </div>
 
-        <div id="leaderboardScreen" class="result-screen hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                <h2 style="margin: 0;">🏆 Leaderboard - Top Scores</h2>
-                <button class="btn btn-secondary" onclick="backToStart()">← Back</button>
+        <!-- Results -->
+        <div id="testResults" class="dashboard hidden">
+            <h2 class="text-center mb-20">📊 Test Results</h2>
+            <div id="resultsContent"></div>
+            <div class="text-center mt-20">
+                <button class="btn btn-secondary" onclick="backToDashboard()">Back to Dashboard</button>
+                <button class="btn btn-small" onclick="showLeaderboard()">View Leaderboard 🏆</button>
             </div>
-            <div id="leaderboardTable"></div>
         </div>
     </div>
 
     <script>
-        // Authentication and User Management
+        // Global variables
         let currentUser = null;
-        const USERS_KEY = 'clat_users';
-        const SCORES_KEY = 'clat_scores';
-        const SUBSCRIPTIONS_KEY = 'clat_subscriptions';
-        
-        // Paywall Configuration
-        const FREE_TESTS_LIMIT = 3; // Number of free tests before paywall
-        const BUNDLE_PRICE = 50; // Bundle price in Rupees
-        
-        // Valid coupon codes for free access
-        const VALID_COUPONS = [
-            'CLAT2026FREE',
-            'MOCKTEST100',
-            'LAWPREP2026',
-            'PGCLAT50OFF',
-            'FREEACCESS25'
-        ];
+        let currentTest = null;
+        let currentQuestionIndex = 0;
+        let testTimer = null;
+        let testAnswers = {};
+        let testStartTime = null;
+        let isAdmin = false;
 
-        function getUsers() {
-            return JSON.parse(localStorage.getItem(USERS_KEY) || '{}');
-        }
+        // Admin credentials
+        const ADMIN_EMAIL = 'amitmasiwaloct@gmail.com';
+        const ADMIN_PASSWORD = 'admin123';
 
-        function saveUsers(users) {
-            localStorage.setItem(USERS_KEY, JSON.stringify(users));
-        }
-        
-        function getSubscriptions() {
-            return JSON.parse(localStorage.getItem(SUBSCRIPTIONS_KEY) || '{}');
-        }
-        
-        function saveSubscription(email, subscription) {
-            const subscriptions = getSubscriptions();
-            subscriptions[email] = subscription;
-            localStorage.setItem(SUBSCRIPTIONS_KEY, JSON.stringify(subscriptions));
-        }
-        
-        function getUserSubscription(email) {
-            const subscriptions = getSubscriptions();
-            return subscriptions[email] || null;
-        }
-        
-        function isSubscriptionActive(subscription) {
-            if (!subscription) return false;
-            const now = new Date();
-            const expiryDate = new Date(subscription.expiryDate);
-            return now < expiryDate;
-        }
-        
-        function getTestsTaken(email) {
-            const scores = getScores();
-            return scores.filter(s => s.email === email).length;
-        }
-        
-        function canAccessTest() {
-            const subscription = getUserSubscription(currentUser.email);
-            
-            if (subscription && isSubscriptionActive(subscription)) {
-                return { allowed: true, reason: 'active_subscription' };
+        // Mock test data structure
+        const mockTests = {
+            'constitutional-1': {
+                title: 'Constitutional Law - Part 1: Fundamental Rights',
+                category: 'Subject-Wise',
+                passages: [
+                    {
+                        text: "The Supreme Court in Maneka Gandhi v. Union of India (1978) revolutionized the interpretation of Article 21 by establishing that the right to life and personal liberty cannot be suspended except by a procedure established by law that is fair, just, and reasonable. This landmark judgment expanded the scope of fundamental rights and introduced the concept of substantive due process in Indian jurisprudence. The Court held that Articles 14, 19, and 21 are interconnected and form a golden triangle of constitutional protection.",
+                        questions: [
+                            {
+                                question: "What was the primary constitutional principle established in Maneka Gandhi v. Union of India?",
+                                options: [
+                                    "Separation of powers between legislature and judiciary",
+                                    "Interconnectedness of Articles 14, 19, and 21 forming a golden triangle", 
+                                    "Supremacy of fundamental rights over directive principles",
+                                    "Federal structure of Indian Constitution"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "The concept of 'substantive due process' introduced in this case implies:",
+                                options: [
+                                    "Only procedural fairness in legal proceedings",
+                                    "Legislative supremacy in constitutional matters",
+                                    "Both procedural and substantive fairness in law",
+                                    "Judicial review limited to procedural violations"
+                                ],
+                                correct: 2
+                            },
+                            {
+                                question: "According to the judgment, Article 21 can be suspended only by:",
+                                options: [
+                                    "Any procedure established by law",
+                                    "Procedure that is fair, just, and reasonable",
+                                    "Executive discretion in emergency situations",
+                                    "Parliamentary legislation with simple majority"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "The 'golden triangle' concept refers to the relationship between:",
+                                options: [
+                                    "Articles 12, 13, and 32",
+                                    "Articles 14, 19, and 21",
+                                    "Articles 25, 26, and 27", 
+                                    "Articles 36, 37, and 38"
+                                ],
+                                correct: 1
+                            },
+                            {
+                                question: "This judgment's impact on Indian jurisprudence was:",
+                                options: [
+                                    "Limited to passport and travel rights",
+                                    "Expansion of scope of fundamental rights protection",
+                                    "Reduction in judicial review powers",
+                                    "Strengthening of executive powers"
+                                ],
+                                correct: 1
+                            }
+                        ]
+                    }
+                    // Add 23 more passages here for a complete test
+                ]
             }
-            
-            const testsTaken = getTestsTaken(currentUser.email);
-            
-            if (testsTaken < FREE_TESTS_LIMIT) {
-                return { allowed: true, reason: 'free_trial', remaining: FREE_TESTS_LIMIT - testsTaken };
-            }
-            
-            return { allowed: false, reason: 'paywall' };
-        }
+            // Add all 50 tests here
+        };
 
-        function getScores() {
-            return JSON.parse(localStorage.getItem(SCORES_KEY) || '[]');
-        }
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            checkExistingSession();
+            setupEventListeners();
+            populateTestOptions();
+        });
 
-        function saveScore(scoreData) {
-            const scores = getScores();
-            scores.push(scoreData);
-            localStorage.setItem(SCORES_KEY, JSON.stringify(scores));
-        }
-
-        function showLoginScreen() {
-            document.getElementById('loginScreen').classList.remove('hidden');
-            document.getElementById('startScreen').classList.add('hidden');
-        }
-
-        function showStartScreen() {
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('startScreen').classList.remove('hidden');
-            document.getElementById('paywallScreen').classList.add('hidden');
-            document.getElementById('paymentScreen').classList.add('hidden');
-            document.getElementById('welcomeUser').textContent = `Welcome, ${currentUser.name}!`;
-            updateSubscriptionStatus();
-        }
-        
-        function updateSubscriptionStatus() {
-            const subscription = getUserSubscription(currentUser.email);
-            const statusDiv = document.getElementById('subscriptionStatus');
-            const subscribeBtn = document.getElementById('subscribeBtn');
-            
-            if (subscription && isSubscriptionActive(subscription)) {
-                if (subscription.plan === 'lifetime') {
-                    statusDiv.innerHTML = `<span style="color: var(--color-success); font-weight: 600;">✓ Full Bundle Access</span> (Lifetime) • Source: ${subscription.source}`;
+        function checkExistingSession() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                if (currentUser.email === ADMIN_EMAIL && currentUser.isAdmin) {
+                    showAdminPanel();
                 } else {
-                    const expiryDate = new Date(subscription.expiryDate);
-                    const daysLeft = Math.ceil((expiryDate - new Date()) / (1000 * 60 * 60 * 24));
-                    statusDiv.innerHTML = `<span style="color: var(--color-success); font-weight: 600;">✓ Premium Active</span> (${daysLeft} days remaining)`;
+                    showDashboard();
                 }
-                subscribeBtn.style.display = 'none';
-            } else {
-                const testsTaken = getTestsTaken(currentUser.email);
-                const remaining = FREE_TESTS_LIMIT - testsTaken;
-                if (remaining > 0) {
-                    statusDiv.innerHTML = `<span style="color: var(--color-warning);">Free Trial: ${remaining} test${remaining > 1 ? 's' : ''} remaining</span>`;
-                    subscribeBtn.style.display = 'inline-block';
+            }
+        }
+
+        function setupEventListeners() {
+            // Login form
+            document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleLogin();
+            });
+
+            // Registration form
+            document.getElementById('registerFormElement').addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleRegistration();
+            });
+
+            // Payment form
+            document.getElementById('paymentFormElement').addEventListener('submit', function(e) {
+                e.preventDefault();
+                handlePaymentSubmission();
+            });
+
+            // Admin login form
+            document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleAdminLogin();
+            });
+
+            // Test selection
+            document.getElementById('testSelect').addEventListener('change', function() {
+                const testId = this.value;
+                const startBtn = document.getElementById('startTestBtn');
+                if (testId && isUserAllowed(testId)) {
+                    startBtn.disabled = false;
+                    startBtn.textContent = 'Start Selected Test';
+                } else if (testId && !isUserAllowed(testId)) {
+                    startBtn.disabled = true;
+                    startBtn.textContent = 'Payment Required - Complete Registration';
                 } else {
-                    statusDiv.innerHTML = `<span style="color: var(--color-error);">Free trial expired - Upgrade to continue</span>`;
-                    subscribeBtn.style.display = 'inline-block';
+                    startBtn.disabled = true;
+                    startBtn.textContent = 'Start Selected Test';
                 }
-            }
+            });
         }
 
-        let selectedAccessType = 'free';
-        let pendingRegistration = null;
-        
-        function updateAccessOption(type) {
-            selectedAccessType = type;
-            const couponSection = document.getElementById('couponSection');
-            const registerBtn = document.getElementById('registerBtn');
-            
-            if (type === 'coupon') {
-                couponSection.classList.remove('hidden');
-                registerBtn.textContent = 'Validate & Register';
-            } else {
-                couponSection.classList.add('hidden');
-                registerBtn.textContent = type === 'paid' ? 'Proceed to Payment' : 'Register Free';
-            }
-        }
-        
-        function proceedToPayment() {
-            const name = document.getElementById('registerName').value.trim();
-            const email = document.getElementById('registerEmail').value.trim();
-            const password = document.getElementById('registerPassword').value;
-            const errorDiv = document.getElementById('registerError');
-            
-            errorDiv.style.display = 'none';
-            
-            if (!name || !email || !password) {
-                errorDiv.textContent = '⚠️ Please fill all fields';
-                errorDiv.style.display = 'block';
-                return;
-            }
-
-            if (password.length < 6) {
-                errorDiv.textContent = '⚠️ Password must be at least 6 characters';
-                errorDiv.style.display = 'block';
-                return;
-            }
-
-            const users = getUsers();
-            
-            if (users[email]) {
-                errorDiv.textContent = '⚠️ Email already registered. Please login.';
-                errorDiv.style.display = 'block';
-                return;
-            }
-            
-            // Store pending registration
-            pendingRegistration = { name, email, password };
-            
-            // Handle different access types
-            if (selectedAccessType === 'coupon') {
-                const couponCode = document.getElementById('couponCode').value.trim().toUpperCase();
-                
-                if (!couponCode) {
-                    errorDiv.textContent = '⚠️ Please enter a coupon code';
-                    errorDiv.style.display = 'block';
-                    return;
-                }
-                
-                if (VALID_COUPONS.includes(couponCode)) {
-                    // Valid coupon - register with full access
-                    registerUserWithAccess('premium', `Coupon: ${couponCode}`);
-                } else {
-                    errorDiv.textContent = '❌ Invalid coupon code. Please check and try again.';
-                    errorDiv.style.display = 'block';
-                }
-            } else if (selectedAccessType === 'paid') {
-                // Show payment screen
-                document.getElementById('registrationStep1').classList.add('hidden');
-                document.getElementById('registrationStep2').classList.remove('hidden');
-            } else {
-                // Free access - register with 3 free tests
-                registerUserWithAccess('free', 'Free Trial');
-            }
-        }
-        
-        function backToRegistration() {
-            document.getElementById('registrationStep2').classList.add('hidden');
-            document.getElementById('registrationStep1').classList.remove('hidden');
-        }
-        
-        function completeRegistrationPayment() {
-            if (!pendingRegistration) return;
-            
-            // Simulate payment success
-            alert('🎉 Payment Successful!\n\nYour account has been created with full access to all 50 mock tests. You can now login and start practicing!');
-            
-            registerUserWithAccess('premium', 'Paid Bundle - ₹50');
-        }
-        
-        function registerUserWithAccess(accessLevel, source) {
-            if (!pendingRegistration) return;
-            
-            const { name, email, password } = pendingRegistration;
-            const users = getUsers();
-            
-            // Create user account
-            users[email] = { name, password };
-            saveUsers(users);
-            
-            // Set up subscription based on access level
-            if (accessLevel === 'premium') {
-                const subscription = {
-                    plan: 'lifetime',
-                    planName: 'Full Bundle Access',
-                    price: source.includes('Coupon') ? 0 : 50,
-                    source: source,
-                    startDate: new Date().toISOString(),
-                    expiryDate: new Date('2099-12-31').toISOString(), // Lifetime
-                    active: true
-                };
-                saveSubscription(email, subscription);
-            }
-            // If free, no subscription needed - will use FREE_TESTS_LIMIT
-            
-            alert(`✅ Registration Successful!\n\nAccount created for: ${email}\nAccess: ${accessLevel === 'premium' ? 'Full Bundle (All 50 Tests)' : '3 Free Demo Tests'}\n\nYou can now login with your credentials.`);
-            
-            // Clear form and show login
-            pendingRegistration = null;
-            document.getElementById('registrationStep1').classList.remove('hidden');
-            document.getElementById('registrationStep2').classList.add('hidden');
-            showLoginForm();
-        }
-
-        function login() {
-            const email = document.getElementById('loginEmail').value.trim();
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             const errorDiv = document.getElementById('loginError');
-            
-            errorDiv.style.display = 'none';
-            
-            if (!email || !password) {
-                errorDiv.textContent = '⚠️ Please enter both email and password';
-                errorDiv.style.display = 'block';
-                return;
-            }
 
-            const users = getUsers();
-            const user = users[email];
-
-            if (user && user.password === password) {
-                currentUser = { email, name: user.name };
-                showStartScreen();
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            
+            if (users[email] && users[email].password === password) {
+                currentUser = users[email];
+                currentUser.email = email;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                    currentUser.isAdmin = true;
+                    showAdminPanel();
+                } else {
+                    showDashboard();
+                }
             } else {
-                errorDiv.textContent = '❌ Invalid email or password. Please check your credentials.';
-                errorDiv.style.display = 'block';
+                errorDiv.textContent = 'Invalid email or password';
+                errorDiv.classList.remove('hidden');
             }
         }
 
-        function showRegisterForm() {
-            document.getElementById('loginForm').classList.add('hidden');
-            document.getElementById('registerForm').classList.remove('hidden');
+        function handleRegistration() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const phone = document.getElementById('registerPhone').value;
+            const password = document.getElementById('registerPassword').value;
+            const errorDiv = document.getElementById('registerError');
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+
+            if (users[email]) {
+                errorDiv.textContent = 'Email already registered. Please use a different email.';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            // Store user data temporarily for payment
+            currentUser = {
+                name: name,
+                email: email,
+                phone: phone,
+                password: password,
+                registrationDate: new Date().toISOString(),
+                accessType: 'pending',
+                freeTestsUsed: 0
+            };
+
+            showPaymentForm();
+        }
+
+        function handlePaymentSubmission() {
+            const transactionId = document.getElementById('transactionId').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const errorDiv = document.getElementById('paymentError');
+
+            if (!transactionId.trim()) {
+                errorDiv.textContent = 'Please enter a valid Transaction ID';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            // Store user with payment details
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            currentUser.transactionId = transactionId;
+            currentUser.paymentMethod = paymentMethod;
+            currentUser.paymentAmount = 50;
+            currentUser.paymentDate = new Date().toISOString();
+            currentUser.accessType = 'paid'; // Give immediate access
+            
+            users[currentUser.email] = currentUser;
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Send email notification (simulate)
+            sendPaymentNotification(currentUser);
+
+            showDashboard();
+            showAlert('success', 'Payment submitted successfully! You now have full access to all tests. Admin will verify your payment shortly.');
+        }
+
+        function sendPaymentNotification(user) {
+            const emailBody = `
+New CLAT PG Mock Test Registration & Payment:
+
+Name: ${user.name}
+Email: ${user.email}
+Phone: ${user.phone}
+Transaction ID: ${user.transactionId}
+Payment Method: ${user.paymentMethod}
+Amount: ₹${user.paymentAmount}
+Payment Date: ${new Date(user.paymentDate).toLocaleString()}
+Registration Date: ${new Date(user.registrationDate).toLocaleString()}
+
+Please verify this payment and take action if needed.
+            `.trim();
+
+            // Create mailto link
+            const mailtoLink = `mailto:amitmasiwaloct@gmail.com?subject=CLAT PG Mock Test - New Payment Submission&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open default email client
+            setTimeout(() => {
+                window.open(mailtoLink, '_blank');
+            }, 1000);
+        }
+
+        function handleAdminLogin() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            const errorDiv = document.getElementById('adminLoginError');
+
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                currentUser = {
+                    email: email,
+                    name: 'Administrator',
+                    isAdmin: true
+                };
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                showAdminPanel();
+            } else {
+                errorDiv.textContent = 'Invalid admin credentials';
+                errorDiv.classList.remove('hidden');
+            }
         }
 
         function showLoginForm() {
-            document.getElementById('registerForm').classList.add('hidden');
+            hideAllSections();
             document.getElementById('loginForm').classList.remove('hidden');
+            clearErrors();
         }
 
-        function logout() {
-            currentUser = null;
-            userAnswers = Array(120).fill(null);
-            timeRemaining = 120 * 60;
-            currentQuestionIndex = 0;
-            clearInterval(timerInterval);
-            
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('questionScreen').classList.add('hidden');
-            document.getElementById('resultScreen').classList.add('hidden');
-            document.getElementById('leaderboardScreen').classList.add('hidden');
-            showLoginScreen();
+        function showRegisterForm() {
+            hideAllSections();
+            document.getElementById('registerForm').classList.remove('hidden');
+            clearErrors();
         }
 
-        function showLeaderboard() {
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('leaderboardScreen').classList.remove('hidden');
-            
-            const scores = getScores();
-            
-            // Sort by score descending
-            scores.sort((a, b) => b.score - a.score);
-            
-            let leaderboardHTML = '<table style="width: 100%; border-collapse: collapse;">';
-            leaderboardHTML += '<tr style="background-color: var(--color-primary); color: white; font-weight: 600;">';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Rank</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Name</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Test</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Score</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Correct</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Accuracy</td>';
-            leaderboardHTML += '<td style="padding: 12px; border: 1px solid var(--color-border);">Date</td>';
-            leaderboardHTML += '</tr>';
-            
-            if (scores.length === 0) {
-                leaderboardHTML += '<tr><td colspan="7" style="padding: 20px; text-align: center; color: var(--color-text-secondary);">No scores yet. Be the first to take a test!</td></tr>';
+        function showPaymentForm() {
+            hideAllSections();
+            document.getElementById('paymentForm').classList.remove('hidden');
+            clearErrors();
+        }
+
+        function showAdminLogin() {
+            hideAllSections();
+            document.getElementById('adminLogin').classList.remove('hidden');
+            clearErrors();
+        }
+
+        function showDashboard() {
+            hideAllSections();
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('userName').textContent = currentUser.name;
+            updateUserStatus();
+        }
+
+        function showAdminPanel() {
+            hideAllSections();
+            document.getElementById('adminPanel').classList.remove('hidden');
+            loadAdminData();
+        }
+
+        function hideAllSections() {
+            const sections = ['loginForm', 'registerForm', 'paymentForm', 'adminLogin', 'dashboard', 'adminPanel', 'testInterface', 'leaderboard', 'testResults'];
+            sections.forEach(section => {
+                document.getElementById(section).classList.add('hidden');
+            });
+        }
+
+        function clearErrors() {
+            const errorDivs = ['loginError', 'registerError', 'paymentError', 'adminLoginError'];
+            errorDivs.forEach(div => {
+                const element = document.getElementById(div);
+                element.classList.add('hidden');
+                element.textContent = '';
+            });
+        }
+
+        function updateUserStatus() {
+            const statusDisplay = document.getElementById('userStatusDisplay');
+            if (currentUser.accessType === 'paid') {
+                statusDisplay.textContent = '✅ Full Access (Lifetime)';
+                statusDisplay.className = 'user-status status-paid';
+            } else if (currentUser.accessType === 'pending') {
+                statusDisplay.textContent = '⏳ Payment Pending Verification';
+                statusDisplay.className = 'user-status status-pending';
             } else {
-                scores.forEach((entry, index) => {
-                    const rowStyle = entry.email === currentUser.email ? 'background-color: rgba(33, 128, 141, 0.1); font-weight: 600;' : '';
-                    leaderboardHTML += `<tr style="${rowStyle}">`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${index + 1}</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${entry.name}</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${entry.testName}</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border); font-weight: 600; color: var(--color-primary);">${entry.score}</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${entry.correct}/120</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${entry.accuracy}%</td>`;
-                    leaderboardHTML += `<td style="padding: 12px; border: 1px solid var(--color-border);">${new Date(entry.date).toLocaleDateString()}</td>`;
-                    leaderboardHTML += '</tr>';
-                });
+                const remaining = 3 - (currentUser.freeTestsUsed || 0);
+                statusDisplay.textContent = `🆓 Free Trial (${remaining} tests remaining)`;
+                statusDisplay.className = 'user-status status-free';
             }
-            
-            leaderboardHTML += '</table>';
-            
-            document.getElementById('leaderboardTable').innerHTML = leaderboardHTML;
         }
 
-        function backToStart() {
-            document.getElementById('leaderboardScreen').classList.add('hidden');
-            document.getElementById('paywallScreen').classList.add('hidden');
-            document.getElementById('paymentScreen').classList.add('hidden');
-            document.getElementById('startScreen').classList.remove('hidden');
-        }
-
-        const allTests = [
-            // Test 0 - Original test data
-            [
-            // Passage 1: Constitutional Law - Fundamental Rights
-            {
-                passage: "The Constitution of India guarantees fundamental rights under Part III (Articles 12-35). These rights are enforceable by courts and form the bedrock of Indian democracy. Article 21, which guarantees the right to life and personal liberty, has been interpreted expansively by the Supreme Court to include various unarticulated rights. In Maneka Gandhi v. Union of India (1978), the Supreme Court held that Article 21 embodies a principle of natural justice and that 'procedure established by law' must be just, fair, and reasonable. This landmark judgment expanded the scope of Article 21 to include the right to travel abroad, right to privacy, right to dignity, and several other rights that have since been recognized as integral to personal liberty.",
-                subject: "Constitutional Law",
-                questions: [
-                    {
-                        question: "Which Articles of the Indian Constitution contain the fundamental rights?",
-                        options: ["Articles 10-30", "Articles 12-35", "Articles 14-32", "Articles 15-40"],
-                        correct: 1
-                    },
-                    {
-                        question: "The landmark case of Maneka Gandhi v. Union of India is most significant for:",
-                        options: ["Expanding the scope of Article 14", "Interpreting 'procedure established by law' under Article 21", "Defining freedom of speech", "Establishing judicial review"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to the passage, which right is NOT explicitly mentioned as part of Article 21's expanded interpretation?",
-                        options: ["Right to travel abroad", "Right to dignity", "Right to education", "Right to privacy"],
-                        correct: 2
-                    },
-                    {
-                        question: "The term 'unarticulated rights' in the context of the passage refers to:",
-                        options: ["Rights not explicitly mentioned but derived through interpretation", "Rights mentioned in foreign constitutions", "Rights available only to citizens", "Rights that cannot be enforced"],
-                        correct: 0
-                    },
-                    {
-                        question: "The principle established in Maneka Gandhi requires that laws restricting Article 21 must be:",
-                        options: ["Approved by Parliament", "Just, fair, and reasonable", "Emergency provisions", "Subject to judicial review only"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 2: Contract Law - Consideration
-            {
-                passage: "Under the Indian Contract Act, 1872, consideration is defined under Section 2(d) as 'when at the desire of the promisor, the promisee or any other person has done or abstained from doing, or does or abstains from doing, or promises to do or to abstain from doing, something, such act or abstinence or promise is called a consideration for the promise.' Section 25 of the Act specifies exceptions where agreements without consideration are valid, including agreements made on account of natural love and affection between parties standing in near relation, voluntary compensation for past services, and promises to pay time-barred debts. The concept of consideration distinguishes a contract from a gift and ensures that each party brings something of value to the agreement.",
-                subject: "Contract Law",
-                questions: [
-                    {
-                        question: "Under which section is consideration defined in the Indian Contract Act, 1872?",
-                        options: ["Section 2(a)", "Section 2(d)", "Section 10", "Section 25"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which of the following is NOT an exception to the requirement of consideration under Section 25?",
-                        options: ["Agreement based on natural love and affection", "Voluntary compensation for past services", "Promise to pay time-barred debt", "Promise made by a corporate entity"],
-                        correct: 3
-                    },
-                    {
-                        question: "The primary purpose of consideration in contract law is to:",
-                        options: ["Make contracts lengthy", "Distinguish contracts from gifts", "Complicate legal procedures", "Reduce litigation"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to Section 2(d), consideration can be:",
-                        options: ["Only a past act", "Only a future promise", "Past, present, or future", "Only present performance"],
-                        correct: 2
-                    },
-                    {
-                        question: "In the context of 'natural love and affection', the relationship between parties must be:",
-                        options: ["Business associates", "Near relations", "Strangers", "Government officials"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 3: Tort Law - Negligence
-            {
-                passage: "Negligence in tort law is established through the landmark case of Donoghue v. Stevenson (1932), which introduced the 'neighbour principle' and established the modern law of negligence. To succeed in a negligence claim, the plaintiff must prove three essential elements: (1) the defendant owed a duty of care to the plaintiff; (2) the defendant breached that duty by failing to conform to the required standard of care; and (3) the plaintiff suffered damages as a proximate result of the breach. In India, the principles of negligence have been applied in various contexts, including medical negligence cases such as Jacob Mathew v. State of Punjab (2005), where the Supreme Court held that medical professionals are liable for negligence only when there is a gross lack of competence or reckless disregard for patient safety.",
-                subject: "Tort Law",
-                questions: [
-                    {
-                        question: "The 'neighbour principle' in negligence law was established in which case?",
-                        options: ["Jacob Mathew v. State of Punjab", "Donoghue v. Stevenson", "Rylands v. Fletcher", "Ashby v. White"],
-                        correct: 1
-                    },
-                    {
-                        question: "How many essential elements must be proved to establish negligence?",
-                        options: ["Two", "Three", "Four", "Five"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to Jacob Mathew v. State of Punjab, medical professionals are liable for negligence when there is:",
-                        options: ["Any mistake in diagnosis", "Gross lack of competence or reckless disregard", "Failure to cure the patient", "High consultation fees"],
-                        correct: 1
-                    },
-                    {
-                        question: "The second element of negligence requires proof that the defendant:",
-                        options: ["Owed a duty of care", "Breached the duty of care", "Caused damages", "Had malicious intent"],
-                        correct: 1
-                    },
-                    {
-                        question: "The term 'proximate result' in negligence refers to:",
-                        options: ["Immediate cause", "Remote consequences", "Direct causal connection", "Unforeseeable outcomes"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 4: Criminal Law - Mens Rea
-            {
-                passage: "Mens rea, meaning 'guilty mind,' is a fundamental principle in criminal law that requires proof of criminal intent for most offenses under the Indian Penal Code, 1860. Section 6 of the IPC provides that a thing is said to be done 'voluntarily' when it is done by a person who causes an effect with the intention of causing it or with knowledge that it would likely be caused. The concept varies across different offenses - some require specific intent (mens rea in its strict sense), while others require only knowledge or reason to believe. However, certain offenses under the IPC, such as Section 304A (causing death by negligence), do not require mens rea and are classified as strict liability offenses. The Supreme Court in State of Maharashtra v. Mayer Hans George (1965) emphasized that mens rea is an essential ingredient of criminal liability unless explicitly or implicitly excluded by statute.",
-                subject: "Criminal Law",
-                questions: [
-                    {
-                        question: "What does 'mens rea' literally mean?",
-                        options: ["Guilty act", "Guilty mind", "Criminal intent", "Unlawful conduct"],
-                        correct: 1
-                    },
-                    {
-                        question: "Under which section does the IPC define 'voluntarily'?",
-                        options: ["Section 4", "Section 6", "Section 10", "Section 304A"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which of the following is mentioned as a strict liability offense in the passage?",
-                        options: ["Murder under Section 302", "Theft under Section 379", "Causing death by negligence under Section 304A", "Defamation under Section 499"],
-                        correct: 2
-                    },
-                    {
-                        question: "The case of State of Maharashtra v. Mayer Hans George emphasized that:",
-                        options: ["Mens rea is never required", "Mens rea is essential unless excluded by statute", "Only knowledge is sufficient", "Strict liability is the norm"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to the passage, mens rea requirements:",
-                        options: ["Are uniform across all offenses", "Vary across different offenses", "Are not recognized in Indian law", "Apply only to civil cases"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 5: International Law - State Sovereignty
-            {
-                passage: "State sovereignty is a cornerstone principle of international law, recognizing that states possess supreme authority within their territorial boundaries and equality in their relations with other states. The concept was formally articulated in the Peace of Westphalia (1648) and remains fundamental to the United Nations Charter. Article 2(1) of the UN Charter declares that the Organization is based on the principle of sovereign equality of all its members. However, sovereignty is not absolute - it is subject to international law obligations that states voluntarily undertake through treaties, customary international law, and general principles of law. The doctrine of 'Responsibility to Protect' (R2P), adopted by the UN General Assembly in 2005, represents a significant evolution, establishing that when states fail to protect their populations from genocide, war crimes, ethnic cleansing, and crimes against humanity, the international community has a responsibility to intervene.",
-                subject: "International Law",
-                questions: [
-                    {
-                        question: "The concept of state sovereignty was formally articulated in:",
-                        options: ["The Treaty of Versailles", "The Peace of Westphalia", "The UN Charter", "The Geneva Conventions"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which article of the UN Charter addresses sovereign equality?",
-                        options: ["Article 1(1)", "Article 2(1)", "Article 51", "Article 2(4)"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to the passage, state sovereignty is subject to:",
-                        options: ["No limitations", "Only domestic law", "International law obligations", "Other states' approval"],
-                        correct: 2
-                    },
-                    {
-                        question: "The Responsibility to Protect doctrine was adopted in:",
-                        options: ["1945", "1648", "2005", "1998"],
-                        correct: 2
-                    },
-                    {
-                        question: "R2P establishes that international intervention is justified when states fail to protect populations from all EXCEPT:",
-                        options: ["Genocide", "War crimes", "Economic sanctions", "Crimes against humanity"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 6: Intellectual Property - Copyright
-            {
-                passage: "Copyright law protects original works of authorship fixed in a tangible medium of expression. Under the Copyright Act, 1957 (as amended), copyright subsists in original literary, dramatic, musical, and artistic works, cinematograph films, and sound recordings. The Act grants the author exclusive rights to reproduce, publish, perform, communicate, and adapt the work. Section 14 specifies these rights, while Section 52 provides for fair dealing exceptions, including use for private study, research, criticism, review, and news reporting. The term of copyright protection in India is generally the lifetime of the author plus 60 years for literary, dramatic, musical, and artistic works. The Copyright (Amendment) Act, 2012 introduced significant changes including explicit recognition of authors' moral rights and provisions for protection of digital rights management technologies.",
-                subject: "Intellectual Property Rights",
-                questions: [
-                    {
-                        question: "Which section of the Copyright Act, 1957 specifies the exclusive rights granted to authors?",
-                        options: ["Section 14", "Section 52", "Section 2", "Section 63"],
-                        correct: 0
-                    },
-                    {
-                        question: "The general term of copyright protection for literary works in India is:",
-                        options: ["50 years after author's death", "Author's lifetime plus 60 years", "100 years from creation", "Perpetual protection"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which of the following is NOT a fair dealing exception under Section 52?",
-                        options: ["Private study", "Research", "Commercial exploitation", "News reporting"],
-                        correct: 2
-                    },
-                    {
-                        question: "The Copyright (Amendment) Act, 2012 introduced provisions for:",
-                        options: ["Reducing copyright term", "Digital rights management protection", "Abolishing moral rights", "Free use of all works"],
-                        correct: 1
-                    },
-                    {
-                        question: "Copyright protection requires that works be:",
-                        options: ["Registered with authorities", "Fixed in tangible medium", "Published commercially", "Approved by government"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 7: Jurisprudence - Natural Law Theory
-            {
-                passage: "Natural law theory posits that law derives its legitimacy from moral principles inherent in human nature and reason, rather than solely from governmental authority. Classical natural law theorists like Thomas Aquinas argued that human laws must conform to divine and natural law to be valid. Modern natural law theorist John Finnis identifies basic goods - life, knowledge, play, aesthetic experience, friendship, practical reasonableness, and religion - that human law should protect and promote. Natural law theory contrasts with legal positivism, which maintains that law's validity depends on its source in social facts rather than moral merit. The influence of natural law thinking is evident in concepts like human rights, constitutional limitations on governmental power, and the principle that unjust laws may be resisted. Critics of natural law argue that it conflates law and morality and lacks objective criteria for determining natural law's content.",
-                subject: "Jurisprudence",
-                questions: [
-                    {
-                        question: "According to natural law theory, law derives legitimacy from:",
-                        options: ["Governmental authority alone", "Moral principles inherent in human nature", "Social customs", "Economic efficiency"],
-                        correct: 1
-                    },
-                    {
-                        question: "John Finnis identified how many basic goods that law should protect?",
-                        options: ["Five", "Seven", "Ten", "Twelve"],
-                        correct: 1
-                    },
-                    {
-                        question: "Natural law theory contrasts primarily with:",
-                        options: ["Legal realism", "Legal positivism", "Critical legal studies", "Feminist jurisprudence"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to Thomas Aquinas, human laws must conform to:",
-                        options: ["Social traditions only", "Divine and natural law", "Majority opinion", "Economic principles"],
-                        correct: 1
-                    },
-                    {
-                        question: "A major criticism of natural law theory is that it:",
-                        options: ["Ignores legal precedents", "Conflates law and morality", "Rejects human rights", "Promotes anarchy"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 8: Constitutional Law - Separation of Powers
-            {
-                passage: "The doctrine of separation of powers, though not explicitly mentioned in the Indian Constitution, is implicit in its structure and has been recognized as a basic feature by the Supreme Court. This doctrine divides governmental power among three branches: legislature (makes laws), executive (implements laws), and judiciary (interprets laws). In Kesavananda Bharati v. State of Kerala (1973), the Supreme Court held that the basic structure of the Constitution includes separation of powers. However, the Indian system adopts a flexible approach - while judicial independence is strictly maintained, there is overlap between legislative and executive functions in the parliamentary system. The judiciary's power of judicial review serves as a check on both legislative and executive actions. In Indira Nehru Gandhi v. Raj Narain (1975), the Court struck down a constitutional amendment that sought to place the election of the Prime Minister beyond judicial scrutiny, reaffirming judicial independence.",
-                subject: "Constitutional Law",
-                questions: [
-                    {
-                        question: "The separation of powers doctrine was recognized as a basic feature in:",
-                        options: ["Maneka Gandhi v. Union of India", "Kesavananda Bharati v. State of Kerala", "Minerva Mills v. Union of India", "Indira Gandhi v. Raj Narain"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to the passage, the Indian approach to separation of powers is:",
-                        options: ["Rigid and absolute", "Flexible with some overlap", "Non-existent", "Identical to the US system"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which branch of government interprets laws?",
-                        options: ["Legislature", "Executive", "Judiciary", "Parliament"],
-                        correct: 2
-                    },
-                    {
-                        question: "The case of Indira Nehru Gandhi v. Raj Narain primarily concerned:",
-                        options: ["Emergency provisions", "Judicial independence and Prime Minister's election", "Fundamental rights", "Federal structure"],
-                        correct: 1
-                    },
-                    {
-                        question: "Judicial review serves as a check on:",
-                        options: ["Only legislative actions", "Only executive actions", "Both legislative and executive actions", "Neither branch"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 9: Contract Law - Void Agreements
-            {
-                passage: "The Indian Contract Act, 1872 distinguishes between void agreements and voidable contracts. Sections 24-30 and Section 56 enumerate various agreements that are void. A void agreement is one that is not enforceable by law from the beginning and creates no legal obligations. Examples include agreements with unlawful consideration or object (Section 23), agreements in restraint of marriage (Section 26), agreements in restraint of trade (Section 27), and agreements by way of wager (Section 30). Section 27 makes agreements in restraint of trade void, subject to limited exceptions including protection of goodwill in sale of business and partnerships. The doctrine of frustration under Section 56 renders contracts void if, after formation, performance becomes impossible or illegal due to circumstances beyond the parties' control, as established in Satyabrata Ghose v. Mugneeram Bangur & Co. (1954).",
-                subject: "Contract Law",
-                questions: [
-                    {
-                        question: "Under which section are agreements in restraint of trade made void?",
-                        options: ["Section 23", "Section 26", "Section 27", "Section 30"],
-                        correct: 2
-                    },
-                    {
-                        question: "A void agreement is enforceable:",
-                        options: ["From the beginning", "After court approval", "Never", "Only between parties"],
-                        correct: 2
-                    },
-                    {
-                        question: "The doctrine of frustration is covered under which section?",
-                        options: ["Section 23", "Section 27", "Section 56", "Section 10"],
-                        correct: 2
-                    },
-                    {
-                        question: "Which case established the doctrine of frustration in Indian law?",
-                        options: ["Carlill v. Carbolic Smoke Ball", "Satyabrata Ghose v. Mugneeram Bangur & Co.", "Hadley v. Baxendale", "Mohori Bibee v. Dharmodas Ghose"],
-                        correct: 1
-                    },
-                    {
-                        question: "Agreements in restraint of marriage are void under:",
-                        options: ["Section 23", "Section 26", "Section 27", "Section 30"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 10: Tort Law - Vicarious Liability
-            {
-                passage: "Vicarious liability is a principle whereby one person is held liable for the wrongful acts of another, despite not being directly at fault. The most common application is the liability of employers for torts committed by employees during the course of employment, based on the Latin maxim 'respondeat superior' (let the master answer). To establish vicarious liability, three conditions must be satisfied: (1) there must be a relationship of employer-employee or principal-agent; (2) the wrongful act must be committed by the employee; and (3) the act must be in the course of employment. The 'course of employment' test requires that the act be either authorized by the employer or so connected with authorized acts that it may be regarded as a mode (though improper) of doing authorized work. In Imperial Chemical Industries v. Shatwell (1965), the House of Lords held that an employer is not vicariously liable when employees engage in prohibited acts beyond the scope of employment.",
-                subject: "Tort Law",
-                questions: [
-                    {
-                        question: "The Latin maxim for vicarious liability is:",
-                        options: ["Respondeat superior", "Res ipsa loquitur", "Damnum sine injuria", "Volenti non fit injuria"],
-                        correct: 0
-                    },
-                    {
-                        question: "How many conditions must be satisfied to establish vicarious liability?",
-                        options: ["Two", "Three", "Four", "Five"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to Imperial Chemical Industries v. Shatwell, employers are NOT liable when employees:",
-                        options: ["Make honest mistakes", "Work overtime", "Engage in prohibited acts beyond scope of employment", "Follow all instructions"],
-                        correct: 2
-                    },
-                    {
-                        question: "The 'course of employment' test requires the act be:",
-                        options: ["Always expressly authorized", "Connected with authorized acts", "Completed during office hours", "Approved by supervisor"],
-                        correct: 1
-                    },
-                    {
-                        question: "Vicarious liability is based on:",
-                        options: ["Direct fault of the employer", "Liability without direct fault", "Criminal intent", "Negligence of the employee only"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 11: Criminal Law - Right to Private Defence
-            {
-                passage: "The Indian Penal Code provides the right to private defence under Sections 96-106. Section 96 states that nothing is an offense which is done in the exercise of the right of private defence. This right extends to defence of body (Sections 97-101) and property (Sections 97, 102-105). The right arises when there is reasonable apprehension of danger to body or property from an unlawful act and no time to seek protection from public authorities. However, this right is subject to restrictions - it does not extend to inflicting more harm than necessary (Section 99) and does not include the right to cause death except in specific circumstances such as assault causing reasonable apprehension of death, grievous hurt, rape, or kidnapping. The burden of proving that the act was done in private defence rests on the accused, though the standard of proof is preponderance of probabilities, not beyond reasonable doubt.",
-                subject: "Criminal Law",
-                questions: [
-                    {
-                        question: "Under which sections does the IPC provide the right to private defence?",
-                        options: ["Sections 76-86", "Sections 96-106", "Sections 299-300", "Sections 415-420"],
-                        correct: 1
-                    },
-                    {
-                        question: "The right to private defence extends to defence of:",
-                        options: ["Body only", "Property only", "Both body and property", "Neither body nor property"],
-                        correct: 2
-                    },
-                    {
-                        question: "According to Section 99, private defence does NOT permit:",
-                        options: ["Using reasonable force", "Inflicting more harm than necessary", "Defending property", "Acting without time to seek authority help"],
-                        correct: 1
-                    },
-                    {
-                        question: "The burden of proving private defence rests on:",
-                        options: ["The prosecution", "The accused", "The court", "The police"],
-                        correct: 1
-                    },
-                    {
-                        question: "The right to cause death in private defence is permitted in cases of:",
-                        options: ["Any theft", "Trespass", "Reasonable apprehension of death or rape", "Property damage"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 12: International Law - Treaty Law
-            {
-                passage: "The law of treaties is governed primarily by the Vienna Convention on the Law of Treaties, 1969, which entered into force in 1980. The Convention codifies customary international law and establishes rules for treaty formation, operation, and termination. Article 26 embodies the principle of pacta sunt servanda - treaties must be performed in good faith. Treaties are binding only on parties that have consented to be bound, reflecting the principle of state sovereignty. A treaty may be terminated or suspended under circumstances specified in the Convention, including material breach (Article 60), impossibility of performance (Article 61), or fundamental change of circumstances (rebus sic stantibus, Article 62). The Convention also addresses reservations to treaties, providing that a state may formulate reservations unless the treaty prohibits them or the reservation is incompatible with the treaty's object and purpose (Article 19).",
-                subject: "International Law",
-                questions: [
-                    {
-                        question: "The Vienna Convention on the Law of Treaties entered into force in:",
-                        options: ["1969", "1980", "1945", "2000"],
-                        correct: 1
-                    },
-                    {
-                        question: "The principle 'pacta sunt servanda' means:",
-                        options: ["Treaties may be terminated at will", "Treaties must be performed in good faith", "Treaties are merely suggestions", "Treaties require unanimous approval"],
-                        correct: 1
-                    },
-                    {
-                        question: "Under which article is material breach as grounds for termination addressed?",
-                        options: ["Article 19", "Article 26", "Article 60", "Article 62"],
-                        correct: 2
-                    },
-                    {
-                        question: "The doctrine of 'rebus sic stantibus' refers to:",
-                        options: ["Good faith performance", "Material breach", "Fundamental change of circumstances", "Reservations to treaties"],
-                        correct: 2
-                    },
-                    {
-                        question: "According to Article 19, reservations may be formulated unless:",
-                        options: ["Any state objects", "The treaty prohibits them or they're incompatible with object and purpose", "The Security Council disapproves", "All parties consent"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 13: Intellectual Property - Patents
-            {
-                passage: "Patent law protects inventions that are novel, involve an inventive step, and are capable of industrial application. Under the Patents Act, 1970 (as amended), the term of patent protection in India is 20 years from the date of filing the application. Section 3 excludes certain subject matter from patentability, including frivolous inventions, those contrary to public order or morality, scientific principles, methods of agriculture or horticulture, and mathematical or business methods. Section 3(d), introduced by the 2005 amendment, prohibits patents on mere new forms of known substances unless they differ significantly in efficacy - this provision was central to Novartis AG v. Union of India (2013), where the Supreme Court denied patent protection to an incremental modification of an anti-cancer drug. Patent holders enjoy exclusive rights under Section 48, including the right to prevent others from making, using, or selling the invention. However, these rights are subject to compulsory licensing provisions under Sections 84-92 to ensure public interest.",
-                subject: "Intellectual Property Rights",
-                questions: [
-                    {
-                        question: "The term of patent protection in India is:",
-                        options: ["10 years from filing", "15 years from grant", "20 years from filing", "Lifetime of inventor plus 60 years"],
-                        correct: 2
-                    },
-                    {
-                        question: "Section 3(d) was central to which landmark case?",
-                        options: ["Monsanto v. India", "Novartis AG v. Union of India", "Bayer v. Union of India", "Roche v. Cipla"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which of the following is excluded from patentability under Section 3?",
-                        options: ["Chemical compositions", "Pharmaceutical products", "Mathematical methods", "Mechanical inventions"],
-                        correct: 2
-                    },
-                    {
-                        question: "For an invention to be patentable, it must be:",
-                        options: ["Only novel", "Only useful", "Novel, involve inventive step, and be capable of industrial application", "Approved by government"],
-                        correct: 2
-                    },
-                    {
-                        question: "Compulsory licensing provisions are contained in:",
-                        options: ["Sections 3-10", "Sections 48-52", "Sections 84-92", "Sections 100-105"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 14: Jurisprudence - Legal Positivism
-            {
-                passage: "Legal positivism is the theory that law's validity derives from social sources rather than moral merit. John Austin, an early positivist, defined law as commands issued by a sovereign backed by sanctions. H.L.A. Hart refined positivism in 'The Concept of Law' (1961), introducing the distinction between primary rules (imposing duties) and secondary rules (conferring powers and establishing how primary rules are identified, changed, and adjudicated). Hart's 'rule of recognition' provides criteria for identifying valid legal rules within a system. Hart argued that law and morality are conceptually distinct, though they may overlap in content. Joseph Raz advanced 'exclusive legal positivism', maintaining that law's content can be identified without recourse to moral arguments. Legal positivism differs from natural law theory, which holds that unjust laws are not truly law, and from legal realism, which emphasizes how courts actually decide cases rather than formal rules.",
-                subject: "Jurisprudence",
-                questions: [
-                    {
-                        question: "According to John Austin, law is defined as:",
-                        options: ["Natural moral principles", "Commands of sovereign backed by sanctions", "Social customs", "Judicial decisions"],
-                        correct: 1
-                    },
-                    {
-                        question: "H.L.A. Hart's major work was published in:",
-                        options: ["1951", "1961", "1971", "1981"],
-                        correct: 1
-                    },
-                    {
-                        question: "Hart's 'rule of recognition' provides:",
-                        options: ["Moral standards for law", "Criteria for identifying valid legal rules", "Standards for judicial appointment", "Definition of crime"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to Hart, law and morality are:",
-                        options: ["Identical", "Conceptually distinct though may overlap", "Unrelated", "Always in conflict"],
-                        correct: 1
-                    },
-                    {
-                        question: "Legal positivism holds that law's validity derives from:",
-                        options: ["Moral merit", "Social sources", "Divine authority", "Natural principles"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 15: Constitutional Law - Fundamental Duties
-            {
-                passage: "Fundamental duties were inserted into the Constitution by the 42nd Amendment Act, 1976, based on the recommendations of the Swaran Singh Committee. Originally ten in number (Article 51A), an eleventh duty was added by the 86th Amendment Act, 2002, which made it a duty of parents or guardians to provide opportunities for education to children between 6-14 years. Fundamental duties include respecting the Constitution, national flag, and national anthem; cherishing the noble ideals of the freedom struggle; protecting sovereignty and integrity of India; defending the country; promoting harmony and spirit of common brotherhood; preserving the composite culture; protecting the environment; developing scientific temper; safeguarding public property; and striving for excellence. Unlike fundamental rights, fundamental duties are non-justiciable - courts cannot enforce them directly. However, the Supreme Court in AIIMS Students' Union v. AIIMS (2001) held that fundamental duties can be considered while interpreting constitutional and statutory provisions.",
-                subject: "Constitutional Law",
-                questions: [
-                    {
-                        question: "Fundamental duties were inserted by which Constitutional Amendment?",
-                        options: ["24th Amendment", "42nd Amendment", "44th Amendment", "86th Amendment"],
-                        correct: 1
-                    },
-                    {
-                        question: "How many fundamental duties are currently listed in Article 51A?",
-                        options: ["Ten", "Eleven", "Twelve", "Thirteen"],
-                        correct: 1
-                    },
-                    {
-                        question: "The 86th Amendment added a duty related to:",
-                        options: ["Environmental protection", "Scientific temper", "Education of children", "Defending the country"],
-                        correct: 2
-                    },
-                    {
-                        question: "Fundamental duties are:",
-                        options: ["Justiciable like fundamental rights", "Non-justiciable", "Enforceable through writs", "Mandatory by law"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to AIIMS Students' Union v. AIIMS, fundamental duties can be:",
-                        options: ["Directly enforced by courts", "Ignored completely", "Considered while interpreting provisions", "Used only in criminal cases"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 16: Contract Law - Misrepresentation and Fraud
-            {
-                passage: "The Indian Contract Act distinguishes between misrepresentation (Section 18) and fraud (Section 17). Misrepresentation occurs when a party makes an innocent false statement of fact that induces the other party to enter the contract. Under Section 19, a contract induced by misrepresentation is voidable at the option of the party misled, provided the misrepresentation was material. Fraud involves intentional false representation made with knowledge of its falsity or without belief in its truth, or recklessly without caring whether it is true or false, with intent to deceive. Under Section 19, fraud also renders a contract voidable, but additionally, the injured party may insist on contract performance and claim damages. The difference lies in the presence of mens rea (guilty mind) in fraud. In Derry v. Peek (1889), the House of Lords established that misrepresentation becomes fraud only when made knowingly, without belief in its truth, or recklessly careless of its truth or falsity.",
-                subject: "Contract Law",
-                questions: [
-                    {
-                        question: "Under which section is misrepresentation defined?",
-                        options: ["Section 17", "Section 18", "Section 19", "Section 20"],
-                        correct: 1
-                    },
-                    {
-                        question: "The key difference between misrepresentation and fraud is:",
-                        options: ["The remedy available", "Presence of mens rea in fraud", "Contract validity", "Damages amount"],
-                        correct: 1
-                    },
-                    {
-                        question: "A contract induced by misrepresentation is:",
-                        options: ["Void ab initio", "Voidable at option of misled party", "Valid and enforceable", "Illegal"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which case established when misrepresentation becomes fraud?",
-                        options: ["Carlill v. Carbolic Smoke Ball", "Derry v. Peek", "Hadley v. Baxendale", "Salomon v. Salomon"],
-                        correct: 1
-                    },
-                    {
-                        question: "In case of fraud, the injured party may:",
-                        options: ["Only rescind the contract", "Only claim damages", "Insist on performance and claim damages", "Neither rescind nor claim damages"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 17: Tort Law - Defamation
-            {
-                passage: "Defamation is a tort that protects reputation by providing a remedy for false statements that lower a person's standing in the estimation of right-thinking members of society. Defamation takes two forms: libel (written or permanent form) and slander (spoken or transient form). In India, defamation is both a civil wrong and a criminal offense under Section 499 of the IPC. To establish defamation, the plaintiff must prove: (1) the statement was defamatory; (2) it referred to the plaintiff; and (3) it was published to a third party. Truth is an absolute defence to defamation under the common law principle of justification. Other defences include privilege (absolute privilege for parliamentary proceedings and judicial proceedings; qualified privilege for fair and accurate reports of public proceedings), fair comment on matters of public interest, and consent. In Subramanian Swamy v. Union of India (2016), the Supreme Court upheld the constitutional validity of criminal defamation, rejecting arguments that it violated free speech under Article 19(1)(a).",
-                subject: "Tort Law",
-                questions: [
-                    {
-                        question: "Libel refers to defamation in:",
-                        options: ["Spoken form", "Written or permanent form", "Gestural form", "Temporary form"],
-                        correct: 1
-                    },
-                    {
-                        question: "Under which section is criminal defamation provided in the IPC?",
-                        options: ["Section 499", "Section 500", "Section 501", "Section 504"],
-                        correct: 0
-                    },
-                    {
-                        question: "To establish defamation, the plaintiff must prove how many elements?",
-                        options: ["Two", "Three", "Four", "Five"],
-                        correct: 1
-                    },
-                    {
-                        question: "Which of the following is an absolute defence to defamation?",
-                        options: ["Consent", "Truth", "Fair comment", "Qualified privilege"],
-                        correct: 1
-                    },
-                    {
-                        question: "In Subramanian Swamy v. Union of India, the Supreme Court:",
-                        options: ["Struck down criminal defamation", "Upheld constitutional validity of criminal defamation", "Declared defamation unconstitutional", "Abolished libel laws"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 18: Criminal Law - Indian Evidence Act
-            {
-                passage: "The Indian Evidence Act, 1872, governs the admissibility of evidence in judicial proceedings. Evidence can be oral (testimony of witnesses) or documentary (documents produced for inspection). Section 3 defines 'evidence' as statements that courts permit or require witnesses to make before them and documents produced for inspection, both relating to matters of fact under inquiry. The Act distinguishes between facts in issue and relevant facts. Sections 5-55 deal with relevancy of facts. Section 6 provides that facts forming part of the same transaction are relevant. Sections 45-51 deal with opinion evidence, permitting expert opinions on matters requiring special knowledge. The Act also provides for presumptions - Section 113B creates a presumption of dowry death when a woman dies unnaturally within seven years of marriage and was subjected to cruelty. The principle of res gestae (Section 6) allows admission of statements and actions closely connected to the fact in issue, even if they would otherwise be hearsay.",
-                subject: "Criminal Law",
-                questions: [
-                    {
-                        question: "Under which section is 'evidence' defined in the Indian Evidence Act?",
-                        options: ["Section 2", "Section 3", "Section 5", "Section 6"],
-                        correct: 1
-                    },
-                    {
-                        question: "Evidence can be:",
-                        options: ["Only oral", "Only documentary", "Both oral and documentary", "Neither oral nor documentary"],
-                        correct: 2
-                    },
-                    {
-                        question: "Section 6 deals with:",
-                        options: ["Expert opinion", "Facts forming part of same transaction", "Presumptions", "Hearsay evidence"],
-                        correct: 1
-                    },
-                    {
-                        question: "Section 113B creates a presumption regarding:",
-                        options: ["Murder", "Dowry death", "Theft", "Fraud"],
-                        correct: 1
-                    },
-                    {
-                        question: "The principle of res gestae is covered under:",
-                        options: ["Section 3", "Section 5", "Section 6", "Section 45"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 19: International Law - Use of Force
-            {
-                passage: "The use of force in international relations is primarily governed by Article 2(4) of the UN Charter, which prohibits the threat or use of force against the territorial integrity or political independence of any state. This represents a fundamental departure from pre-Charter customary international law, which permitted states to resort to war as a means of settling disputes. The Charter recognizes two exceptions to the Article 2(4) prohibition: (1) individual or collective self-defence under Article 51, and (2) enforcement action authorized by the Security Council under Chapter VII. Self-defence is permissible only in response to an armed attack and must satisfy the requirements of necessity and proportionality established in the Caroline case (1837). The International Court of Justice in Nicaragua v. United States (1986) clarified that Article 51 recognizes an inherent right of self-defence that existed under customary international law, but limited it to response to armed attacks, rejecting broader claims of anticipatory self-defence.",
-                subject: "International Law",
-                questions: [
-                    {
-                        question: "Article 2(4) of the UN Charter prohibits:",
-                        options: ["All international agreements", "Threat or use of force against territorial integrity", "Economic sanctions", "Diplomatic relations"],
-                        correct: 1
-                    },
-                    {
-                        question: "How many exceptions to Article 2(4) does the Charter recognize?",
-                        options: ["One", "Two", "Three", "Four"],
-                        correct: 1
-                    },
-                    {
-                        question: "Self-defence requirements of necessity and proportionality were established in:",
-                        options: ["The Caroline case", "Nicaragua v. United States", "Corfu Channel case", "Barcelona Traction case"],
-                        correct: 0
-                    },
-                    {
-                        question: "According to Nicaragua v. United States, Article 51 recognizes self-defence in response to:",
-                        options: ["Any threat", "Armed attacks", "Economic coercion", "Diplomatic pressure"],
-                        correct: 1
-                    },
-                    {
-                        question: "Chapter VII enforcement action requires authorization by:",
-                        options: ["General Assembly", "Security Council", "International Court of Justice", "Secretary-General"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 20: Intellectual Property - Trademarks
-            {
-                passage: "Trademark law protects distinctive signs, symbols, words, or combinations thereof that identify and distinguish goods or services of one enterprise from those of others. Under the Trade Marks Act, 1999, a trademark can be registered if it is distinctive and not deceptively similar to existing marks. Section 9 provides grounds for refusal of registration, including marks that are devoid of distinctive character, consist exclusively of descriptive or generic terms, or are contrary to public policy or morality. Section 11 prohibits registration of marks identical or deceptively similar to existing registered marks for similar goods or services. Trademark rights in India arise both from registration and use - common law protections against passing off are available to unregistered marks that have acquired reputation. Section 29 defines infringement, which occurs when a person uses a mark identical or similar to a registered trademark without authorization. The Act provides for both civil remedies (injunction, damages, accounts of profits) and criminal penalties under Section 103-105 for trademark infringement and falsification.",
-                subject: "Intellectual Property Rights",
-                questions: [
-                    {
-                        question: "Under which Act is trademark law governed in India?",
-                        options: ["Trade Marks Act, 1958", "Trade Marks Act, 1999", "Trade Marks Act, 1970", "Trade Marks Act, 2000"],
-                        correct: 1
-                    },
-                    {
-                        question: "Section 9 provides grounds for:",
-                        options: ["Infringement claims", "Refusal of registration", "Criminal penalties", "Damages calculation"],
-                        correct: 1
-                    },
-                    {
-                        question: "Trademark rights in India arise from:",
-                        options: ["Registration only", "Use only", "Both registration and use", "Government approval"],
-                        correct: 2
-                    },
-                    {
-                        question: "Common law protection against passing off is available to:",
-                        options: ["Only registered marks", "Unregistered marks with reputation", "Foreign marks only", "Government marks only"],
-                        correct: 1
-                    },
-                    {
-                        question: "Criminal penalties for trademark offenses are provided under:",
-                        options: ["Sections 9-11", "Sections 29-30", "Sections 103-105", "Sections 1-5"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 21: Jurisprudence - Legal Realism
-            {
-                passage: "Legal realism emerged in the early 20th century as a reaction against formalist approaches to law. American legal realists, including Oliver Wendell Holmes Jr. and Karl Llewellyn, argued that law is not merely a system of logical rules but is shaped by social, economic, and psychological factors. Holmes famously stated that 'the life of the law has not been logic; it has been experience' and proposed the 'bad man theory' - that law is best understood as predictions of what courts will do. Realists emphasized the gap between 'law in books' and 'law in action', focusing on how judges actually decide cases rather than formal legal rules. They argued that judicial decision-making involves policy choices and value judgments, not merely logical deduction from existing rules. Scandinavian realists like Alf Ross focused on psychological factors influencing legal actors. Legal realism influenced the development of critical legal studies and law and economics movements, though critics argued that realists' skepticism about legal rules undermined law's determinacy and legitimacy.",
-                subject: "Jurisprudence",
-                questions: [
-                    {
-                        question: "Legal realism emerged as a reaction against:",
-                        options: ["Natural law theory", "Formalist approaches", "Legal positivism exclusively", "Constitutional law"],
-                        correct: 1
-                    },
-                    {
-                        question: "Holmes' 'bad man theory' suggests law is best understood as:",
-                        options: ["Moral principles", "Predictions of what courts will do", "Commands of sovereign", "Natural rights"],
-                        correct: 1
-                    },
-                    {
-                        question: "Realists emphasized the gap between:",
-                        options: ["Law and morality", "Law in books and law in action", "Federal and state law", "Civil and criminal law"],
-                        correct: 1
-                    },
-                    {
-                        question: "According to realists, judicial decision-making involves:",
-                        options: ["Only logical deduction", "Policy choices and value judgments", "Mechanical application of rules", "Pure objectivity"],
-                        correct: 1
-                    },
-                    {
-                        question: "Alf Ross was associated with:",
-                        options: ["American legal realism", "Scandinavian realism", "Natural law theory", "Legal positivism"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 22: Constitutional Law - Emergency Provisions
-            {
-                passage: "The Constitution of India contains comprehensive emergency provisions under Part XVIII (Articles 352-360). Three types of emergencies are recognized: National Emergency (Article 352) on grounds of war, external aggression, or armed rebellion; State Emergency or President's Rule (Article 356) when constitutional machinery in a state fails; and Financial Emergency (Article 360) when financial stability or credit of India is threatened. During a National Emergency, the federal structure transforms significantly - Parliament gains power to legislate on State List subjects, and fundamental rights under Articles 19 (freedom of speech, assembly, etc.) are automatically suspended. The 44th Amendment Act, 1978, introduced important safeguards: 'internal disturbance' was replaced with 'armed rebellion', written advice of Cabinet is binding on President, and emergency must be approved by Parliament within one month. The Supreme Court in Minerva Mills v. Union of India (1980) held that judicial review of emergency proclamations is available to examine whether constitutional requirements were satisfied.",
-                subject: "Constitutional Law",
-                questions: [
-                    {
-                        question: "How many types of emergencies are recognized under the Constitution?",
-                        options: ["Two", "Three", "Four", "Five"],
-                        correct: 1
-                    },
-                    {
-                        question: "State Emergency is provided under which Article?",
-                        options: ["Article 352", "Article 356", "Article 360", "Article 368"],
-                        correct: 1
-                    },
-                    {
-                        question: "The 44th Amendment replaced 'internal disturbance' with:",
-                        options: ["Public disorder", "Armed rebellion", "Civil unrest", "Economic crisis"],
-                        correct: 1
-                    },
-                    {
-                        question: "During National Emergency, Parliament must approve within:",
-                        options: ["15 days", "One month", "Two months", "Three months"],
-                        correct: 1
-                    },
-                    {
-                        question: "Minerva Mills v. Union of India established that:",
-                        options: ["Emergency cannot be declared", "Judicial review of emergency is unavailable", "Judicial review of emergency is available", "Emergency is permanent"],
-                        correct: 2
-                    }
-                ]
-            },
-            // Passage 23: Contract Law - Discharge of Contract
-            {
-                passage: "Contracts may be discharged through several means under the Indian Contract Act: (1) Performance - when both parties fulfill their obligations; (2) Mutual agreement - parties may mutually agree to rescind, novate, or alter the contract; (3) Impossibility of performance - under Section 56, contracts become void if performance becomes impossible or unlawful after formation; (4) Breach - when one party fails to perform, the other may treat the contract as discharged; and (5) Operation of law - through merger, insolvency, or lapse of time. Section 56 embodies the doctrine of frustration, which applies when an unforeseen event destroys the foundation of the contract, making performance impossible or radically different from what was contemplated. However, impossibility must be objective (physically impossible for anyone) not subjective (difficult for the particular party). In Taylor v. Caldwell (1863), the English court established that destruction of subject matter discharges the contract. The Indian Supreme Court applied similar principles in Satyabrata Ghose v. Mugneeram Bangur & Co. (1954), recognizing both physical and commercial impossibility.",
-                subject: "Contract Law",
-                questions: [
-                    {
-                        question: "How many means of discharge of contract are mentioned in the passage?",
-                        options: ["Three", "Four", "Five", "Six"],
-                        correct: 2
-                    },
-                    {
-                        question: "The doctrine of frustration is embodied in:",
-                        options: ["Section 10", "Section 23", "Section 56", "Section 73"],
-                        correct: 2
-                    },
-                    {
-                        question: "For frustration to apply, impossibility must be:",
-                        options: ["Subjective", "Objective", "Partial", "Temporary"],
-                        correct: 1
-                    },
-                    {
-                        question: "Taylor v. Caldwell established that discharge occurs when:",
-                        options: ["Party refuses to perform", "Subject matter is destroyed", "Price increases", "Market conditions change"],
-                        correct: 1
-                    },
-                    {
-                        question: "Satyabrata Ghose recognized both:",
-                        options: ["Legal and illegal impossibility", "Physical and commercial impossibility", "Personal and corporate impossibility", "Temporary and permanent impossibility"],
-                        correct: 1
-                    }
-                ]
-            },
-            // Passage 24: Tort Law - Strict Liability and Absolute Liability
-            {
-                passage: "Strict liability and absolute liability are important concepts in tort law. The principle of strict liability was established in Rylands v. Fletcher (1868), holding that a person who brings onto their land and keeps anything likely to cause harm if it escapes is liable for all damage naturally consequent upon its escape, regardless of fault. Exceptions to strict liability include: act of God, act of third party, plaintiff's own default, statutory authority, and consent of plaintiff. However, the Supreme Court of India evolved a more stringent principle of 'absolute liability' in M.C. Mehta v. Union of India (1987) following the Oleum gas leak case. The Court held that enterprises engaged in inherently dangerous activities owe an absolute and non-delegable duty to ensure no harm comes to anyone, and cannot claim exceptions available under the Rylands v. Fletcher rule. This was reaffirmed in the Bhopal Gas Tragedy litigation, recognizing that modern industrial enterprises using dangerous processes must bear absolute liability as the cost of doing business.",
-                subject: "Tort Law",
-                questions: [
-                    {
-                        question: "The principle of strict liability was established in:",
-                        options: ["Donoghue v. Stevenson", "Rylands v. Fletcher", "M.C. Mehta v. Union of India", "Ashby v. White"],
-                        correct: 1
-                    },
-                    {
-                        question: "How many exceptions to strict liability are mentioned?",
-                        options: ["Three", "Four", "Five", "Six"],
-                        correct: 2
-                    },
-                    {
-                        question: "Absolute liability was evolved in which case?",
-                        options: ["Rylands v. Fletcher", "M.C. Mehta v. Union of India", "Donoghue v. Stevenson", "Bhopal Gas Tragedy"],
-                        correct: 1
-                    },
-                    {
-                        question: "Under absolute liability, enterprises:",
-                        options: ["Can claim all exceptions", "Can claim some exceptions", "Cannot claim exceptions", "Are not liable"],
-                        correct: 2
-                    },
-                    {
-                        question: "Absolute liability applies to enterprises engaged in:",
-                        options: ["All business activities", "Inherently dangerous activities", "Service industries", "Agricultural activities"],
-                        correct: 1
-                    }
-                ]
-            }
-            ],
-            // Tests 1-29 will have different passages and questions
-            // Each test maintains same structure but completely different content
-        ];
-        
-        // Populate remaining tests with placeholder structure
-        // In production, each would contain 24 unique passages with latest case laws
-        for (let testNum = 1; testNum < 50; testNum++) {
-            allTests[testNum] = JSON.parse(JSON.stringify(allTests[0])); // Deep copy structure
-            // Note: This creates the structure. In a full implementation, 
-            // each test would have completely unique passages based on latest judgments
-            // Tests 0-25: Subject-wise focused tests
-            // Tests 26-35: Full syllabus comprehensive tests
-            // Tests 36-42: Latest judgments 2024-2025
-            // Tests 43-49: Final revision and grand mocks
-        }
-
-        let questions = [];
-        let currentQuestionIndex = 0;
-        let selectedTestIndex = 0;
-        let userAnswers = Array(120).fill(null);
-        let timeRemaining = 120 * 60; // 120 minutes in seconds
-        let timerInterval;
-        let testStartTime;
-
-        function checkAccessAndStart() {
-            const access = canAccessTest();
+        function isUserAllowed(testId) {
+            if (currentUser.accessType === 'paid') return true;
+            if (currentUser.accessType === 'pending') return true; // Give access while pending verification
             
-            if (access.allowed) {
-                if (access.reason === 'free_trial') {
-                    const confirm = window.confirm(`You have ${access.remaining} free test${access.remaining > 1 ? 's' : ''} remaining. Do you want to start this test?`);
-                    if (!confirm) return;
+            // Free trial - allow 3 tests
+            const freeTestsUsed = currentUser.freeTestsUsed || 0;
+            return freeTestsUsed < 3;
+        }
+
+        function loadAdminData() {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const tableBody = document.getElementById('adminUserTable');
+            tableBody.innerHTML = '';
+
+            Object.keys(users).forEach(email => {
+                const user = users[email];
+                if (user.email !== ADMIN_EMAIL) { // Don't show admin in list
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${user.name}</td>
+                        <td>${email}</td>
+                        <td>${user.phone || 'N/A'}</td>
+                        <td><span class="user-status ${getStatusClass(user.accessType)}">${user.accessType}</span></td>
+                        <td>${user.transactionId || 'N/A'}</td>
+                        <td>${user.paymentMethod || 'N/A'}</td>
+                        <td>${new Date(user.registrationDate).toLocaleDateString()}</td>
+                        <td>
+                            ${user.accessType === 'paid' ? 
+                                `<button class="btn btn-danger btn-small" onclick="revokeAccess('${email}')">Revoke Access</button>` :
+                                `<button class="btn btn-success btn-small" onclick="approveAccess('${email}')">Approve</button>`
+                            }
+                        </td>
+                    `;
                 }
-                startTest();
-            } else {
-                showPaywallScreen();
+            });
+        }
+
+        function getStatusClass(accessType) {
+            switch(accessType) {
+                case 'paid': return 'status-paid';
+                case 'pending': return 'status-pending';
+                default: return 'status-free';
             }
         }
-        
+
+        function revokeAccess(email) {
+            if (confirm('Are you sure you want to revoke access for this user?')) {
+                const users = JSON.parse(localStorage.getItem('users') || '{}');
+                if (users[email]) {
+                    users[email].accessType = 'revoked';
+                    localStorage.setItem('users', JSON.stringify(users));
+                    loadAdminData();
+                    showAdminAlert('Access revoked for ' + users[email].name);
+                }
+            }
+        }
+
+        function approveAccess(email) {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[email]) {
+                users[email].accessType = 'paid';
+                localStorage.setItem('users', JSON.stringify(users));
+                loadAdminData();
+                showAdminAlert('Access approved for ' + users[email].name);
+            }
+        }
+
+        function showAdminAlert(message) {
+            const alertDiv = document.getElementById('adminAlert');
+            alertDiv.textContent = message;
+            alertDiv.classList.remove('hidden');
+            setTimeout(() => {
+                alertDiv.classList.add('hidden');
+            }, 3000);
+        }
+
         function startTest() {
-            selectedTestIndex = parseInt(document.getElementById('testSelector').value);
-            questions = allTests[selectedTestIndex];
-            
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('questionScreen').classList.remove('hidden');
-            testStartTime = Date.now();
-            startTimer();
-            loadQuestion(0);
-            renderPalette();
-        }
-        
-        function showPaywallScreen() {
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('paywallScreen').classList.remove('hidden');
-        }
-        
-        function showSubscriptionPage() {
-            document.getElementById('startScreen').classList.add('hidden');
-            document.getElementById('paywallScreen').classList.remove('hidden');
-        }
-        
-        let selectedPlan = null;
-        
-        function selectPlan(planType) {
-            selectedPlan = planType;
-            
-            if (planType === 'bundle') {
-                document.getElementById('selectedPlanName').textContent = 'Full Bundle - Lifetime Access';
-                document.getElementById('selectedPlanPrice').textContent = `₹${BUNDLE_PRICE}`;
-            }
-            
-            document.getElementById('paywallScreen').classList.add('hidden');
-            document.getElementById('paymentScreen').classList.remove('hidden');
-        }
-        
-        function applyCouponUpgrade() {
-            const couponCode = document.getElementById('upgradeCouponCode').value.trim().toUpperCase();
-            const errorDiv = document.getElementById('couponUpgradeError');
-            
-            errorDiv.style.display = 'none';
-            
-            if (!couponCode) {
-                errorDiv.textContent = '⚠️ Please enter a coupon code';
-                errorDiv.style.display = 'block';
+            const testId = document.getElementById('testSelect').value;
+            if (!testId || !isUserAllowed(testId)) {
+                showAlert('error', 'Please select a test or upgrade your account for full access.');
                 return;
             }
-            
-            if (VALID_COUPONS.includes(couponCode)) {
-                // Valid coupon - activate full access
-                const subscription = {
-                    plan: 'lifetime',
-                    planName: 'Full Bundle Access',
-                    price: 0,
-                    source: `Coupon: ${couponCode}`,
-                    startDate: new Date().toISOString(),
-                    expiryDate: new Date('2099-12-31').toISOString(),
-                    active: true
-                };
-                
-                saveSubscription(currentUser.email, subscription);
-                
-                alert(`🎉 Coupon Applied Successfully!\n\nCode: ${couponCode}\n\nYou now have lifetime access to all 50 mock tests!`);
-                
-                document.getElementById('paywallScreen').classList.add('hidden');
-                document.getElementById('startScreen').classList.remove('hidden');
-                updateSubscriptionStatus();
-            } else {
-                errorDiv.textContent = '❌ Invalid coupon code. Please check and try again.';
-                errorDiv.style.display = 'block';
+
+            // Check if user has access
+            if (currentUser.accessType === 'revoked') {
+                showAlert('error', 'Your access has been revoked. Please contact admin.');
+                return;
             }
-        }
-        
-        function cancelPayment() {
-            document.getElementById('paymentScreen').classList.add('hidden');
-            document.getElementById('paywallScreen').classList.remove('hidden');
-        }
-        
-        function processPayment() {
-            if (!selectedPlan) return;
-            
-            const subscription = {
-                plan: 'lifetime',
-                planName: 'Full Bundle Access',
-                price: BUNDLE_PRICE,
-                source: 'Paid Bundle - ₹50',
-                startDate: new Date().toISOString(),
-                expiryDate: new Date('2099-12-31').toISOString(),
-                active: true
-            };
-            
-            saveSubscription(currentUser.email, subscription);
-            
-            alert('🎉 Payment Successful!\n\nYou now have lifetime access to all 50 CLAT PG mock tests. Happy learning!');
-            
-            document.getElementById('paymentScreen').classList.add('hidden');
-            document.getElementById('startScreen').classList.remove('hidden');
-            updateSubscriptionStatus();
+
+            // Increment free test usage
+            if (currentUser.accessType !== 'paid' && currentUser.accessType !== 'pending') {
+                currentUser.freeTestsUsed = (currentUser.freeTestsUsed || 0) + 1;
+                const users = JSON.parse(localStorage.getItem('users') || '{}');
+                users[currentUser.email] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+
+            currentTest = mockTests[testId] || generateMockTest(testId);
+            currentQuestionIndex = 0;
+            testAnswers = {};
+            testStartTime = new Date();
+
+            showTestInterface();
+            startTestTimer();
+            loadQuestion();
         }
 
-        function startTimer() {
-            timerInterval = setInterval(() => {
+        function generateMockTest(testId) {
+            // Generate a mock test structure for demonstration
+            const testTitles = {
+                'constitutional-2': 'Constitutional Law - Part 2: Directive Principles',
+                'criminal-1': 'Criminal Law - Part 1: IPC Essentials',
+                'full-1': 'Full Syllabus Test 1',
+                'judgment-1': '2024-25 Supreme Court Judgments - Part 1'
+            };
+
+            return {
+                title: testTitles[testId] || 'Mock Test',
+                category: 'Generated',
+                passages: Array.from({length: 24}, (_, i) => ({
+                    text: `Sample legal passage ${i + 1} for ${testTitles[testId] || 'Mock Test'}. This passage contains legal concepts and principles that students need to understand for CLAT PG preparation. The passage discusses various aspects of law including constitutional provisions, statutory interpretations, and judicial precedents.`,
+                    questions: Array.from({length: 5}, (_, j) => ({
+                        question: `Sample question ${j + 1} based on passage ${i + 1}`,
+                        options: [
+                            `Option A for question ${j + 1}`,
+                            `Option B for question ${j + 1}`,
+                            `Option C for question ${j + 1}`,
+                            `Option D for question ${j + 1}`
+                        ],
+                        correct: Math.floor(Math.random() * 4)
+                    }))
+                }))
+            };
+        }
+
+        function showTestInterface() {
+            hideAllSections();
+            document.getElementById('testInterface').classList.remove('hidden');
+            document.getElementById('testTitle').textContent = currentTest.title;
+        }
+
+        function startTestTimer() {
+            let timeRemaining = 120 * 60; // 120 minutes in seconds
+            
+            testTimer = setInterval(() => {
                 timeRemaining--;
-                updateTimerDisplay();
+                
+                const hours = Math.floor(timeRemaining / 3600);
+                const minutes = Math.floor((timeRemaining % 3600) / 60);
+                const seconds = timeRemaining % 60;
+                
+                const timeDisplay = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                document.getElementById('timeDisplay').textContent = timeDisplay;
                 
                 if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    autoSubmit();
+                    clearInterval(testTimer);
+                    submitTest();
                 }
             }, 1000);
         }
 
-        function updateTimerDisplay() {
-            const hours = Math.floor(timeRemaining / 3600);
-            const minutes = Math.floor((timeRemaining % 3600) / 60);
-            const seconds = timeRemaining % 60;
+        function loadQuestion() {
+            const passageIndex = Math.floor(currentQuestionIndex / 5);
+            const questionIndex = currentQuestionIndex % 5;
             
-            const display = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            const timerEl = document.getElementById('timer');
-            timerEl.textContent = display;
+            const passage = currentTest.passages[passageIndex];
+            const question = passage.questions[questionIndex];
             
-            // Warning when 30 minutes remain
-            if (timeRemaining === 30 * 60) {
-                timerEl.classList.add('warning');
-                alert('⏰ 30 minutes remaining!');
-            }
+            document.getElementById('passageText').textContent = passage.text;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('currentQuestionNumber').textContent = currentQuestionIndex + 1;
+            document.getElementById('totalQuestions').textContent = currentTest.passages.length * 5;
             
-            // Critical when 5 minutes remain
-            if (timeRemaining === 5 * 60) {
-                timerEl.classList.remove('warning');
-                timerEl.classList.add('critical');
-                alert('⚠️ Only 5 minutes remaining!');
-            }
-        }
-
-        function loadQuestion(index) {
-            currentQuestionIndex = index;
-            const passageIndex = Math.floor(index / 5);
-            const questionIndexInPassage = index % 5;
-            
-            const passageData = questions[passageIndex];
-            const questionData = passageData.questions[questionIndexInPassage];
-            
-            // Display passage (only show for first question of each passage)
-            if (questionIndexInPassage === 0) {
-                document.getElementById('passage').innerHTML = `
-                    <div class="passage-title">${passageData.subject} - Passage ${passageIndex + 1}</div>
-                    ${passageData.passage}
-                `;
-                document.getElementById('passage').style.display = 'block';
-            } else {
-                document.getElementById('passage').style.display = 'none';
-            }
-            
-            // Display question
-            document.getElementById('questionNumber').textContent = `Question ${index + 1} of 120`;
-            document.getElementById('questionText').textContent = questionData.question;
-            
-            // Display options
-            const optionsContainer = document.getElementById('options');
+            const optionsContainer = document.getElementById('optionsContainer');
             optionsContainer.innerHTML = '';
             
-            questionData.options.forEach((option, i) => {
+            question.options.forEach((option, index) => {
                 const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-                if (userAnswers[index] === i) {
-                    optionDiv.classList.add('selected');
-                }
-                optionDiv.innerHTML = `<span class="option-label">${String.fromCharCode(65 + i)}.</span> ${option}`;
-                optionDiv.onclick = () => selectOption(i);
+                optionDiv.innerHTML = `
+                    <label style="display: block; margin: 10px 0; cursor: pointer; padding: 10px; background: #f9fafb; border-radius: 5px; border: 2px solid transparent;">
+                        <input type="radio" name="answer" value="${index}" style="margin-right: 10px;" ${testAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                        ${option}
+                    </label>
+                `;
+                
+                const radio = optionDiv.querySelector('input[type="radio"]');
+                const label = optionDiv.querySelector('label');
+                
+                radio.addEventListener('change', function() {
+                    testAnswers[currentQuestionIndex] = parseInt(this.value);
+                    // Update visual feedback
+                    document.querySelectorAll('#optionsContainer label').forEach(l => {
+                        l.style.borderColor = 'transparent';
+                        l.style.background = '#f9fafb';
+                    });
+                    label.style.borderColor = 'var(--primary-color)';
+                    label.style.background = '#eff6ff';
+                });
+                
                 optionsContainer.appendChild(optionDiv);
             });
             
             // Update navigation buttons
-            document.getElementById('prevBtn').disabled = index === 0;
-            document.getElementById('nextBtn').textContent = index === 119 ? 'Review' : 'Next →';
-            
-            // Update progress
-            document.getElementById('currentQ').textContent = index + 1;
-            updateAnsweredCount();
-            updatePalette();
-        }
-
-        function selectOption(optionIndex) {
-            userAnswers[currentQuestionIndex] = optionIndex;
-            loadQuestion(currentQuestionIndex);
-        }
-
-        function clearResponse() {
-            userAnswers[currentQuestionIndex] = null;
-            loadQuestion(currentQuestionIndex);
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').disabled = currentQuestionIndex === (currentTest.passages.length * 5 - 1);
         }
 
         function previousQuestion() {
             if (currentQuestionIndex > 0) {
-                loadQuestion(currentQuestionIndex - 1);
+                currentQuestionIndex--;
+                loadQuestion();
             }
         }
 
         function nextQuestion() {
-            if (currentQuestionIndex < 119) {
-                loadQuestion(currentQuestionIndex + 1);
+            if (currentQuestionIndex < (currentTest.passages.length * 5 - 1)) {
+                currentQuestionIndex++;
+                loadQuestion();
             }
-        }
-
-        function renderPalette() {
-            const palette = document.getElementById('palette');
-            palette.innerHTML = '';
-            
-            for (let i = 0; i < 120; i++) {
-                const btn = document.createElement('button');
-                btn.className = 'palette-btn';
-                btn.textContent = i + 1;
-                btn.onclick = () => loadQuestion(i);
-                palette.appendChild(btn);
-            }
-        }
-
-        function updatePalette() {
-            const buttons = document.querySelectorAll('.palette-btn');
-            buttons.forEach((btn, index) => {
-                btn.classList.remove('answered', 'current');
-                if (userAnswers[index] !== null) {
-                    btn.classList.add('answered');
-                }
-                if (index === currentQuestionIndex) {
-                    btn.classList.add('current');
-                }
-            });
-        }
-
-        function updateAnsweredCount() {
-            const count = userAnswers.filter(a => a !== null).length;
-            document.getElementById('answeredCount').textContent = count;
         }
 
         function submitTest() {
-            const unanswered = 120 - userAnswers.filter(a => a !== null).length;
-            let message = `Are you sure you want to submit the test?\n\n`;
-            message += `Answered: ${120 - unanswered}/120\n`;
-            message += `Not Answered: ${unanswered}/120`;
-            
-            if (confirm(message)) {
-                clearInterval(timerInterval);
-                showResults();
+            if (confirm('Are you sure you want to submit the test? You cannot change answers after submission.')) {
+                clearInterval(testTimer);
+                calculateResults();
             }
         }
 
-        function autoSubmit() {
-            alert('⏰ Time\'s up! Your test will be automatically submitted.');
-            showResults();
-        }
-
-        function showResults() {
-            document.getElementById('questionScreen').classList.add('hidden');
-            document.getElementById('resultScreen').classList.remove('hidden');
+        function calculateResults() {
+            let correctAnswers = 0;
+            let totalQuestions = currentTest.passages.length * 5;
             
-            let correct = 0;
-            let incorrect = 0;
-            let notAttempted = 0;
-            
-            questions.forEach((passageData, passageIndex) => {
-                passageData.questions.forEach((q, qIndex) => {
-                    const globalIndex = passageIndex * 5 + qIndex;
-                    const userAnswer = userAnswers[globalIndex];
-                    
-                    if (userAnswer === null) {
-                        notAttempted++;
-                    } else if (userAnswer === q.correct) {
-                        correct++;
-                    } else {
-                        incorrect++;
+            currentTest.passages.forEach((passage, passageIndex) => {
+                passage.questions.forEach((question, questionIndex) => {
+                    const globalIndex = passageIndex * 5 + questionIndex;
+                    if (testAnswers[globalIndex] === question.correct) {
+                        correctAnswers++;
                     }
                 });
             });
             
-            const totalScore = (correct * 1) - (incorrect * 0.25);
-            const accuracy = correct > 0 ? ((correct / (correct + incorrect)) * 100).toFixed(2) : 0;
+            const score = correctAnswers - (totalQuestions - correctAnswers - Object.keys(testAnswers).length) * 0.25;
+            const accuracy = totalQuestions > 0 ? (correctAnswers / totalQuestions * 100).toFixed(2) : 0;
             
-            // Save score to leaderboard
-            const testSelector = document.getElementById('testSelector');
-            const testName = testSelector.options[testSelector.selectedIndex].text;
-            
-            saveScore({
-                name: currentUser.name,
-                email: currentUser.email,
-                testName: testName,
-                score: parseFloat(totalScore.toFixed(2)),
-                correct: correct,
-                incorrect: incorrect,
-                notAttempted: notAttempted,
+            // Save result
+            const result = {
+                testId: document.getElementById('testSelect').value,
+                testTitle: currentTest.title,
+                score: Math.max(0, score).toFixed(2),
+                correctAnswers: correctAnswers,
+                totalQuestions: totalQuestions,
                 accuracy: accuracy,
-                date: new Date().toISOString()
-            });
+                date: new Date().toISOString(),
+                userName: currentUser.name
+            };
             
-            // Estimate percentile (simplified)
-            let percentile = 50;
-            if (totalScore >= 90) percentile = 99;
-            else if (totalScore >= 80) percentile = 95;
-            else if (totalScore >= 70) percentile = 90;
-            else if (totalScore >= 60) percentile = 80;
-            else if (totalScore >= 50) percentile = 70;
-            else if (totalScore >= 40) percentile = 60;
+            // Save to leaderboard
+            const leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+            leaderboard.push(result);
+            leaderboard.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
             
-            document.getElementById('totalScore').textContent = totalScore.toFixed(2);
-            document.getElementById('correctAnswers').textContent = correct;
-            document.getElementById('incorrectAnswers').textContent = incorrect;
-            document.getElementById('notAttempted').textContent = notAttempted;
-            document.getElementById('accuracy').textContent = accuracy + '%';
-            document.getElementById('percentile').textContent = percentile;
-            
-            // Performance details by subject
-            const subjectPerformance = {};
-            questions.forEach((passageData, passageIndex) => {
-                const subject = passageData.subject;
-                if (!subjectPerformance[subject]) {
-                    subjectPerformance[subject] = { correct: 0, total: 0 };
-                }
-                
-                passageData.questions.forEach((q, qIndex) => {
-                    const globalIndex = passageIndex * 5 + qIndex;
-                    const userAnswer = userAnswers[globalIndex];
-                    subjectPerformance[subject].total++;
-                    if (userAnswer === q.correct) {
-                        subjectPerformance[subject].correct++;
-                    }
-                });
-            });
-            
-            let performanceHTML = '<table style="width: 100%; border-collapse: collapse;">';
-            performanceHTML += '<tr style="background-color: var(--color-background); font-weight: 600;"><td style="padding: 12px; border: 1px solid var(--color-border);">Subject</td><td style="padding: 12px; border: 1px solid var(--color-border);">Correct</td><td style="padding: 12px; border: 1px solid var(--color-border);">Total</td><td style="padding: 12px; border: 1px solid var(--color-border);">Accuracy</td></tr>';
-            
-            for (const [subject, data] of Object.entries(subjectPerformance)) {
-                const acc = ((data.correct / data.total) * 100).toFixed(1);
-                performanceHTML += `<tr><td style="padding: 12px; border: 1px solid var(--color-border);">${subject}</td><td style="padding: 12px; border: 1px solid var(--color-border);">${data.correct}</td><td style="padding: 12px; border: 1px solid var(--color-border);">${data.total}</td><td style="padding: 12px; border: 1px solid var(--color-border);">${acc}%</td></tr>`;
-            }
-            performanceHTML += '</table>';
-            
-            document.getElementById('performanceDetails').innerHTML = performanceHTML;
+            showResults(result);
         }
 
-        // Initialize app
-        window.onload = function() {
-            showLoginScreen();
-        };
+        function showResults(result) {
+            hideAllSections();
+            document.getElementById('testResults').classList.remove('hidden');
+            
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = `
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px;">${result.testTitle}</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div style="background: #f0f9ff; padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">${result.score}</div>
+                            <div style="color: #6b7280;">Total Score</div>
+                        </div>
+                        <div style="background: #ecfdf5; padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">${result.correctAnswers}</div>
+                            <div style="color: #6b7280;">Correct Answers</div>
+                        </div>
+                        <div style="background: #fff7ed; padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">${result.accuracy}%</div>
+                            <div style="color: #6b7280;">Accuracy</div>
+                        </div>
+                        <div style="background: #fef2f2; padding: 20px; border-radius: 10px;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--error-color);">${result.totalQuestions - result.correctAnswers}</div>
+                            <div style="color: #6b7280;">Incorrect</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; color: #6b7280;">
+                        Test completed on ${new Date(result.date).toLocaleString()}
+                    </div>
+                </div>
+            `;
+        }
+
+        function showLeaderboard() {
+            hideAllSections();
+            document.getElementById('leaderboard').classList.remove('hidden');
+            
+            const leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+            const tableBody = document.getElementById('leaderboardTable');
+            tableBody.innerHTML = '';
+            
+            leaderboard.forEach((result, index) => {
+                const row = tableBody.insertRow();
+                const isCurrentUser = result.userName === currentUser.name;
+                
+                row.innerHTML = `
+                    <td><strong>${index + 1}</strong></td>
+                    <td ${isCurrentUser ? 'style="color: var(--primary-color); font-weight: bold;"' : ''}>${result.userName}</td>
+                    <td>${result.testTitle}</td>
+                    <td><strong>${result.score}</strong></td>
+                    <td>${result.correctAnswers}/${result.totalQuestions}</td>
+                    <td>${result.accuracy}%</td>
+                    <td>${new Date(result.date).toLocaleDateString()}</td>
+                `;
+                
+                if (isCurrentUser) {
+                    row.style.background = '#eff6ff';
+                }
+            });
+        }
+
+        function hideLearderboard() {
+            showDashboard();
+        }
+
+        function backToDashboard() {
+            showDashboard();
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            showLoginForm();
+        }
+
+        function adminLogout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            isAdmin = false;
+            showLoginForm();
+        }
+
+        function populateTestOptions() {
+            // Test options are already populated in HTML
+        }
+
+        function showAlert(type, message) {
+            alert(message); // Simple alert for now
+        }
     </script>
 </body>
 </html>
