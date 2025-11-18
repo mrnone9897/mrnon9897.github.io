@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLAT PG Jurisprudence Quiz</title>
+    <title>CLAT PG Constitutional Law Quiz (50 Mins)</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -14,7 +14,7 @@
             color: #333;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 20px auto;
             background: #ffffff;
             padding: 30px;
@@ -27,26 +27,42 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
         }
-        #quiz-container {
+        #timer {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #d9534f;
+            text-align: center;
+            background: #fdfdfd;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
             margin-bottom: 20px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .question-block {
+        .passage-block {
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #e7e7e7;
         }
         .passage {
             font-style: italic;
-            background-color: #f9f9f9;
             border-left: 4px solid #004d99;
-            padding: 15px;
+            padding-left: 15px;
             margin-bottom: 15px;
+            background: #f0f8ff;
+            padding: 10px;
             border-radius: 4px;
         }
         .question-text {
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 15px;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            color: #444;
         }
         .options-list {
             list-style-type: none;
@@ -54,7 +70,6 @@
             margin: 0;
         }
         .option-item {
-            background-color: #fdfdfd;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 12px 15px;
@@ -73,6 +88,7 @@
         .option-item label {
             vertical-align: middle;
             cursor: pointer;
+            display: block;
         }
         
         /* Styles for after submission */
@@ -90,7 +106,7 @@
         }
         
         #submit-btn {
-            background-color: #004d99;
+            background-color: #8b0000;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -103,7 +119,7 @@
             transition: background-color 0.2s;
         }
         #submit-btn:hover {
-            background-color: #003366;
+            background-color: #a50000;
         }
         
         #results-container {
@@ -135,18 +151,493 @@
             list-style-type: square;
             padding-left: 20px;
         }
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .ranking-table th, .ranking-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .ranking-table th {
+            background-color: #004d99;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>CLAT PG Jurisprudence Interactive Quiz</h1>
+        <h1>CLAT PG Constitutional Law Mock Test</h1>
+        <div id="timer">50:00</div>
         
-        <div id="quiz-container">
+        <form id="quiz-form">
+            <div class="passage-block">
+                <div class="passage">
+                    "The principle of reasonableness, which legally as well as philosophically, is an essential element of equality or non-arbitrariness, pervades Article 14 like a brooding omnipresence. This principle is that the law or action must not be arbitrary; it must be based on some rational and relevant principle and not be guided by any extraneous or irrelevant considerations. This follows from *E.P. Royappa v. State of Tamil Nadu*. The shift from the 'reasonable classification' test to the 'arbitrariness' test was solidified in *Maneka Gandhi v. Union of India*, which held that the procedure established by law under Article 21 must be fair, just, and reasonable, not fanciful, oppressive, or arbitrary. Thus, Articles 14, 19, and 21 are not mutually exclusive but form a 'golden triangle', and any law affecting personal liberty must pass the test of all three."
+                </div>
+
+                <div class="question-text">1. The 'golden triangle' in Indian Constitutional Law refers to the interrelationship between which three articles?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q0" value="0"> Articles 14, 15, and 16</label></li>
+                    <li class="option-item"><label><input type="radio" name="q0" value="1"> Articles 14, 19, and 21</label></li>
+                    <li class="option-item"><label><input type="radio" name="q0" value="2"> Articles 20, 21, and 22</label></li>
+                    <li class="option-item"><label><input type="radio" name="q0" value="3"> Articles 14, 32, and 226</label></li>
+                </ul>
+
+                <div class="question-text">2. The judgment in *Maneka Gandhi v. UOI* is significant because it held that 'procedure established by law' under Article 21 must be:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q1" value="0"> Any procedure, as long as it is enacted by a competent legislature.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="1"> The same as the 'due process' in the American Constitution, including substantive review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="2"> Fair, just, and reasonable, and not arbitrary or fanciful.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="3"> Subject to the principles of natural justice only.</label></li>
+                </ul>
+
+                <div class="question-text">3. According to the passage, the 'arbitrariness test' under Article 14, as established in *E.P. Royappa*, holds that:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q2" value="0"> Equality is a dynamic concept that cannot be confined to the traditional doctrine of reasonable classification.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="1"> Equality and arbitrariness are synonymous concepts.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="2"> Arbitrariness is permissible if it is for the public good.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="3"> The arbitrariness test replaces the reasonable classification test entirely.</label></li>
+                </ul>
+
+                <div class="question-text">4. The passage implies that a law which is procedurally fair under Article 21 can still be struck down if it:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q3" value="0"> Imposes an unreasonable restriction on freedom of speech under Article 19.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="1"> Is passed by the Parliament and not the State Legislature.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="2"> Is not arbitrary but violates Article 20.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="3"> Affects a person who is not a citizen of India.</label></li>
+                </ul>
+
+                <div class="question-text">5. What is the central thesis of the 'golden triangle' concept?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q4" value="0"> That Articles 14, 19, and 21 are identical in their scope and application.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="1"> That these three articles must be read together, and a law must satisfy the requirements of all three to be valid.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="2"> That Article 21 is superior to both Article 14 and Article 19.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="3"> That these rights can be suspended together during a National Emergency.</label></li>
+                </ul>
             </div>
-        
-        <button id="submit-btn">Submit Quiz & See Results</button>
-        
+
+            <div class="passage-block">
+                <div class="passage">
+                    "The judgment in *Kesavananda Bharati v. State of Kerala* (1973) established the Doctrine of Basic Structure. The Court held that while Parliament has the power under Article 368 to amend any part of the Constitution, including the Fundamental Rights, it cannot use this power to alter, destroy, or abrogate the 'basic structure' or 'framework' of the Constitution. This doctrine was later applied in *Minerva Mills v. UOI* (1980), where the Court struck down clauses of the 42nd Amendment that gave absolute supremacy to Directive Principles over Fundamental Rights and sought to oust judicial review of constitutional amendments. Later, in *I.R. Coelho v. State of T.N.* (2007), the Court held that laws placed in the Ninth Schedule after April 24, 1973 (the date of the *Kesavananda* judgment), are not immune from judicial review if they violate the Basic Structure."
+                </div>
+
+                <div class="question-text">6. What is the central holding of the *Kesavananda Bharati* case as described in the passage?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q5" value="0"> Parliament has no power to amend the Fundamental Rights.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="1"> The Basic Structure of the Constitution can be amended by a special majority.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="2"> Parliament's amending power under Article 368 is wide but not unlimited, as it cannot destroy the Basic Structure.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="3"> The Ninth Schedule is completely immune from judicial review.</label></li>
+                </ul>
+
+                <div class="question-text">7. In *Minerva Mills v. UOI*, the Supreme Court struck down the 42nd Amendment clauses because they violated the Basic Structure by:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q6" value="0"> Introducing new Directive Principles.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="1"> Giving absolute supremacy to Directive Principles over Fundamental Rights and ousting judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="2"> Allowing the President to amend the Constitution.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="3"> Shortening the term of the Lok Sabha.</label></li>
+                </ul>
+
+                <div class="question-text">8. The significance of the *I.R. Coelho* judgment is that it:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q7" value="0"> Overruled the *Kesavananda Bharati* judgment.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="1"> Declared all laws in the Ninth Schedule void.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="2"> Confirmed that judicial review is not part of the Basic Structure.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="3"> Applied the Basic Structure test to laws placed in the Ninth Schedule after April 24, 1973.</label></li>
+                </ul>
+
+                <div class="question-text">9. Which of the following would be considered a part of the 'Basic Structure' as per the *Minerva Mills* case?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q8" value="0"> The right to property as a fundamental right.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="1"> The harmony and balance between Fundamental Rights and Directive Principles.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="2"> The right of the Parliament to create new states.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="3"> The specific number of judges in the Supreme Court.</label></li>
+                </ul>
+
+                <div class="question-text">10. The Basic Structure Doctrine is a judicial innovation that acts as a limitation on:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q9" value="0"> The executive's ordinance-making power.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="1"> The judiciary's power of judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="2"> The President's power to grant pardons.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="3"> Parliament's constituent power under Article 368.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "The Indian Constitution embodies 'asymmetric federalism,' which means it does not treat all States and Union Territories (UTs) equally. Article 239AA grants a special status to the National Capital Territory of Delhi (NCTD), making it *sui generis* (unique). It establishes a Legislative Assembly for NCTD with power to legislate on matters in the State List and Concurrent List, except for three excluded entries: Public Order, Police, and Land. In *Govt. of NCT of Delhi v. Union of India* (2018 and 2023), the Supreme Court held that the 'aid and advice' of the Council of Ministers of Delhi is binding on the Lieutenant Governor (LG) for all matters *except* the three excluded entries. The Court emphasized that the NCTD's model is based on collaborative federalism and representative democracy, and the LG cannot act as an obstructionist."
+                </div>
+
+                <div class="question-text">11. The term 'asymmetric federalism' as used in the passage means:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q10" value="0"> The Union has more power than the States in all matters.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="1"> All States must be treated identically in all respects.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="2"> Certain federal units (States/UTs) are granted special status or powers not given to others.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="3"> The judiciary has the final say in all federal disputes.</label></li>
+                </ul>
+
+                <div class="question-text">12. According to Article 239AA and the *NCT of Delhi* judgments, the Legislative Assembly of Delhi CANNOT make laws on:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q11" value="0"> Public Health and Sanitation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="1"> Police, Public Order, and Land.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="2"> Education and Transport.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="3"> All matters in the Concurrent List.</label></li>
+                </ul>
+
+                <div class="question-text">13. The Supreme Court held that the 'aid and advice' of the Delhi Council of Ministers is binding on the LG (except for the three excluded subjects) to uphold the principle of:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q12" value="0"> The absolute power of the Union government.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="1"> Representative democracy and collaborative federalism.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="2"> The LG's discretionary power in all matters.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="3"> The supremacy of the Home Ministry.</label></li>
+                </ul>
+
+                <div class="question-text">14. The term *'sui generis'* used to describe Delhi's status means:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q13" value="0"> It is a full-fledged State.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="1"> It is a corporation managed by the Union.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="2"> It is identical to all other Union Territories.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="3"> It is unique and of its own kind, not fitting into the traditional categories.</label></li>
+                </ul>
+
+                <div class="question-text">15. What is the fundamental conflict resolved by the *NCT of Delhi* judgments?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q14" value="0"> A dispute between the Delhi Assembly and the Parliament over amending the Constitution.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q14" value="1"> A dispute over the distribution of tax revenue between the Union and Delhi.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q14" value="2"> A power-sharing dispute between the elected Delhi Government and the Union-appointed Lieutenant Governor.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q14" value="3"> A dispute over whether Delhi can have its own High Court.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "The Tenth Schedule of the Constitution (Anti-Defection Law) was inserted by the 52nd Amendment, 1985, to curb 'the evil of political defections.' A member may be disqualified if they (a) voluntarily give up the membership of their political party, or (b) vote or abstain from voting contrary to a direction (whip) issued by the party. In *Kihoto Hollohan v. Zachillhu* (1992), the Supreme Court upheld the validity of the Tenth Schedule but struck down Paragraph 7, which had barred judicial review of the Speaker's decision. The Court held that the Speaker, while deciding disqualification, acts as a **tribunal** and their decision is subject to judicial review on grounds of *mala fides*, perversity, or violation of natural justice."
+                </div>
+
+                <div class="question-text">16. The Tenth Schedule was added to the Constitution to primarily address:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q15" value="0"> Corruption in judicial appointments.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q15" value="1"> The instability caused by legislators switching political parties for personal gain.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q15" value="2"> The financial powers of the Union government.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q15" value="3"> The procedure for passing constitutional amendments.</label></li>
+                </ul>
+
+                <div class="question-text">17. According to the passage, which of the following is a specified ground for disqualification under the Tenth Schedule?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q16" value="0"> Criticizing the party leader in a press conference.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q16" value="1"> Being absent from the House for 60 days.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q16" value="2"> Voluntarily giving up membership of one's political party.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q16" value="3"> Being convicted of a criminal offense with a two-year sentence.</label></li>
+                </ul>
+
+                <div class="question-text">18. What was the significance of the *Kihoto Hollohan* judgment?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q17" value="0"> It declared the entire Tenth Schedule unconstitutional.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q17" value="1"> It held that the Speaker's decision is final and cannot be questioned in any court.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q17" value="2"> It struck down the bar on judicial review (Para 7) and held that the Speaker acts as a tribunal.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q17" value="3"> It defined 'voluntarily giving up membership' as formal resignation only.</label></li>
+                </ul>
+
+                <div class="question-text">19. The Supreme Court held that the Speaker's decision under the Tenth Schedule is reviewable on the ground of:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q18" value="0"> The decision being politically incorrect.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q18" value="1"> Violation of natural justice or *mala fides*.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q18" value="2"> The decision being unpopular with the public.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q18" value="3"> The decision differing from the Governor's advice.</label></li>
+                </ul>
+
+                <div class="question-text">20. By classifying the Speaker's function under the Tenth Schedule as that of a 'tribunal', the Supreme Court subjected it to:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q19" value="0"> The control of the Election Commission.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q19" value="1"> The ordinary rules of a political debate.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q19" value="2"> The principles of judicial review applicable to quasi-judicial bodies.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q19" value="3"> The doctrine of 'political question'.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "Articles 323A and 323B, inserted by the 42nd Amendment, authorized Parliament to create Administrative Tribunals and other tribunals, and to exclude the jurisdiction of all courts, including the High Courts under Article 226 (but not the Supreme Court under Article 136). This exclusion of the High Courts' writ jurisdiction was challenged. In *L. Chandra Kumar v. Union of India* (1997), a seven-judge bench held that the power of judicial review of the High Courts (Art. 226) and the Supreme Court (Art. 32) is an integral part of the **Basic Structure** of the Constitution. Therefore, the clauses in Articles 323A and 323B that excluded the jurisdiction of the High Courts were declared unconstitutional. The Court held that tribunals could act as courts of first instance, but their decisions would be subject to the writ jurisdiction of the High Court."
+                </div>
+
+                <div class="question-text">21. The *L. Chandra Kumar* judgment is a landmark case concerning:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q20" value="0"> The definition of 'State' under Article 12.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q20" value="1"> The validity of Administrative Tribunals and the scope of judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q20" value="2"> The scope of the President's pardoning power.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q20" value="3"> The interpretation of the Tenth Schedule.</label></li>
+                </ul>
+
+                <div class="question-text">22. The 42nd Amendment attempted to exclude the jurisdiction of which courts?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q21" value="0"> All courts, including the Supreme Court under Article 136.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q21" value="1"> Only the Subordinate Courts.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q21" value="2"> The High Courts under Article 226.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q21" value="3"> The Supreme Court under Article 32.</label></li>
+                </ul>
+
+                <div class="question-text">23. The Supreme Court in *L. Chandra Kumar* struck down the ouster of the High Court's jurisdiction by holding that:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q22" value="0"> Tribunals are not necessary for the legal system.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q22" value="1"> The power of judicial review under Articles 226 and 32 is part of the Basic Structure.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q22" value="2"> The 42nd Amendment was not passed by a special majority.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q22" value="3"> Only Parliament can create tribunals, not State Legislatures.</label></li>
+                </ul>
+
+                <div class="question-text">24. What is the current legal status of Administrative Tribunals after the *L. Chandra Kumar* judgment?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q23" value="0"> They are unconstitutional and have been abolished.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q23" value="1"> They are the final authority, and their decisions cannot be appealed.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q23" value="2"> They function as courts of first instance, but their decisions are subject to review by the High Court under Article 226.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q23" value="3"> They can only hear appeals from the High Court.</label></li>
+                </ul>
+
+                <div class="question-text">25. The *L. Chandra Kumar* case strongly affirms the Basic Structure Doctrine by protecting:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q24" value="0"> The supremacy of Directive Principles.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q24" value="1"> The power of the Executive to appoint judges.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q24" value="2"> The power of judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q24" value="3"> The right to property.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "Article 356 of the Constitution, which deals with President's Rule, has been a subject of intense controversy. In *S.R. Bommai v. Union of India* (1994), a nine-judge bench laid down crucial safeguards against its misuse. The Court held that the President's satisfaction under Article 356 is not absolute but is **justiciable** (subject to judicial review). The satisfaction must be based on relevant material, and the Court can strike down the proclamation if it is found to be *mala fide* or based on wholly extraneous and irrelevant grounds. The Court also held that the proclamation does not automatically dissolve the State Assembly; it is merely placed in suspended animation. The power of the Parliament to approve the proclamation does not oust the power of the court to review its validity."
+                </div>
+
+                <div class="question-text">26. The landmark judgment in *S.R. Bommai v. UOI* primarily deals with the misuse of:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q25" value="0"> Article 352 (National Emergency).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q25" value="1"> Article 360 (Financial Emergency).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q25" value="2"> Article 356 (President's Rule).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q25" value="3"> Article 368 (Amending Power).</label></li>
+                </ul>
+
+                <div class="question-text">27. What was the most significant outcome of the *Bommai* judgment regarding the President's power under Article 356?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q26" value="0"> It made the President's satisfaction absolute and non-reviewable.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q26" value="1"> It held that the President's satisfaction is justiciable and subject to judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q26" value="2"> It allowed the President to dissolve the Assembly immediately upon proclamation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q26" value="3"> It transferred the power under Article 356 to the Governor.</label></li>
+                </ul>
+
+                <div class="question-text">28. According to the *Bommai* case, a proclamation under Article 356 can be struck down by the court if it is found to be:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q27" value="0"> Politically unpopular.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q27" value="1"> *Mala fide* or based on wholly irrelevant grounds.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q27" value="2"> Against the advice of the Prime Minister.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q27" value="3"> Issued during a National Emergency.</label></li>
+                </ul>
+
+                <div class="question-text">29. The judgment held that upon proclamation, the State Assembly is:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q28" value="0"> Immediately and irrevocably dissolved.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q28" value="1"> Placed in suspended animation, pending parliamentary approval.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q28" value="2"> Empowered to override the proclamation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q28" value="3"> Merged with the Parliament.</label></li>
+                </ul>
+
+                <div class="question-text">30. During a Proclamation of National Emergency (Art. 352), which Fundamental Rights can NEVER be suspended?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q29" value="0"> Article 19 (Speech) and Article 21 (Life).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q29" value="1"> Article 14 (Equality) and Article 19 (Speech).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q29" value="2"> Article 20 (Conviction) and Article 21 (Life).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q29" value="3"> Article 32 (Remedies) and Article 14 (Equality).</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "Article 72 of the Constitution confers upon the President the power to grant pardons, reprieves, respites, or remissions of punishment. This power is an executive act and is to be exercised on the aid and advice of the Council of Ministers. The power of pardon is not a privilege but a constitutional responsibility. In *Epuru Sudhakar v. State of A.P.* (2006), the Supreme Court clarified that the exercise of this clemency power, while wide, is not immune from judicial review. The Court held that if the decision is arbitrary, irrational, *mala fide*, or based on extraneous considerations, the court can intervene. The review is limited to the manner of exercise, not the merits of the decision itself."
+                </div>
+
+                <div class="question-text">31. The power to grant pardon under Article 72 is exercised by the President on the:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q30" value="0"> Aid and advice of the Chief Justice of India.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q30" value="1"> Personal discretion of the President.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q30" value="2"> Aid and advice of the Council of Ministers.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q30" value="3"> Recommendation of a parliamentary committee.</label></li>
+                </ul>
+
+                <div class="question-text">32. The *Epuru Sudhakar* judgment established that the President's pardoning power is:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q31" value="0"> Absolute, final, and immune from judicial review.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q31" value="1"> A legislative power that can override court judgments.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q31" value="2"> A judicial power that requires a fresh trial.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q31" value="3"> Subject to limited judicial review on grounds of arbitrariness or *mala fides*.</label></li>
+                </ul>
+
+                <div class="question-text">33. A 'reprieve' under Article 72 means:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q32" value="0"> A temporary stay on the execution of a sentence.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q32" value="1"> Reducing the sentence to a lighter one (e.g., death to life imprisonment).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q32" value="2"> Completely absolving the convict of all charges and disqualifications.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q32" value="3"> Reducing the period of the sentence without changing its character.</label></li>
+                </ul>
+
+                <div class="question-text">34. The passage states that the court's review of a pardoning decision is limited to the:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q33" value="0"> Merits of the case (i.e., whether the convict was actually guilty).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q33" value="1"> Manner of the exercise of power (i.e., whether it was arbitrary).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q33" value="2"> Political implications of the pardon.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q33" value="3"> Opinion of the victim's family.</label></li>
+                </ul>
+
+                <div class="question-text">35. A 'pardon' is distinct from 'commutation' because a pardon:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q34" value="0"> Only reduces the sentence.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q34" value="1"> Only stays the execution.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q34" value="2"> Completely absolves the convict of the sentence and all resulting disqualifications.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q34" value="3"> Changes the nature of the sentence (e.g., rigorous to simple imprisonment).</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "Article 25(1) grants all persons the freedom of conscience and the right to profess, practice, and propagate religion, subject to public order, morality, and health. Article 26 grants religious denominations the right to manage their own affairs in 'matters of religion.' To resolve conflicts, the Supreme Court developed the **'Essential Religious Practices (ERP) Test'**. This test holds that the Constitution only protects practices that are 'essential' or 'integral' to the religion. Secular activities or practices that are non-essential, even if performed by a religious denomination, are subject to state regulation and reform. This doctrine was applied in the *Sabarimala* case (*Indian Young Lawyers Association*), where the majority held that the exclusion of women was not an ERP of Hinduism."
+                </div>
+
+                <div class="question-text">36. The 'Essential Religious Practices (ERP) Test' is a judicial doctrine used to:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q35" value="0"> Determine if a person is a 'Hindu' for the HMA.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q35" value="1"> Decide which religion is superior in India.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q35" value="2"> Distinguish protected religious practices from secular activities subject to state regulation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q35" value="3"> Enforce the Uniform Civil Code.</label></li>
+                </ul>
+
+                <div class="question-text">37. According to Article 25(1), the right to freedom of religion is not absolute and is subject to:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q36" value="0"> Public order, morality, and health.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q36" value="1"> The consent of the Parliament.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q36" value="2"> The Basic Structure Doctrine.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q36" value="3"> The approval of the President.</label></li>
+                </ul>
+
+                <div class="question-text">38. In the *Sabarimala* case, the majority held that the exclusion of women was not an ERP. This meant the practice was:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q37" value="0"> Protected by Article 26 as a right of the denomination.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q37" value="1"> A valid exercise of state power.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q37" value="2"> Not protected by the Constitution and could be prohibited by the state.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q37" value="3"> A matter to be decided by the temple priests.</label></li>
+                </ul>
+
+                <div class="question-text">39. Article 26 grants rights to religious denominations to manage 'matters of religion'. This right is primarily a:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q38" value="0"> Collective right.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q38" value="1"> Individual right.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q38" value="2"> Secular right.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q38" value="3"> Political right.</label></li>
+                </ul>
+
+                <div class="question-text">40. The ERP test is often criticized by scholars because it:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q39" value="0"> Gives too much power to religious denominations.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q39" value="1"> Is too easy to apply and leads to clear results.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q39" value="2"> Requires secular judges to engage in theological interpretation, deciding what is 'essential' to a faith.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q39" value="3"> Violates the Doctrine of Pith and Substance.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "The Right to Property, originally a Fundamental Right under Article 19(1)(f) and Article 31, was removed from Part III by the 44th Amendment Act, 1978. It was re-inserted as **Article 300A**, which states: 'No person shall be deprived of his property save by authority of law.' This transformed it from a fundamental right to a **constitutional/legal right**. While it is no longer a fundamental right, the Supreme Court has held that the 'authority of law' under Article 300A must be a valid, clear, and unambiguous law, and the deprivation must not be arbitrary (violating Article 14). The Court has also held that while the right to compensation is not explicitly mentioned, it is often implied as a necessary component of just deprivation."
+                </div>
+
+                <div class="question-text">41. The 44th Amendment Act, 1978, had what effect on the Right to Property?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q40" value="0"> It abolished the right to property entirely.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q40" value="1"> It made the right to property an absolute, non-derogable right.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q40" value="2"> It moved the right from a Fundamental Right (Part III) to a Constitutional/Legal Right (Part XII).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q40" value="3"> It restricted the right to property to citizens only.</label></li>
+                </ul>
+
+                <div class="question-text">42. What is the primary difference between a Fundamental Right and the current Constitutional Right under Article 300A?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q41" value="0"> A Constitutional Right cannot be enforced in any court.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q41" value="1"> A citizen can no longer approach the Supreme Court directly under Article 32 for its violation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q41" value="2"> A Constitutional Right is binding on the judiciary but not the executive.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q41" value="3"> Only a Constitutional Right can be amended.</label></li>
+                </ul>
+
+                <div class="question-text">43. Article 300A requires deprivation of property to be by 'authority of law'. The Supreme Court interprets 'law' here to mean:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q42" value="0"> A simple executive order or government notification.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q42" value="1"> A valid, clear, and non-arbitrary law enacted by a competent legislature.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q42" value="2"> A law that is approved by the President only.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q42" value="3"> A law that provides compensation equal to the market value.</label></li>
+                </ul>
+
+                <div class="question-text">44. A citizen whose property is taken by the State without legal authority can file a writ petition in the:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q43" value="0"> Supreme Court under Article 32 (for violation of a fundamental right).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q43" value="1"> High Court under Article 226 (for violation of a legal/constitutional right).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q43" value="2"> District Court only.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q43" value="3"> International Court of Justice.</label></li>
+                </ul>
+
+                <div class="question-text">45. The passage suggests that the right to property under Article 300A is also protected by:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q44" value="0"> Article 14, as the deprivation cannot be arbitrary.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q44" value="1"> Article 356, as it can be suspended during an emergency.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q44" value="2"> Article 31B (The Ninth Schedule).</label></li>
+                    <li class="option-item"><label><input type="radio" name="q44" value="3"> The Directive Principles of State Policy.</label></li>
+                </ul>
+            </div>
+
+            <div class="passage-block">
+                <div class="passage">
+                    "Article 123 (President) and Article 213 (Governor) grant the executive the power to promulgate Ordinances when the legislature is not in session. An Ordinance has the same force and effect as an Act of the legislature. However, this power is subject to constitutional limitations: it must be laid before the legislature when it reassembles and shall cease to operate six weeks from the reassembly, or if a resolution disapproving it is passed. In *D.C. Wadhwa v. State of Bihar* (1987), the Supreme Court condemned the 'fraud on the Constitution' committed by the executive by systematically re-promulgating Ordinances without ever laying them before the legislature, thereby usurping the law-making function of the legislature."
+                </div>
+
+                <div class="question-text">46. The executive's power to promulgate an Ordinance is a(n):</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q45" value="0"> Judicial power.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q45" value="1"> Constituent power.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q45" value="2"> Legislative power exercised by the executive.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q45" value="3"> Absolute power not subject to any review.</label></li>
+                </ul>
+
+                <div class="question-text">47. An Ordinance promulgated under Article 123 ceases to operate if it is not approved by Parliament within:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q46" value="0"> Six months from its promulgation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q46" value="1"> Six weeks from the date of reassembly of Parliament.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q46" value="2"> One year from its promulgation.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q46" value="3"> Thirty days from the date of reassembly of Parliament.</label></li>
+                </ul>
+
+                <div class="question-text">48. The *D.C. Wadhwa* case is famous for striking down the practice of:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q47" value="0"> The President refusing to sign bills.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q47" value="1"> The legislature passing laws that violate the Basic Structure.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q47" value="2"> The executive repeatedly re-promulgating Ordinances to bypass the legislature.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q47" value="3"> The judiciary interfering in matters of public policy.</label></li>
+                </ul>
+
+                <div class="question-text">49. The passage describes the practice of re-promulgation as a 'fraud on the Constitution' because it:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q48" value="0"> Violates the Anti-Defection Law.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q48" value="1"> Usurps the primary law-making function of the legislature.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q48" value="2"> Is an arbitrary act under Article 14.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q48" value="3"> Violates the freedom of religion under Article 25.</label></li>
+                </ul>
+
+                <div class="question-text">50. The power to promulgate an Ordinance is conditional upon the:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q49" value="0"> Declaration of a National Emergency.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q49" value="1"> Request of the Chief Justice of India.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q49" value="2"> Legislature not being in session.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q49" value="3"> Failure of constitutional machinery in a state.</label></li>
+                </ul>
+            </div>
+            
+            <hr>
+            <button type="submit" id="submit-btn">Submit Quiz</button>
+        </form>
+
         <div id="results-container">
             <h2>Your Performance Analysis</h2>
             <div id="score"></div>
@@ -156,446 +647,200 @@
     </div>
 
     <script>
-        // 1. All Quiz Data
+        // 1. All Quiz Data (10 passages, 50 questions)
         const quizData = [
-            {
-                passage: "H.L.A. Hart criticized John Austin’s command theory for failing to capture the obligatory, rule-governed nature of law, arguing that Austin's model could not distinguish between being 'obliged' by a threat (the gunman) and 'having an obligation' under a recognized rule. Hart developed the Rule of Recognition (RoR) as a secondary rule to address the uncertainty of primary rules. The RoR is accepted by officials as a matter of social practice.",
-                question: "The essential difference between Hart’s RoR and Kelsen’s Grundnorm lies in the RoR’s nature as:",
-                options: [
-                    "A purely hierarchical, normative proposition.",
-                    "The ultimate moral foundation of the legal system.",
-                    "A mere command issued by a political sovereign.",
-                    "A secondary rule whose existence is verifiable as a social fact."
-                ],
-                correct: 3 
-            },
-            {
-                passage: "Hans Kelsen’s Pure Theory of Law views the legal system as a hierarchy of norms, where the validity of every norm derives from a higher norm. This chain of validity culminates in the hypothetical foundational norm, the Grundnorm. Kelsen stressed that law must be purified from all sociological, historical, and moral content.",
-                question: "Which of the following constitutional concepts aligns best with Kelsen's view of the legal system's structure?",
-                options: [
-                    "The enforcement of Directive Principles of State Policy (DPSPs).",
-                    "The social engineering proposed by Roscoe Pound.",
-                    "The hierarchy of norms validated by the Constitution, which is itself validated by a presupposed Basic Norm.",
-                    "The judicial acceptance of custom as a source of law."
-                ],
-                correct: 2
-            },
-            {
-                passage: "John Austin’s definition of Positive Law requires three components: Command, Sanction, and the habit of Obedience to a determinate Sovereign. According to Austin, a rule that is merely moral or religious, even if widely followed, is not a positive law unless it originates from the sovereign.",
-                question: "A major criticism of Austin’s theory, particularly when applied to the Indian Constitution, is that it struggles to account for:",
-                options: [
-                    "The existence of customs and traditions.",
-                    "The power-conferring rules (e.g., rules for making a Will or contract) that result in nullity, not a sanction, upon non-compliance.",
-                    "The distinction between primary and secondary duties.",
-                    "The territorial jurisdiction of the Parliament."
-                ],
-                correct: 1
-            },
-            {
-                passage: "Lon L. Fuller championed a procedural natural law theory, asserting that law must satisfy an 'inner morality' consisting of eight principles (e.g., generality, promulgation, prospectivity, consistency) to qualify as genuine law. Fuller argued that law is the enterprise of subjecting human conduct to the governance of rules.",
-                question: "If a newly enacted statute is deliberately kept secret from the public and applied only by the administrative executive against specific individuals, which principle of Fuller's inner morality is primarily violated?",
-                options: [
-                    "Constancy (stability over time).",
-                    "Clarity.",
-                    "Generality.",
-                    "Promulgation (making the rules public)."
-                ],
-                correct: 3
-            },
-            {
-                passage: "Ronald Dworkin argued against legal positivism by insisting that law includes non-rule standards, primarily 'principles,' which have a dimension of weight or importance. Dworkin famously conceptualized individual rights as 'trumps' that individuals can use to defeat policy arguments appealing to the general welfare or collective goal.",
-                question: "Dworkin's Rights as Trumps theory fundamentally seeks to protect the individual from:",
-                options: [
-                    "Judicial review of constitutional amendments.",
-                    "The tyranny of utilitarian calculations favoring the majority or collective goal.",
-                    "The arbitrary commands of the sovereign.",
-                    "The historical spirit (*Volksgeist*) of the people."
-                ],
-                correct: 1
-            },
-            {
-                passage: "Roscoe Pound defined law as 'Social Engineering,' an applied science dedicated to resolving conflicts among competing interests in society with minimum friction and waste. Pound categorized these claims as Individual, Public (the State as a juristic person), and Social Interests. He posited Jural Postulates as the measuring rod to evaluate which interests should be recognized and protected by law.",
-                question: "A law protecting children from employment in factories (Child Labour laws) primarily seeks to satisfy which category of Pound's interests?",
-                options: [
-                    "Individual Interest (Parental freedom).",
-                    "Public Interest (Financial security of the employer).",
-                    "Social Interest (General morals and social progress).",
-                    "Individual Interest (Child’s right to self-determination)."
-                ],
-                correct: 2
-            },
-            {
-                passage: "American Legal Realists, led by Oliver Wendell Holmes Jr., asserted that the life of the law is not logic but experience, focusing on law 'in action' rather than law 'in books.' Holmes introduced the 'Bad Man Theory,' viewing a legal duty merely as a prediction that the courts will impose a sanction for a given act.",
-                question: "The 'Bad Man Theory' attempts to provide a pragmatic definition of law by completely separating it from:",
-                options: [
-                    "The concept of liability.",
-                    "The ultimate sovereignty of the legislature.",
-                    "The moral content or ethical justification for obedience.",
-                    "The historical evolution of legal concepts."
-                ],
-                correct: 2
-            },
-            {
-                passage: "Friedrich Carl von Savigny, the founder of the Historical School, viewed law as an organic creation of the people's spirit, or Volksgeist, evolving slowly and imperceptibly like language. Savigny argued that custom is the most authentic source of law, reflecting the common consciousness of the nation, and he generally opposed the premature codification of law.",
-                question: "According to Savigny, the validity of a newly enacted statute is ideally dependent on its consistency with:",
-                options: [
-                    "The will of the political sovereign.",
-                    "The principles of natural law (reason/morality).",
-                    "The historical customs and the common consciousness (*Volksgeist*).",
-                    "The efficiency required for social engineering."
-                ],
-                correct: 2
-            },
-            {
-                passage: "Wesley Newcomb Hohfeld clarified legal relations by identifying Jural Opposites (negation) and Jural Correlatives (implication). For instance, a Right (Claim) in Person A is correlated to a Duty in Person B, and its opposite is a No-right in A. The concept of Power involves the ability to alter legal relations.",
-                question: "If the law grants a person the **Privilege** (Liberty) to enter a public park, the legal relation of the State towards that person regarding the entry is the:",
-                options: [
-                    "Duty to allow entry.",
-                    "Right (Claim) to compel entry.",
-                    "No-right that the person shall not enter.",
-                    "Liability to be sued by the person."
-                ],
-                correct: 2
-            },
-            {
-                passage: "Legal Personality is the attribute that enables an entity to hold legal rights and duties. Juristic persons (e.g., corporations, trusts) are fictitious creations of the law. The Fiction Theory posits that a corporation has no real existence outside the law, while the Realist Theory (Gierke) argues that a corporation is a real, psychological group entity with a genuine group will.",
-                question: "In Indian Company Law, when courts 'lift the corporate veil' to hold directors personally liable for fraud, they are essentially treating the corporate personality as:",
-                options: [
-                    "A real, self-existing entity (Realist Theory).",
-                    "A mere façade or instrumentality used for an unlawful purpose.",
-                    "A trustee for the government (Waqf).",
-                    "A natural person under the Doctrine of Survivorship."
-                ],
-                correct: 1
-            },
-            {
-                passage: "Ownership is the most comprehensive right over property, described as the residuary right. It is *de jure* (legal title). Possession is the *de facto* (physical control) aspect. Savigny’s theory requires both *corpus possessionis* (physical control) and *animus domini* (intent to hold as owner) for true possession, while Ihering focused primarily on the corpus, viewing *animus* as naturally implied.",
-                question: "A key implication of the distinction between Ownership (*de jure*) and Possession (*de facto*) is that a person who has valid Ownership may not have:",
-                options: [
-                    "The capacity to sue for damages.",
-                    "The right to transfer the property by Will.",
-                    "The immediate physical possession of the property (e.g., in a lease or bailment).",
-                    "A duty not to harm the environment."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Retributive Theory of Punishment is backward-looking, focusing on the past wrong. It holds that punishment is justified because the offender deserves it (just deserts) and that the penalty must be proportional to the crime (*lex talionis*). It views the criminal as a rational moral agent.",
-                question: "A major philosophical defense of the Retributive Theory (e.g., by Kant) is that it upholds the dignity of the offender by:",
-                options: [
-                    "Ensuring the offender receives psychological treatment.",
-                    "Treating the offender as a means to achieve the general good (deterrence).",
-                    "Recognizing their capacity to choose wrongdoing and therefore deserving the consequence of that choice.",
-                    "Setting them free immediately after they pay a nominal fine."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Deterrent Theory justifies punishment based on its beneficial future consequences, aiming to prevent future crimes (General and Specific Deterrence). The Reformative Theory views the criminal as a 'patient' needing treatment and education to be reintegrated into society.",
-                question: "The practice of granting **Parole or Probation** to convicted criminals is most strongly aligned with the objective of which theory of punishment?",
-                options: [
-                    "Retributive Theory, as it satisfies just deserts.",
-                    "The Doctrine of Pious Obligation.",
-                    "Reformative Theory, as it focuses on social reintegration and treatment.",
-                    "General Deterrence, as it sends a message to the public."
-                ],
-                correct: 2
-            },
-            {
-                passage: "Sociological Jurisprudence emphasizes the functional aspect of law, using it as a tool for social control. Eugen Ehrlich focused on the 'living law'—the rules governing life in society, which often preceded and influenced positive law.",
-                question: "Ehrlich’s concept of 'Living Law' suggests that true legal norms are found primarily in:",
-                options: [
-                    "The commands of the political sovereign.",
-                    "The eternal and unchangeable principles of natural reason.",
-                    "The judicial precedents of the superior courts.",
-                    "The actual practices, customs, and spontaneous behavior of people in society."
-                ],
-                correct: 3
-            },
-            {
-                passage: "The concept of Legal Personality is extended beyond natural persons to Juristic Persons (e.g., companies). The creation of a separate legal entity limits the liability of the individual members. The Fiction Theory sees this personality as a pure legal artifice, while the Realist Theory sees it as a real group entity.",
-                question: "The Doctrine of Separate Legal Entity (established in *Salomon v. Salomon*) is a primary example of:",
-                options: [
-                    "The Doctrine of Pious Obligation.",
-                    "A legal fiction.",
-                    "The Doctrine of *Marz-ul-Maut*.",
-                    "The Doctrine of *Ultra Vires*."
-                ],
-                correct: 1
-            },
-            {
-                passage: "The Historical School (*Volksgeist*) emphasized that law is found, not made, evolving from the common conviction of the people. This contrasted with the Analytical School’s view that law is a conscious creation of the sovereign.",
-                question: "If the Indian Parliament suddenly enacted a law that completely abolished the traditional structure of the Hindu Undivided Family (HUF), the Historical School would criticize the law for:",
-                options: [
-                    "Violating the principle of Utilitarianism.",
-                    "Exceeding the one-third testamentary limit.",
-                    "Failing to respect the organic, historical development and national consciousness (*Volksgeist*).",
-                    "Lacking the necessary sanctions for enforcement."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Hohfeldian Jural Opposites (negation) include: Right is the opposite of No-right, and Duty is the opposite of Privilege (Liberty). Jural Correlatives (implication) include: Right is the correlative of Duty, and Privilege is the correlal of No-right.",
-                question: "The relationship between **Immunity** and **Liability** in Hohfeld's scheme is that they are:",
-                options: [
-                    "Correlatives.",
-                    "Opposites.",
-                    "Complements.",
-                    "Synonyms."
-                ],
-                correct: 1
-            },
-            {
-                passage: "John Rawls' theory of 'Justice as Fairness' proposes that rational individuals, operating behind a 'Veil of Ignorance,' would choose principles to govern society. The 'Difference Principle' allows social and economic inequalities only if they are arranged to provide the greatest benefit to the least advantaged members of society.",
-                question: "The 'Difference Principle' operates as a constraint on social and economic systems to ensure that they conform to the strategy of:",
-                options: [
-                    "Maximizing the overall average happiness (Utilitarianism).",
-                    "Pure equality of income (Egalitarianism).",
-                    "Maximizing the minimum share (Maximin principle).",
-                    "Historical entitlement (Libertarianism)."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The tort of Negligence requires proof of Breach of Duty... If a person is subjected to **Absolute Liability** (e.g., under the *M.C. Mehta* rule for hazardous industries), the liability is classified as no-fault because the defendant is barred from claiming the defense that:",
-                question: "If a person is subjected to **Absolute Liability** (e.g., under the *M.C. Mehta* rule for hazardous industries), the liability is classified as no-fault because the defendant is barred from claiming the defense that:",
-                options: [
-                    "The liability was too remote.",
-                    "They were only acting as a manager (*Mutawalli*).",
-                    "The damage was inevitable despite taking all reasonable care and precaution.",
-                    "They were exercising an ordinary, non-natural use of land."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The concept of Ownership implies the right to the property's use, disposal, and duration. It contrasts with **Possession**... According to the objective theory of Possession (Ihering), the law protects possession primarily because it serves as the outward manifestation of ownership and is vital for maintaining social peace.",
-                question: "The protection afforded to Possession, even against the true owner in some limited cases... is justified on the basis of:",
-                options: [
-                    "The Pious Obligation of the owner to the possessor.",
-                    "The legal validity of *Marz-ul-Maut* gifts.",
-                    "The principle of maintaining social order and discouraging self-help.",
-                    "The principle of *Res Judicata*."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The power to adopt a child is governed by the Hindu Adoptions and Maintenance Act (HAMA)... HAMA creates a legal fiction of birth, severing ties with the biological family.",
-                question: "The rule under HAMA requiring a Hindu male adopting a son to have no living son, son's son, or son's son's son, is based on the traditional legal principle of:",
-                options: [
-                    "The doctrine of *locus standi*.",
-                    "Ensuring the existence of a male heir for spiritual benefit (putraka principle).",
-                    "The *Marz-ul-Maut* rule.",
-                    "The principle of *Shufa*."
-                ],
-                correct: 1
-            },
-            {
-                passage: "The Supreme Court often relies on the doctrine of Proportionality when reviewing restrictions on fundamental rights. The doctrine requires that the state action must be necessary and must adopt the least restrictive means to achieve its objective.",
-                question: "In jurisprudential terms, the Doctrine of Proportionality is a refinement of the concept of:",
-                options: [
-                    "The legal validity of Austin’s sanction.",
-                    "The necessity of the *Grundnorm*.",
-                    "The procedural and substantive reasonableness embedded in the Rule of Law.",
-                    "The finality of *Res Judicata*."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Jural Correlative of Power is Liability. Power is the capacity to alter legal relations... Liability is the subjection to that power...",
-                question: "If a person has the **Immunity** that their Fundamental Rights cannot be altered by a simple majority vote of the legislature, the Jural Correlative of that Immunity is the legislature’s:",
-                options: [
-                    "Right (Claim) to amend the Constitution.",
-                    "Privilege (Liberty) to legislate.",
-                    "Duty not to legislate.",
-                    "Disability (Inability) to alter the rights by simple majority."
-                ],
-                correct: 3
-            },
-            {
-                passage: "Legal Realists, particularly Scandinavian Realists, rejected the binding nature of abstract concepts like 'sovereignty' and 'duty,'... If a legal theorist claims that the binding force of the Indian Constitution is merely a deeply ingrained psychological belief... that theorist is adhering to the school of:",
-                question: "If a legal theorist claims that the binding force of the Indian Constitution is merely a deeply ingrained psychological belief... that theorist is adhering to the school of:",
-                options: [
-                    "Classical Natural Law.",
-                    "The Historical School.",
-                    "Legal Realism (Scandinavian branch).",
-                    "Analytical Positivism (Hart)."
-                ],
-                correct: 2
-            },
-            {
-                passage: "Feminist Jurisprudence (Dominance Theory) argues that law is a mechanism of male power... It views concepts like 'neutrality' and 'formal equality' as masking substantive subordination.",
-                question: "According to this theory, the formal equality enshrined in legal statutes (e.g., equal pay legislation) often fails to eliminate gender inequality because it ignores:",
-                options: [
-                    "The doctrine of *stare decisis*.",
-                    "The moral rights of the sovereign.",
-                    "The structural, political, and economic conditions of male dominance and female subordination.",
-                    "The principle of *Volenti Non Fit Injuria*."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Restorative Justice theory views crime primarily as a violation of people and relationships... It seeks to repair the harm caused by the crime through a cooperative process...",
-                question: "The core focus of Restorative Justice is achieving:",
-                options: [
-                    "Retribution and proportional suffering.",
-                    "General deterrence and social warning.",
-                    "Repair of harm and reconciliation between the parties.",
-                    "Rehabilitation through psychological treatment."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Indian legal system often uses the Doctrine of Harmonious Construction to reconcile conflicts between Fundamental Rights (Part III) and Directive Principles of State Policy (Part IV). The Judiciary views these two parts as supplementary, not contradictory.",
-                question: "The jurisprudential basis for using Harmonious Construction is the rejection of the idea of:",
-                options: [
-                    "Legal positivism.",
-                    "Separation of powers.",
-                    "The dichotomy between law (Part III) and morality/goals (Part IV) as absolute, necessitating their mutual fulfillment.",
-                    "The Rule of Law."
-                ],
-                correct: 2
-            },
-            {
-                passage: "The Jural Opposites in the Hohfeldian scheme are: Right is the opposite of No-right, and Duty is the opposite of Privilege (Liberty). Jural Opposites are logical negations.",
-                question: "The Jural Opposite of **Duty** is:",
-                options: [
-                    "Right (Claim).",
-                    "Liability.",
-                    "Immunity.",
-                    "Privilege (Liberty)."
-                ],
-                correct: 3
-            },
-            {
-                passage: "The tort of Defamation protects reputation. Defamation in a transient form (Slander) requires proof of special damage, but in a permanent form (Libel) is actionable *per se*.",
-                question: "The imposition of a monetary sanction (damages) for defamation is an application of which basic legal concept?",
-                options: [
-                    "The Doctrine of Pith and Substance.",
-                    "Civil Liability.",
-                    "Criminal Liability.",
-                    "Sovereign Immunity."
-                ],
-                correct: 1
-            },
-            {
-                passage: "The Historical School of Jurisprudence (*Volksgeist*) emphasized that law is derived from the people's spirit and customs. In contrast, the Scandinavian Realists (e.g., Ross) viewed law primarily as empirical facts... that predict outcomes.",
-                question: "The crucial element accepted as the source of legal validity by the Historical School but entirely rejected by the Scandinavian Realists is:",
-                options: [
-                    "The use of the concept 'right' in judicial language.",
-                    "The historical inevitability of a classless society.",
-                    "The psychological reality of 'duty' and 'sovereignty' as binding norms.",
-                    "The concept of judicial precedent (*stare decisis*)."
-                ],
-                correct: 2
-            }
+            // Passage 1
+            { passage: "Passage 1 (Art 14/21)", question: "The 'golden triangle' in Indian Constitutional Law refers to the interrelationship between which three articles?", options: ["Articles 14, 15, and 16", "Articles 14, 19, and 21", "Articles 20, 21, and 22", "Articles 14, 32, and 226"], correct: 1, topic: "Fundamental Rights (Golden Triangle)" },
+            { passage: "Passage 1 (Art 14/21)", question: "The judgment in *Maneka Gandhi v. UOI* is significant because it held that 'procedure established by law' under Article 21 must be:", options: ["Any procedure, as long as it is enacted by a competent legislature.", "The same as the 'due process' in the American Constitution, including substantive review.", "Fair, just, and reasonable, and not arbitrary or fanciful.", "Subject to the principles of natural justice only."], correct: 2, topic: "Article 21 (Due Process)" },
+            { passage: "Passage 1 (Art 14/21)", question: "According to the passage, the 'arbitrariness test' under Article 14, as established in *E.P. Royappa*, holds that:", options: ["Equality is a dynamic concept that cannot be confined to the traditional doctrine of reasonable classification.", "Equality and arbitrariness are synonymous concepts.", "Arbitrariness is permissible if it is for the public good.", "The arbitrariness test replaces the reasonable classification test entirely."], correct: 0, topic: "Article 14 (Arbitrariness)" },
+            { passage: "Passage 1 (Art 14/21)", question: "The passage implies that a law which is procedurally fair under Article 21 can still be struck down if it:", options: ["Imposes an unreasonable restriction on freedom of speech under Article 19.", "Is passed by the Parliament and not the State Legislature.", "Is not arbitrary but violates Article 20.", "Affects a person who is not a citizen of India."], correct: 0, topic: "Fundamental Rights (Golden Triangle)" },
+            { passage: "Passage 1 (Art 14/21)", question: "What is the central thesis of the 'golden triangle' concept?", options: ["That Articles 14, 19, and 21 are identical in their scope and application.", "That these three articles must be read together, and a law must satisfy the requirements of all three to be valid.", "That Article 21 is superior to both Article 14 and Article 19.", "That these rights can be suspended together during a National Emergency."], correct: 1, topic: "Fundamental Rights (Golden Triangle)" },
+            // Passage 2
+            { passage: "Passage 2 (Basic Structure)", question: "What is the central holding of the *Kesavananda Bharati* case as described in the passage?", options: ["Parliament has no power to amend the Fundamental Rights.", "The Basic Structure of the Constitution can be amended by a special majority.", "Parliament's amending power under Article 368 is wide but not unlimited, as it cannot destroy the Basic Structure.", "The Ninth Schedule is completely immune from judicial review."], correct: 2, topic: "Basic Structure Doctrine" },
+            { passage: "Passage 2 (Basic Structure)", question: "In *Minerva Mills v. UOI*, the Supreme Court struck down the 42nd Amendment clauses because they violated the Basic Structure by:", options: ["Introducing new Directive Principles.", "Giving absolute supremacy to Directive Principles over Fundamental Rights and ousting judicial review.", "Allowing the President to amend the Constitution.", "Shortening the term of the Lok Sabha."], correct: 1, topic: "Basic Structure Doctrine" },
+            { passage: "Passage 2 (Basic Structure)", question: "The significance of the *I.R. Coelho* judgment is that it:", options: ["Overruled the *Kesavananda Bharati* judgment.", "Declared all laws in the Ninth Schedule void.", "Confirmed that judicial review is not part of the Basic Structure.", "Applied the Basic Structure test to laws placed in the Ninth Schedule after April 24, 1973."], correct: 3, topic: "Ninth Schedule (I.R. Coelho)" },
+            { passage: "Passage 2 (Basic Structure)", question: "Which of the following would be considered a part of the 'Basic Structure' as per the *Minerva Mills* case?", options: ["The right to property as a fundamental right.", "The harmony and balance between Fundamental Rights and Directive Principles.", "The right of the Parliament to create new states.", "The specific number of judges in the Supreme Court."], correct: 1, topic: "Basic Structure Doctrine" },
+            { passage: "Passage 2 (Basic Structure)", question: "The Basic Structure Doctrine is a judicial innovation that acts as a limitation on:", options: ["The executive's ordinance-making power.", "The judiciary's power of judicial review.", "The President's power to grant pardons.", "Parliament's constituent power under Article 368."], correct: 3, topic: "Article 368 (Amending Power)" },
+            // Passage 3
+            { passage: "Passage 3 (Federalism / Art 239AA)", question: "The term 'asymmetric federalism' as used in the passage means:", options: ["The Union has more power than the States in all matters.", "All States must be treated identically in all respects.", "Certain federal units (States/UTs) are granted special status or powers not given to others.", "The judiciary has the final say in all federal disputes."], correct: 2, topic: "Federalism (Asymmetric)" },
+            { passage: "Passage 3 (Federalism / Art 239AA)", question: "According to Article 239AA and the *NCT of Delhi* judgments, the Legislative Assembly of Delhi CANNOT make laws on:", options: ["Public Health and Sanitation.", "Police, Public Order, and Land.", "Education and Transport.", "All matters in the Concurrent List."], correct: 1, topic: "Article 239AA (Delhi Govt.)" },
+            { passage: "Passage 3 (Federalism / Art 239AA)", question: "The Supreme Court held that the 'aid and advice' of the Delhi Council of Ministers is binding on the LG (except for the three excluded subjects) to uphold the principle of:", options: ["The absolute power of the Union government.", "Representative democracy and collaborative federalism.", "The LG's discretionary power in all matters.", "The supremacy of the Home Ministry."], correct: 1, topic: "Article 239AA (Delhi Govt.)" },
+            { passage: "Passage 3 (Federalism / Art 239AA)", question: "The term *'sui generis'* used to describe Delhi's status means:", options: ["It is a full-fledged State.", "It is a corporation managed by the Union.", "It is identical to all other Union Territories.", "It is unique and of its own kind, not fitting into the traditional categories."], correct: 3, topic: "Federalism (Asymmetric)" },
+            { passage: "Passage 3 (Federalism / Art 239AA)", question: "What is the fundamental conflict resolved by the *NCT of Delhi* judgments?", options: ["A dispute between the Delhi Assembly and the Parliament over amending the Constitution.", "A dispute over the distribution of tax revenue between the Union and Delhi.", "A power-sharing dispute between the elected Delhi Government and the Union-appointed Lieutenant Governor.", "A dispute over whether Delhi can have its own High Court."], correct: 2, topic: "Article 239AA (Delhi Govt.)" },
+            // Passage 4
+            { passage: "Passage 4 (Anti-Defection Law)", question: "The Tenth Schedule was added to the Constitution to primarily address:", options: ["Corruption in judicial appointments.", "The instability caused by legislators switching political parties for personal gain.", "The financial powers of the Union government.", "The procedure for passing constitutional amendments."], correct: 1, topic: "Tenth Schedule (Anti-Defection)" },
+            { passage: "Passage 4 (Anti-Defection Law)", question: "According to the passage, which of the following is a specified ground for disqualification under the Tenth Schedule?", options: ["Criticizing the party leader in a press conference.", "Being absent from the House for 60 days.", "Voluntarily giving up membership of one's political party.", "Being convicted of a criminal offense with a two-year sentence."], correct: 2, topic: "Tenth Schedule (Anti-Defection)" },
+            { passage: "Passage 4 (Anti-Defection Law)", question: "What was the significance of the *Kihoto Hollohan* judgment?", options: ["It declared the entire Tenth Schedule unconstitutional.", "It held that the Speaker's decision is final and cannot be questioned in any court.", "It struck down the bar on judicial review (Para 7) and held that the Speaker acts as a tribunal.", "It defined 'voluntarily giving up membership' as formal resignation only."], correct: 2, topic: "Tenth Schedule (Anti-Defection)" },
+            { passage: "Passage 4 (Anti-Defection Law)", question: "The Supreme Court held that the Speaker's decision under the Tenth Schedule is reviewable on the ground of:", options: ["The decision being politically incorrect.", "Violation of natural justice or *mala fides*.", "The decision being unpopular with the public.", "The decision differing from the Governor's advice."], correct: 1, topic: "Tenth Schedule (Anti-Defection)" },
+            { passage: "Passage 4 (Anti-Defection Law)", question: "By classifying the Speaker's function under the Tenth Schedule as that of a 'tribunal', the Supreme Court subjected it to:", options: ["The control of the Election Commission.", "The ordinary rules of a political debate.", "The principles of judicial review applicable to quasi-judicial bodies.", "The doctrine of 'political question'."], correct: 2, topic: "Tenth Schedule (Anti-Defection)" },
+            // Passage 5
+            { passage: "Passage 5 (Judicial Review / Tribunals)", question: "The *L. Chandra Kumar* judgment is a landmark case concerning:", options: ["The definition of 'State' under Article 12.", "The validity of Administrative Tribunals and the scope of judicial review.", "The scope of the President's pardoning power.", "The interpretation of the Tenth Schedule."], correct: 1, topic: "Administrative Tribunals (Art. 323A/B)" },
+            { passage: "Passage 5 (Judicial Review / Tribunals)", question: "The 42nd Amendment attempted to exclude the jurisdiction of which courts?", options: ["All courts, including the Supreme Court under Article 136.", "Only the Subordinate Courts.", "The High Courts under Article 226.", "The Supreme Court under Article 32."], correct: 2, topic: "Administrative Tribunals (Art. 323A/B)" },
+            { passage: "Passage 5 (Judicial Review / Tribunals)", question: "The Supreme Court in *L. Chandra Kumar* struck down the ouster of the High Court's jurisdiction by holding that:", options: ["Tribunals are not necessary for the legal system.", "The power of judicial review under Articles 226 and 32 is part of the Basic Structure.", "The 42nd Amendment was not passed by a special majority.", "Only Parliament can create tribunals, not State Legislatures."], correct: 1, topic: "Basic Structure Doctrine" },
+            { passage: "Passage 5 (Judicial Review / Tribunals)", question: "What is the current legal status of Administrative Tribunals after the *L. Chandra Kumar* judgment?", options: ["They are unconstitutional and have been abolished.", "They are the final authority, and their decisions cannot be appealed.", "They function as courts of first instance, but their decisions are subject to review by the High Court under Article 226.", "They can only hear appeals from the High Court."], correct: 2, topic: "Administrative Tribunals (Art. 323A/B)" },
+            { passage: "Passage 5 (Judicial Review / Tribunals)", question: "The *L. Chandra Kumar* case strongly affirms the Basic Structure Doctrine by protecting:", options: ["The supremacy of Directive Principles.", "The power of the Executive to appoint judges.", "The power of judicial review.", "The right to property."], correct: 2, topic: "Basic Structure Doctrine" },
+            // Passage 6
+            { passage: "Passage 6 (Emergency Provisions)", question: "The landmark judgment in *S.R. Bommai v. UOI* primarily deals with the misuse of:", options: ["Article 352 (National Emergency).", "Article 360 (Financial Emergency).", "Article 356 (President's Rule).", "Article 368 (Amending Power)."], correct: 2, topic: "Emergency Provisions (Art. 356)" },
+            { passage: "Passage 6 (Emergency Provisions)", question: "What was the most significant outcome of the *Bommai* judgment regarding the President's power under Article 356?", options: ["It made the President's satisfaction absolute and non-reviewable.", "It held that the President's satisfaction is justiciable and subject to judicial review.", "It allowed the President to dissolve the Assembly immediately upon proclamation.", "It transferred the power under Article 356 to the Governor."], correct: 1, topic: "Emergency Provisions (Art. 356)" },
+            { passage: "Passage 6 (Emergency Provisions)", question: "According to the *Bommai* case, a proclamation under Article 356 can be struck down by the court if it is found to be:", options: ["Politically unpopular.", "*Mala fide* or based on wholly irrelevant grounds.", "Against the advice of the Prime Minister.", "Issued during a National Emergency."], correct: 1, topic: "Emergency Provisions (Art. 356)" },
+            { passage: "Passage 6 (Emergency Provisions)", question: "The judgment held that upon proclamation, the State Assembly is:", options: ["Immediately and irrevocably dissolved.", "Placed in suspended animation, pending parliamentary approval.", "Empowered to override the proclamation.", "Merged with the Parliament."], correct: 1, topic: "Emergency Provisions (Art. 356)" },
+            { passage: "Passage 6 (Emergency Provisions)", question: "During a Proclamation of National Emergency (Art. 352), which Fundamental Rights can NEVER be suspended?", options: ["Article 19 (Speech) and Article 21 (Life).", "Article 14 (Equality) and Article 19 (Speech).", "Article 20 (Conviction) and Article 21 (Life).", "Article 32 (Remedies) and Article 14 (Equality)."], correct: 2, topic: "Emergency Provisions (Art. 359)" },
+            // Passage 7
+            { passage: "Passage 7 (Pardoning Power)", question: "The power to grant pardon under Article 72 is exercised by the President on the:", options: ["Aid and advice of the Chief Justice of India.", "Personal discretion of the President.", "Aid and advice of the Council of Ministers.", "Recommendation of a parliamentary committee."], correct: 2, topic: "Pardoning Power (Art. 72)" },
+            { passage: "Passage 7 (Pardoning Power)", question: "The *Epuru Sudhakar* judgment established that the President's pardoning power is:", options: ["Absolute, final, and immune from judicial review.", "A legislative power that can override court judgments.", "A judicial power that requires a fresh trial.", "Subject to limited judicial review on grounds of arbitrariness or *mala fides*."], correct: 3, topic: "Pardoning Power (Art. 72)" },
+            { passage: "Passage 7 (Pardoning Power)", question: "A 'reprieve' under Article 72 means:", options: ["A temporary stay on the execution of a sentence.", "Reducing the sentence to a lighter one (e.g., death to life imprisonment).", "Completely absolving the convict of all charges and disqualifications.", "Reducing the period of the sentence without changing its character."], correct: 0, topic: "Pardoning Power (Art. 72)" },
+            { passage: "Passage 7 (Pardoning Power)", question: "The passage states that the court's review of a pardoning decision is limited to the:", options: ["Merits of the case (i.e., whether the convict was actually guilty).", "Manner of the exercise of power (i.e., whether it was arbitrary).", "Political implications of the pardon.", "Opinion of the victim's family."], correct: 1, topic: "Pardoning Power (Art. 72)" },
+            { passage: "Passage 7 (Pardoning Power)", question: "A 'pardon' is distinct from 'commutation' because a pardon:", options: ["Only reduces the sentence.", "Only stays the execution.", "Completely absolves the convict of the sentence and all resulting disqualifications.", "Changes the nature of the sentence (e.g., rigorous to simple imprisonment)."], correct: 2, topic: "Pardoning Power (Art. 72)" },
+            // Passage 8
+            { passage: "Passage 8 (Religion)", question: "The 'Essential Religious Practices (ERP) Test' is a judicial doctrine used to:", options: ["Determine if a person is a 'Hindu' for the HMA.", "Decide which religion is superior in India.", "Distinguish protected religious practices from secular activities subject to state regulation.", "Enforce the Uniform Civil Code."], correct: 2, topic: "Freedom of Religion (Art. 25/26)" },
+            { passage: "Passage 8 (Religion)", question: "According to Article 25(1), the right to freedom of religion is not absolute and is subject to:", options: ["Public order, morality, and health.", "The consent of the Parliament.", "The Basic Structure Doctrine.", "The approval of the President."], correct: 0, topic: "Freedom of Religion (Art. 25/26)" },
+            { passage: "Passage 8 (Religion)", question: "In the *Sabarimala* case, the majority held that the exclusion of women was not an ERP. This meant the practice was:", options: ["Protected by Article 26 as a right of the denomination.", "A valid exercise of state power.", "Not protected by the Constitution and could be prohibited by the state.", "A matter to be decided by the temple priests."], correct: 2, topic: "Freedom of Religion (Art. 25/26)" },
+            { passage: "Passage 8 (Religion)", question: "Article 26 grants rights to religious denominations to manage 'matters of religion'. This right is primarily a:", options: ["Collective right.", "Individual right.", "Secular right.", "Political right."], correct: 0, topic: "Freedom of Religion (Art. 25/26)" },
+            { passage: "Passage 8 (Religion)", question: "The ERP test is often criticized by scholars because it:", options: ["Gives too much power to religious denominations.", "Is too easy to apply and leads to clear results.", "Requires secular judges to engage in theological interpretation, deciding what is 'essential' to a faith.", "Violates the Doctrine of Pith and Substance."], correct: 2, topic: "Freedom of Religion (Art. 25/26)" },
+            // Passage 9
+            { passage: "Passage 9 (Right to Property)", question: "The 44th Amendment Act, 1978, had what effect on the Right to Property?", options: ["It abolished the right to property entirely.", "It made the right to property an absolute, non-derogable right.", "It moved the right from a Fundamental Right (Part III) to a Constitutional/Legal Right (Part XII).", "It restricted the right to property to citizens only."], correct: 2, topic: "Right to Property (Art. 300A)" },
+            { passage: "Passage 9 (Right to Property)", question: "What is the primary difference between a Fundamental Right and the current Constitutional Right under Article 300A?", options: ["A Constitutional Right cannot be enforced in any court.", "A citizen can no longer approach the Supreme Court directly under Article 32 for its violation.", "A Constitutional Right is binding on the judiciary but not the executive.", "Only a Constitutional Right can be amended."], correct: 1, topic: "Right to Property (Art. 300A)" },
+            { passage: "Passage 9 (Right to Property)", question: "Article 300A requires deprivation of property to be by 'authority of law'. The Supreme Court interprets 'law' here to mean:", options: ["A simple executive order or government notification.", "A valid, clear, and non-arbitrary law enacted by a competent legislature.", "A law that is approved by the President only.", "A law that provides compensation equal to the market value."], correct: 1, topic: "Right to Property (Art. 300A)" },
+            { passage: "Passage 9 (Right to Property)", question: "A citizen whose property is taken by the State without legal authority can file a writ petition in the:", options: ["Supreme Court under Article 32 (for violation of a fundamental right).", "High Court under Article 226 (for violation of a legal/constitutional right).", "District Court only.", "International Court of Justice."], correct: 1, topic: "Right to Property (Art. 300A)" },
+            { passage: "Passage 9 (Right to Property)", question: "The passage suggests that the right to property under Article 300A is also protected by:", options: ["Article 14, as the deprivation cannot be arbitrary.", "Article 356, as it can be suspended during an emergency.", "Article 31B (The Ninth Schedule).", "The Directive Principles of State Policy."], correct: 0, topic: "Right to Property (Art. 300A)" },
+            // Passage 10
+            { passage: "Passage 10 (Ordinance Power)", question: "The executive's power to promulgate an Ordinance is a(n):", options: ["Judicial power.", "Constituent power.", "Legislative power exercised by the executive.", "Absolute power not subject to any review."], correct: 2, topic: "Ordinance Power (Art. 123/213)" },
+            { passage: "Passage 10 (Ordinance Power)", question: "An Ordinance promulgated under Article 123 ceases to operate if it is not approved by Parliament within:", options: ["Six months from its promulgation.", "Six weeks from the date of reassembly of Parliament.", "One year from its promulgation.", "Thirty days from the date of reassembly of Parliament."], correct: 1, topic: "Ordinance Power (Art. 123/213)" },
+            { passage: "Passage 10 (Ordinance Power)", question: "The *D.C. Wadhwa* case is famous for striking down the practice of:", options: ["The President refusing to sign bills.", "The legislature passing laws that violate the Basic Structure.", "The executive repeatedly re-promulgating Ordinances to bypass the legislature.", "The judiciary interfering in matters of public policy."], correct: 2, topic: "Ordinance Power (Art. 123/213)" },
+            { passage: "Passage 10 (Ordinance Power)", question: "The passage describes the practice of re-promulgation as a 'fraud on the Constitution' because it:", options: ["Violates the Anti-Defection Law.", "Usurps the primary law-making function of the legislature.", "Is an arbitrary act under Article 14.", "Violates the freedom of religion under Article 25."], correct: 1, topic: "Ordinance Power (Art. 123/213)" },
+            { passage: "Passage 10 (Ordinance Power)", question: "The power to promulgate an Ordinance is conditional upon the:", options: ["Declaration of a National Emergency.", "Request of the Chief Justice of India.", "Legislature not being in session.", "Failure of constitutional machinery in a state."], correct: 2, topic: "Ordinance Power (Art. 123/213)" }
         ];
 
-        // 2. DOM Elements
-        const quizContainer = document.getElementById('quiz-container');
+        // 2. JavaScript Logic
+        const quizForm = document.getElementById('quiz-form');
         const submitButton = document.getElementById('submit-btn');
         const resultsContainer = document.getElementById('results-container');
         const scoreElement = document.getElementById('score');
         const analysisElement = document.getElementById('analysis');
+        const timerElement = document.getElementById('timer');
 
-        // 3. Build Quiz Function
-        function buildQuiz() {
-            const output = [];
-            quizData.forEach((currentQuestion, questionNumber) => {
-                const options = [];
-                currentQuestion.options.forEach((option, index) => {
-                    options.push(
-                        `<li class="option-item">
-                            <input type="radio" name="question${questionNumber}" id="q${questionNumber}o${index}" value="${index}">
-                            <label for="q${questionNumber}o${index}">${option}</label>
-                        </li>`
-                    );
-                });
+        let timerInterval;
+        let timeRemaining = 50 * 60; // 50 minutes in seconds
 
-                output.push(
-                    `<div class="question-block" id="question-block-${questionNumber}">
-                        <div class="passage">${currentQuestion.passage}</div>
-                        <div class="question-text">${questionNumber + 1}. ${currentQuestion.question}</div>
-                        <ul class="options-list">${options.join('')}</ul>
-                    </div>`
-                );
-            });
-            quizContainer.innerHTML = output.join('');
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const minutes = Math.floor(timeRemaining / 60);
+                let seconds = timeRemaining % 60;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                timerElement.textContent = `${minutes}:${seconds}`;
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Time's Up!";
+                    timerElement.style.color = "#8b0000";
+                    showResults();
+                } else if (timeRemaining < 300) { // Last 5 minutes
+                    timerElement.style.color = "#d9534f";
+                }
+            }, 1000);
         }
 
-        // 4. Show Results Function
         function showResults() {
+            clearInterval(timerInterval);
+            
             let numCorrect = 0;
-            const answerContainers = quizContainer.querySelectorAll('.options-list');
-            const questionBlocks = quizContainer.querySelectorAll('.question-block');
+            let numIncorrect = 0;
+            const userAnswers = [];
+            const topicPerformance = {};
 
-            quizData.forEach((currentQuestion, questionNumber) => {
-                const answerContainer = answerContainers[questionNumber];
-                const selector = `input[name=question${questionNumber}]:checked`;
-                const userAnswerInput = (answerContainer.querySelector(selector) || {});
+            quizData.forEach((q, index) => {
+                const selector = `input[name=q${index}]:checked`;
+                const userAnswerInput = (quizForm.querySelector(selector) || {});
                 const userAnswer = parseInt(userAnswerInput.value);
-                const correctIndex = currentQuestion.correct;
-                
-                const optionItems = answerContainer.querySelectorAll('.option-item');
+                const correctIndex = q.correct;
+                const topic = q.topic;
 
-                // Mark correct answer in green
-                optionItems[correctIndex].classList.add('correct');
+                userAnswers.push(userAnswer);
+
+                if (!topicPerformance[topic]) {
+                    topicPerformance[topic] = { correct: 0, total: 0 };
+                }
+                topicPerformance[topic].total++;
+
+                const questionBlock = document.getElementById(`quiz-form`).children[index];
+                const optionItems = questionBlock.querySelectorAll('.option-item');
 
                 if (userAnswer === correctIndex) {
                     numCorrect++;
-                    questionBlocks[questionNumber].classList.add('correct');
+                    optionItems[correctIndex].classList.add('correct');
+                    topicPerformance[topic].correct++;
+                } else if (userAnswerInput.value !== undefined) {
+                    numIncorrect++;
+                    optionItems[userAnswer].classList.add('selected', 'incorrect');
+                    optionItems[correctIndex].classList.add('correct');
                 } else {
-                    questionBlocks[questionNumber].classList.add('incorrect');
-                    // Mark user's incorrect answer in red
-                    if (userAnswerInput.value !== undefined) {
-                        optionItems[userAnswer].classList.add('selected', 'incorrect');
-                    }
+                    // Unanswered
+                    optionItems[correctIndex].classList.add('correct');
                 }
             });
 
-            // Calculate score and feedback
-            const finalScore = numCorrect * 1 - (quizData.length - numCorrect) * 0.25;
-            const accuracy = (numCorrect / quizData.length) * 100;
-            
+            const finalScore = (numCorrect * 1) - (numIncorrect * 0.25);
+            const accuracy = (numCorrect / 50) * 100;
+
             let standing = "Novice";
-            let standingMessage = "You have a foundational understanding, but need to focus on core concepts and application.";
+            let standingMessage = "This is a good starting point. You have a foundational understanding, but need to focus on core concepts, landmark cases, and application. Keep practicing!";
             
-            if (finalScore >= 24) {
-                standing = "Pro / Topper";
-                standingMessage = "Excellent work! You have mastered the core concepts and their application. Focus on consistency.";
-            } else if (finalScore >= 18) {
-                standing = "Proficient / Intermediate";
-                standingMessage = "Strong performance! You have a good grasp of the theories. Your next step is to master the nuanced distinctions between them.";
+            if (finalScore >= 45) {
+                standing = "Pro / Topper (Top 50 Rank)";
+                standingMessage = "Exceptional performance! You have mastered the application of core doctrines. Your score indicates you are on track for a Top 50 rank. Focus on consistency.";
+            } else if (finalScore >= 38) {
+                standing = "Proficient (NALSAR Contender)";
+                standingMessage = "Excellent work! You are comfortably in the NALSAR bracket. You have a strong grasp of complex issues. To reach the top tier, review your 5-10 incorrect answers and master those specific nuances.";
+            } else if (finalScore >= 30) {
+                standing = "Average / Intermediate";
+                standingMessage = "Good score! You have a solid base in most topics but need to strengthen your application of doctrines like Basic Structure, Emergency Powers, and Federalism.";
             }
 
-            // Display results
-            scoreElement.innerHTML = `${finalScore} / 30.0 <br> (${numCorrect} Correct, ${quizData.length - numCorrect} Incorrect)`;
-            
-            analysisElement.innerHTML = `
+            // Generate analysis HTML
+            let analysisHTML = `
                 <h3>Your Standing: ${standing}</h3>
                 <p>${standingMessage}</p>
-                <h3>✅ Strengths Identified</h3>
+                <table classclass="ranking-table">
+                    <thead>
+                        <tr><th>Profile</th><th>Score Range (out of 50)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Novice</td><td>< 28</td></tr>
+                        <tr><td>Average/Intermediate</td><td>28 - 37</td></tr>
+                        <tr><td>Proficient (NALSAR/NLSIU)</td><td>38 - 44</td></tr>
+                        <tr><td>Pro/Topper (PSU Call)</td><td>45+</td></tr>
+                    </tbody>
+                </table>
+                <h3>⚠️ Areas for Improvement (Topic-wise)</h3>
                 <ul>
-                    <li>**Analytical Positivism:** Strong understanding of Hart's critique of Austin and Kelsen's structural hierarchy.</li>
-                    <li>**Hohfeldian Analysis:** Good grasp of Jural Opposites (Duty/Privilege) and Correlatives (Immunity/Disability).</li>
-                    <li>**Theories of Justice & Punishment:** Accurate application of Rawls' Maximin Principle and the objectives of Reformative/Retributive Justice.</li>
-                    <li>**Sociological Thought:** Clear grasp of Pound's Social Interests and Ehrlich's Living Law.</li>
-                </ul>
-                <h3>⚠️ Critical Areas for Improvement</h3>
-                <ul>
-                    <li><strong>Nuanced Distinctions:</strong> Review the specific differences between Hart's 'social fact' (RoR) and the Realists' 'psychological beliefs' (Q24, Q30).</li>
-                    <li><strong>Hohfeldian Correlatives (Privilege):</strong> Double-check the relationship: A's **Privilege** correlates with B's **No-right** (Q9).</li>
-                    <li><strong>Dworkin's Critique:** Remember Dworkin's main target is **Utilitarianism** (sacrificing rights for the 'general good'), not just arbitrary commands (Q5).</li>
-                    <li><strong>Fuller's 8 Principles:** Differentiate all eight principles. A secret law is a failure of **Promulgation** (Q4).</li>
-                </ul>
             `;
+            
+            for (const topic in topicPerformance) {
+                const perc = (topicPerformance[topic].correct / topicPerformance[topic].total) * 100;
+                if (perc < 80) { // Highlight topics with less than 80% accuracy
+                    analysisHTML += `<li><strong>${topic}:</strong> You scored ${perc.toFixed(0)}% (${topicPerformance[topic].correct}/${topicPerformance[topic].total}). Review the application of this doctrine and related landmark cases.</li>`;
+                }
+            }
+            analysisHTML += `</ul>`;
+
+            // Display results
+            scoreElement.innerHTML = `${finalScore} / 50.0 <br> (${numCorrect} Correct, ${numIncorrect} Incorrect)`;
+            analysisElement.innerHTML = analysisHTML;
             
             resultsContainer.style.display = 'block';
             submitButton.style.display = 'none';
+            window.scrollTo(0, 0);
         }
 
-        // 5. Initial Call and Event Listener
-        buildQuiz();
-        submitButton.addEventListener('click', showResults);
+        // 3. Initial Call and Event Listener
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showResults();
+        });
+        
+        window.onload = startTimer;
 
     </script>
 </body>
